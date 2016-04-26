@@ -21,6 +21,9 @@ function add_plugin_admin_menu() {
     'display_riara_settings'
   );
   
+  // General Setting
+  register_setting('riara_group', 'riara_general_is_display', '');
+
   // Amazon Setting
   register_setting('riara_group', 'riara_amazon_api_url', '');
   register_setting('riara_group', 'riara_amazon_access_key', '');
@@ -36,17 +39,19 @@ function add_plugin_admin_menu() {
   register_setting('riara_group', 'riara_rakuten_affiliate_id', '');
   register_setting('riara_group', 'riara_rakuten_image_size', '');
   
-  // General Setting
-  register_setting('riara_group', 'riara_general_heading_text', '');
-  register_setting('riara_group', 'riara_general_display_value', '');
-  register_setting('riara_group', 'riara_general_default_banner_pc', '');
-  register_setting('riara_group', 'riara_general_default_banner_mobile', '');
-  register_setting('riara_group', 'riara_general_max_item_number_pc', '');
-  register_setting('riara_group', 'riara_general_max_item_number_mobile', '');
+  // Display Setting
+  register_setting('riara_group', 'riara_display_heading_text', '');
+  register_setting('riara_group', 'riara_display_display_value', '');
+  register_setting('riara_group', 'riara_display_default_banner_pc', '');
+  register_setting('riara_group', 'riara_display_default_banner_mobile', '');
+  register_setting('riara_group', 'riara_display_max_item_number_pc', '');
+  register_setting('riara_group', 'riara_display_max_item_number_mobile', '');
 
+  // Default
   register_setting('riara_group', 'riara_default_amazon_associate_tag', '');
   register_setting('riara_group', 'riara_default_rakuten_application_id', '');
   register_setting('riara_group', 'riara_default_rakuten_affiliate_id', '');
+
 }
 add_action('admin_menu', 'add_plugin_admin_menu');
 

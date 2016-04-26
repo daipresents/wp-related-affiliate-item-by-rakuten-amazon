@@ -1,6 +1,33 @@
 <?php
 require_once( plugin_dir_path( __FILE__ ) . 'common.php' );
+?>
 
+<h2>Related Item by Amazon and Rakuten Affiliate Plugin (RIARA)</h2>
+
+<form action="options.php" method="post">
+  <?php
+    settings_fields( 'riara_group' );
+    do_settings_sections( 'default' );
+  ?>
+
+<?php
+// Is Display
+$current_is_display = get_site_option('riara_general_is_display');
+?>
+
+  <h3>General Setting</h3>
+  
+  Display Related Item: 
+  
+  <?php
+    $checked = "";
+    if ($current_is_display === "TRUE") {
+      $checked = "checked='checked'";
+    }
+  ?>
+  <input type="checkbox" name="riara_general_is_display" id="riara_general_is_display" value="TRUE " <?php echo $checked ?> / >
+
+<?php
 // API Location
 $current_amazon_api_url = get_site_option('riara_amazon_api_url');
 
@@ -18,15 +45,9 @@ $current_amazon_associate_tag = get_site_option('riara_amazon_associate_tag');
 
 // Image Size
 $current_amazon_image_size = get_site_option('riara_amazon_image_size');
+
 ?>
 
-<h2>Related Item by Amazon and Rakuten Affiliate Plugin (RIARA)</h2>
-
-<form action="options.php" method="post">
-  <?php
-    settings_fields( 'riara_group' );
-    do_settings_sections( 'default' );
-  ?>
   <h3>Amazon Product Advertising API</h3>
   
   <p>If you like to use Amazon Product Advertising  API to display item, you need to set these options.</p>
@@ -153,35 +174,35 @@ TEST
 <?php
 
 // Heading Text
-$current_general_heading_text = get_site_option('riara_general_heading_text');
+$current_general_heading_text = get_site_option('riara_display_heading_text');
 
 // Display
-$current_general_display_value = get_site_option('riara_general_display_value');
+$current_general_display_value = get_site_option('riara_display_display_value');
 
 // Default Banner for PC
-$current_general_default_banner_pc = get_site_option('riara_general_default_banner_pc');
+$current_general_default_banner_pc = get_site_option('riara_display_default_banner_pc');
 
 // Default Banner for mobile
-$current_general_default_banner_mobile = get_site_option('riara_general_default_banner_mobile');
+$current_general_default_banner_mobile = get_site_option('riara_display_default_banner_mobile');
 
 // Number of Item for PC 
-$current_general_max_item_number_pc = get_site_option('riara_general_max_item_number_pc');
+$current_general_max_item_number_pc = get_site_option('riara_display_max_item_number_pc');
 
 // Number of Item for mobile
-$current_general_max_item_number_mobile = get_site_option('riara_general_max_item_number_mobile');
+$current_general_max_item_number_mobile = get_site_option('riara_display_max_item_number_mobile');
 
 ?>
 
-  <h3>General Setting</h3>
+  <h3>Display Setting</h3>
   
   <table>
   <tr><th>Heading Text:</th>
-  <td><input name="riara_general_heading_text" id="riara_general_heading_text" type="text" value="<?php echo $current_general_heading_text ?>" style="width: 400px" /></td></tr>
+  <td><input name="riara_display_heading_text" id="riara_display_heading_text" type="text" value="<?php echo $current_general_heading_text ?>" style="width: 400px" /></td></tr>
   
   <tr><th>Display setting:</th>
   <td>
-    <select name="riara_general_display_value" id="riara_general_display_value">
-    <?php foreach ($riara_general_display_values as $display_value) { 
+    <select name="riara_display_display_value" id="riara_display_display_value">
+    <?php foreach ($riara_display_display_values as $display_value) { 
       $selected = "";
       if ($current_general_display_value == $display_value) { 
         $selected = "selected";
@@ -197,20 +218,20 @@ $current_general_max_item_number_mobile = get_site_option('riara_general_max_ite
   <tr>
   <th>Default banner for PC (When there is no related item):</th>
   <td>
-  <textarea name="riara_general_default_banner_pc" id="riara_general_default_banner_pc"  rows="8" cols="70"><?php echo $current_general_default_banner_pc ?></textarea>
+  <textarea name="riara_display_default_banner_pc" id="riara_display_default_banner_pc"  rows="8" cols="70"><?php echo $current_general_default_banner_pc ?></textarea>
   </td>
   </tr>
   <tr>
   <th>Default banner for mobile (When there is no related item):</th>
   <td>
-  <textarea name="riara_general_default_banner_mobile" id="riara_general_default_banner_mobile"  rows="8" cols="70"><?php echo $current_general_default_banner_mobile ?></textarea>
+  <textarea name="riara_display_default_banner_mobile" id="riara_display_default_banner_mobile"  rows="8" cols="70"><?php echo $current_general_default_banner_mobile ?></textarea>
   </td>
   </tr>
   <tr>
   <th>Number of Item for PC:</th>
   <td>
-    <select name="riara_general_max_item_number_pc" id="riara_general_max_item_number_pc">
-    <?php for ($count = 1; $count <= $riara_general_max_item_number_pc; $count++){
+    <select name="riara_display_max_item_number_pc" id="riara_display_max_item_number_pc">
+    <?php for ($count = 1; $count <= $riara_display_max_item_number_pc; $count++){
       $selected = "";
       if ($current_general_max_item_number_pc == $count) { 
         $selected = "selected";
@@ -224,8 +245,8 @@ $current_general_max_item_number_mobile = get_site_option('riara_general_max_ite
   <tr>
   <th>Number of Item for Mobile:</th>
   <td>
-    <select name="riara_general_max_item_number_mobile" id="riara_general_max_item_number_mobile">
-    <?php for ($count = 1; $count <= $riara_general_max_item_number_mobile; $count++){
+    <select name="riara_display_max_item_number_mobile" id="riara_display_max_item_number_mobile">
+    <?php for ($count = 1; $count <= $riara_display_max_item_number_mobile; $count++){
       $selected = "";
       if ($current_general_max_item_number_mobile == $count) { 
         $selected = "selected";

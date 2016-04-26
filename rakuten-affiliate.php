@@ -1,5 +1,5 @@
 <?php
-  $widget = '<?php echo get_site_option('riara_general_default_banner_pc')?>';
+  $widget = '<?php echo get_site_option('riara_display_default_banner_pc')?>';
   $tags = get_the_tags();
   if (!$tags){
 ?>
@@ -20,9 +20,9 @@
       "affiliateId": "<?php echo get_site_option('riara_rakuten_affiliate_id') ?>",
       "title": "<?php echo $tag->description; ?>",
       <?php if (wp_is_mobile()) { ?>
-        "hits": "<?php echo get_site_option('riara_general_max_item_number_mobile') ?>",
+        "hits": "<?php echo get_site_option('riara_display_max_item_number_mobile') ?>",
       <?php } else { ?>
-        "hits": "<?php echo get_site_option('riara_general_max_item_number_pc') ?>",
+        "hits": "<?php echo get_site_option('riara_display_max_item_number_pc') ?>",
       <?php } ?>
       "sort": "sales",
     },
