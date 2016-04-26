@@ -1,5 +1,5 @@
 <?php
-  $widget = '<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?t=daipresents-22&o=9&p=293&l=ur1&category=amazonsale&f=ifr" width="640" height="100" scrolling="no" border="0" marginwidth="0" style="border:none;max-width:900px;max-height:600px;" frameborder="0"></iframe>';
+  $widget = '<?php echo get_site_option('riara_general_default_banner_pc')?>';
   $tags = get_the_tags();
   if (!$tags){
 ?>
@@ -20,9 +20,9 @@
       "affiliateId": "<?php echo get_site_option('riara_rakuten_affiliate_id') ?>",
       "title": "<?php echo $tag->description; ?>",
       <?php if (wp_is_mobile()) { ?>
-        "hits": "4",
+        "hits": "<?php echo get_site_option('riara_general_max_item_number_mobile') ?>",
       <?php } else { ?>
-        "hits": "8",
+        "hits": "<?php echo get_site_option('riara_general_max_item_number_pc') ?>",
       <?php } ?>
       "sort": "sales",
     },
