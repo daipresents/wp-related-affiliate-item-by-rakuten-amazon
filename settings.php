@@ -60,7 +60,7 @@ $current_amazon_image_size = get_site_option('riara_amazon_image_size');
       <?php foreach ($riara_amazon_api_urls as $location => $url) { 
         $selected = "";
         if ($current_amazon_api_url === $url) { 
-          $selected = "selected";
+          $selected = "selected='selected'";
         }
         ?>
         <option value="<?php echo $url ?>" <?php echo $selected ?>><?php echo $location ?></option>
@@ -82,7 +82,7 @@ $current_amazon_image_size = get_site_option('riara_amazon_image_size');
     <?php foreach ($riara_amazon_search_indexes as $index_key => $index) { 
       $selected = "";
       if ($current_amazon_search_index == $index) { 
-        $selected = "selected";
+        $selected = "selected='selected'";
       }
       ?>
       <option value="<?php echo $index ?>" <?php echo $selected ?>><?php echo $index_key ?></option>
@@ -101,7 +101,7 @@ $current_amazon_image_size = get_site_option('riara_amazon_image_size');
     <?php foreach ($riara_amazon_image_sizes as $size_key => $size) { 
       $selected = "";
       if ($current_amazon_image_size == $size) { 
-        $selected = "selected";
+        $selected = "selected='selected'";
       }
       ?>
       <option value="<?php echo $size ?>" <?php echo $selected ?>><?php echo $size_key ?></option>
@@ -137,7 +137,7 @@ $current_rakuten_image_size = get_site_option('riara_rakuten_image_size');
     <?php foreach ($riara_rakuten_api_types as $type_key => $type) { 
       $selected = "";
       if ($current_rakuten_api_type == $type) { 
-        $selected = "selected";
+        $selected = "selected='selected'";
       }
       ?>
       <option value="<?php echo $type ?>" <?php echo $selected ?>><?php echo $type_key ?></option>
@@ -159,7 +159,7 @@ $current_rakuten_image_size = get_site_option('riara_rakuten_image_size');
     <?php foreach ($riara_rakuten_image_sizes as $size_key => $size) { 
       $selected = "";
       if ($current_rakuten_image_size == $size) { 
-        $selected = "selected";
+        $selected = "selected='selected'";
       }
       ?>
       <option value="<?php echo $size ?>" <?php echo $selected ?>><?php echo $size_key ?></option>
@@ -205,7 +205,7 @@ $current_general_max_item_number_mobile = get_site_option('riara_display_max_ite
     <?php foreach ($riara_display_display_values as $display_value) { 
       $selected = "";
       if ($current_general_display_value == $display_value) { 
-        $selected = "selected";
+        $selected = "selected='selected'";
       }
       ?>
       <option value="<?php echo $display_value ?>" <?php echo $selected ?>><?php echo $display_value ?></option>
@@ -234,7 +234,7 @@ $current_general_max_item_number_mobile = get_site_option('riara_display_max_ite
     <?php for ($count = 1; $count <= $riara_display_max_item_number_pc; $count++){
       $selected = "";
       if ($current_general_max_item_number_pc == $count) { 
-        $selected = "selected";
+        $selected = "selected='selected'";
       }
       ?>
       <option value="<?php echo $count ?>" <?php echo $selected ?>><?php echo $count ?></option>
@@ -249,7 +249,7 @@ $current_general_max_item_number_mobile = get_site_option('riara_display_max_ite
     <?php for ($count = 1; $count <= $riara_display_max_item_number_mobile; $count++){
       $selected = "";
       if ($current_general_max_item_number_mobile == $count) { 
-        $selected = "selected";
+        $selected = "selected='selected'";
       }
       ?>
       <option value="<?php echo $count ?>" <?php echo $selected ?>><?php echo $count ?></option>
