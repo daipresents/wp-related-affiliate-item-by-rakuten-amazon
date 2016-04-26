@@ -1,5 +1,4 @@
 <?php
-
 require_once( plugin_dir_path( __FILE__ ) . 'common.php' );
 
 // API Location
@@ -52,7 +51,7 @@ $current_amazon_image_size = get_site_option('riara_amazon_image_size');
     <td><input name="riara_amazon_access_key" id="riara_amazon_access_key" type="text" value="<?php echo $current_amazon_access_key ?>" style="width: 400px" /></td>
   </tr>
   <tr>
-  <th>Secret Access Key (*):</th>
+  <th>Secret Access Key:</th>
     <td><input name="riara_amazon_secret_access_key" id="riara_amazon_secret_access_key" type="text" value="<?php echo $current_amazon_secret_access_key ?>"  style="width: 400px" /></td>
   </tr>
   <tr>
