@@ -1,5 +1,5 @@
 <?php
-require( RIARA_DIR . 'common.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'common.php' );
 
 // API Location
 $current_amazon_api_url = get_site_option('riara_amazon_api_url');
@@ -22,8 +22,6 @@ $current_amazon_image_size = get_site_option('riara_amazon_image_size');
 
 <h2>Related Item by Amazon and Rakuten Affiliate Plugin (RIARA)</h2>
 
-<div style="color:red;">"*" is mandatory.</div>
-
 <form action="options.php" method="post">
   <?php
     settings_fields( 'riara_group' );
@@ -31,18 +29,20 @@ $current_amazon_image_size = get_site_option('riara_amazon_image_size');
   ?>
   <h3>Amazon Product Advertising API</h3>
   
+  <p>If you like to use Amazon Product Advertising  API to display item, you need to set these options.</p>
+  
   <table>
   <tr>
   <th>API Location:</th>
     <td>
     <select name="riara_amazon_api_url" id="riara_amazon_api_url">
       <?php foreach ($riara_amazon_api_urls as $location => $url) { 
-        $url_selected = "";
+        $selected = "";
         if ($current_amazon_api_url === $url) { 
-          $url_selected = "selected";
+          $selected = "selected";
         }
         ?>
-        <option value="<?php echo $url ?>" <?php echo $url_selected ?>><?php echo $location ?></option>
+        <option value="<?php echo $url ?>" <?php echo $selected ?>><?php echo $location ?></option>
       <?php } //foreach ?>
     </select>
     </td>
@@ -59,18 +59,18 @@ $current_amazon_image_size = get_site_option('riara_amazon_image_size');
   <td>
     <select name="riara_amazon_search_index" id="riara_amazon_search_index">
     <?php foreach ($riara_amazon_search_indexes as $index_key => $index) { 
-      $amazon_search_index_selected = "";
+      $selected = "";
       if ($current_amazon_search_index == $index) { 
-        $amazon_search_index_selected = "selected";
+        $selected = "selected";
       }
       ?>
-      <option value="<?php echo $index ?>" <?php echo $amazon_search_index_selected ?>><?php echo $index_key ?></option>
+      <option value="<?php echo $index ?>" <?php echo $selected ?>><?php echo $index_key ?></option>
     <?php } //foreach ?>
     </select>
   </td>
   </tr>
   <tr>
-  <th>Associate Tag(ex. daipresents-22):</th>
+  <th>Associate Tag (ex. daipresents-22):</th>
     <td><input name="riara_amazon_associate_tag" id="riara_amazon_associate_tag" type="text" value="<?php echo $current_amazon_associate_tag ?>" /></td>
   </tr>
   <tr>
@@ -78,12 +78,12 @@ $current_amazon_image_size = get_site_option('riara_amazon_image_size');
   <td>
     <select name="riara_amazon_image_size" id="riara_amazon_image_size">
     <?php foreach ($riara_amazon_image_sizes as $size_key => $size) { 
-      $amazon_image_size_selected = "";
+      $selected = "";
       if ($current_amazon_image_size == $size) { 
-        $amazon_image_size_selected = "selected";
+        $selected = "selected";
       }
       ?>
-      <option value="<?php echo $size ?>" <?php echo $amazon_image_size_selected ?>><?php echo $size_key ?></option>
+      <option value="<?php echo $size ?>" <?php echo $selected ?>><?php echo $size_key ?></option>
     <?php } //foreach ?>
     </select>
   </td>
@@ -114,12 +114,12 @@ $current_rakuten_image_size = get_site_option('riara_rakuten_image_size');
   <td>
     <select name="riara_rakuten_api_type" id="riara_rakuten_api_type">
     <?php foreach ($riara_rakuten_api_types as $type_key => $type) { 
-      $rakuten_api_type_selected = "";
+      $selected = "";
       if ($current_rakuten_api_type == $type) { 
-        $rakuten_api_type_selected = "selected";
+        $selected = "selected";
       }
       ?>
-      <option value="<?php echo $type ?>" <?php echo $rakuten_api_type_selected ?>><?php echo $type_key ?></option>
+      <option value="<?php echo $type ?>" <?php echo $selected ?>><?php echo $type_key ?></option>
     <?php } //foreach ?>
     </select>
   </td>
@@ -136,12 +136,12 @@ $current_rakuten_image_size = get_site_option('riara_rakuten_image_size');
   <td>
     <select name="riara_rakuten_image_size" id="riara_rakuten_image_size">
     <?php foreach ($riara_rakuten_image_sizes as $size_key => $size) { 
-      $rakuten_image_size_selected = "";
+      $selected = "";
       if ($current_rakuten_image_size == $size) { 
-        $rakuten_image_size_selected = "selected";
+        $selected = "selected";
       }
       ?>
-      <option value="<?php echo $size ?>" <?php echo $rakuten_image_size_selected ?>><?php echo $size_key ?></option>
+      <option value="<?php echo $size ?>" <?php echo $selected ?>><?php echo $size_key ?></option>
     <?php } //foreach ?>
     </select>
   </td>
@@ -182,12 +182,12 @@ $current_general_max_item_number_mobile = get_site_option('riara_general_max_ite
   <td>
     <select name="riara_general_display_value" id="riara_general_display_value">
     <?php foreach ($riara_general_display_values as $display_value) { 
-      $general_display_value_selected = "";
+      $selected = "";
       if ($current_general_display_value == $display_value) { 
-        $general_display_value_selected = "selected";
+        $selected = "selected";
       }
       ?>
-      <option value="<?php echo $display_value ?>" <?php echo $general_display_value_selected ?>><?php echo $display_value ?></option>
+      <option value="<?php echo $display_value ?>" <?php echo $selected ?>><?php echo $display_value ?></option>
     <?php } //foreach ?>
     </select>
   </td>
@@ -211,12 +211,12 @@ $current_general_max_item_number_mobile = get_site_option('riara_general_max_ite
   <td>
     <select name="riara_general_max_item_number_pc" id="riara_general_max_item_number_pc">
     <?php for ($count = 1; $count <= $riara_general_max_item_number_pc; $count++){
-      $general_max_item_number_pc_selected = "";
+      $selected = "";
       if ($current_general_max_item_number_pc == $count) { 
-        $general_max_item_number_pc_selected = "selected";
+        $selected = "selected";
       }
       ?>
-      <option value="<?php echo $count ?>" <?php echo $general_max_item_number_pc_selected ?>><?php echo $count ?></option>
+      <option value="<?php echo $count ?>" <?php echo $selected ?>><?php echo $count ?></option>
     <?php } // for ?>
     </select>
   </td>
@@ -226,17 +226,21 @@ $current_general_max_item_number_mobile = get_site_option('riara_general_max_ite
   <td>
     <select name="riara_general_max_item_number_mobile" id="riara_general_max_item_number_mobile">
     <?php for ($count = 1; $count <= $riara_general_max_item_number_mobile; $count++){
-      $general_max_item_number_mobile_selected = "";
+      $selected = "";
       if ($current_general_max_item_number_mobile == $count) { 
-        $general_max_item_number_mobile_selected = "selected";
+        $selected = "selected";
       }
       ?>
-      <option value="<?php echo $count ?>" <?php echo $general_max_item_number_mobile_selected ?>><?php echo $count ?></option>
+      <option value="<?php echo $count ?>" <?php echo $selected ?>><?php echo $count ?></option>
     <?php } // for ?>
     </select>
   </td>
   </tr>
   </table>
   
+  <input name="riara_default_amazon_associate_tag" id="riara_default_amazon_associate_tag" type="hidden" value="daipresents-22" />
+  <input name="riara_default_rakuten_application_id" id="riara_default_rakuten_application_id" type="hidden" value="94861c35f590dcd5deb9e873957cff83" />
+  <input name="riara_default_rakuten_affiliate_id" id="riara_default_rakuten_affiliate_id" type="hidden" value="082db8a6.9792b509.082db8a7.22ecf61a" />
+
   <?php submit_button();?>
 </form>

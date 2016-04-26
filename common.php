@@ -1,5 +1,4 @@
 <?php
-define( 'RIARA_DIR', plugin_dir_path( __FILE__ ) );
 
 $riara_amazon_api_urls = array(
   "JP" => "https://webservices.amazon.co.jp/onca/xml",

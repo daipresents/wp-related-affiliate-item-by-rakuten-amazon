@@ -1,38 +1,15 @@
 <?php
-// for signnature
-$params = array();
-$params['Service'] = 'AWSECommerceService';
-$params['AWSAccessKeyId'] = get_site_option('riara_amazon_access_key');
-$params['Operation'] = 'ItemSearch';
-$params['SearchIndex'] = get_site_option('riara_amazon_search_index');
-$params['AssociateTag'] = get_site_option('riara_amazon_associate_tag');
-$params['Version'] = '2011-08-02';
-$params['Timestamp'] = gmdate('Y-m-d\TH:i:s\Z');
-//$params['Sort'] = 'salesrank';
-$params['ResponseGroup'] = 'Medium';
+require_once( plugin_dir_path( __FILE__ ) . 'functions.php' );
+
 $keywords = '';
 foreach($tags as $tag) {
   $keywords .= $tag->description . " ";
   break;
 }
-$params['Keywords'] = $keywords;
-$params['ItemPage'] = 1;    
-ksort($params);
-
-$canonical_string = '';
-foreach ($params as $k => $v) {
-  $canonical_string .= '&' . rawurlencode($k) . '=' . rawurlencode($v);
-} 
-$canonical_string = substr($canonical_string, 1);
-$parsed_url = parse_url(get_site_option('riara_amazon_api_url'));
-$string_to_sign = "GET\n{$parsed_url['host']}\n{$parsed_url['path']}\n{$canonical_string}";
-$params['Signature'] = rawurlencode(base64_encode(hash_hmac('sha256', $string_to_sign, get_site_option('riara_amazon_secret_access_key'), true)));
-$url = get_site_option('riara_amazon_api_url') . '?' . $canonical_string . '&Signature=' . $params['Signature'];
-//echo $url . "<br />";
 
 $xml = null;
 ini_set( 'display_errors', 0 );
-if ($response = file_get_contents($url)) {
+if ($response = file_get_contents(generate_amazon_api_url($keywords))) {
   $xml = simplexml_load_string($response);
 } else {
   error_log("file_get_contents failed. Maybe failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable", 0);

@@ -8,7 +8,7 @@ Version: 0.1
 Author URI: http://daipresents.com/
 */
 
-require( plugin_dir_path( __FILE__ ) . 'common.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'functions.php' );
 
 // For setting on admin menu.
 function add_plugin_admin_menu() {
@@ -44,27 +44,10 @@ function add_plugin_admin_menu() {
   register_setting('riara_group', 'riara_general_max_item_number_pc', '');
   register_setting('riara_group', 'riara_general_max_item_number_mobile', '');
 
+  register_setting('riara_group', 'riara_default_amazon_associate_tag', '');
+  register_setting('riara_group', 'riara_default_rakuten_application_id', '');
+  register_setting('riara_group', 'riara_default_rakuten_affiliate_id', '');
 }
 add_action('admin_menu', 'add_plugin_admin_menu');
 
-function display_riara_settings() {
-  require_once( RIARA_DIR . 'settings.php' );
-}
-
-function display_riara() {
-  $tags = get_the_tags();
-  if (!$tags){
-    if (wp_is_mobile()) {
-      echo get_site_option('riara_general_default_banner_pc');
-    } else {
-      echo get_site_option('riara_general_default_banner_mobile');
-    }
-  } else { 
-    if (true) {
-      require_once( RIARA_DIR . 'amazon-affiliate.php' );
-    } else {
-      require_once( RIARA_DIR . 'rakuten-affiliate.php' );
-    }
-  }
-}
-
+?>
