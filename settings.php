@@ -21,7 +21,7 @@ $current_is_display = get_site_option('riara_general_is_display');
   
   <?php
     $checked = "";
-    if ($current_is_display === "TRUE") {
+    if ($current_is_display == "TRUE") {
       $checked = "checked='checked'";
     }
   ?>
@@ -59,7 +59,7 @@ $current_amazon_image_size = get_site_option('riara_amazon_image_size');
     <select name="riara_amazon_api_url" id="riara_amazon_api_url">
       <?php foreach ($riara_amazon_api_urls as $location => $url) { 
         $selected = "";
-        if ($current_amazon_api_url === $url) { 
+        if ($current_amazon_api_url == $url) { 
           $selected = "selected='selected'";
         }
         ?>
