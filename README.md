@@ -1,4 +1,4 @@
-= Related Item by Amazon and Rakuten Affiliate Plugin
+# Related Item by Amazon and Rakuten Affiliate Plugin
 Author: Dai Fujihara @daipresents
 Author URI: http://daipresents.com/
 Plugin URI: http://daipresents.com/2016/wp-amazon-rakuten-plugin/
@@ -10,34 +10,27 @@ License: GPLv2 or later
 
 Display a list of related affiliate item which are provided by Amazon and Rakuten affiliate.
 
-== Description
+# Description
 
 This plugin support you to monetize your blog by showing the contents which are affiliate image, link etc.
 
 
-**Features**
--------------------------------------------
+# Features
+
 * Show the contents of Amazon affiliate(amazon.co.jp).
 * Show the contents of Rakuten affiliate(rakuten.co.jp).
 
 This plugin requires PHP 5, MySQL 4.1, and WordPress 4.5 or greater.
 
-== Installation
-
-= Auto display on your website =
+# Installation
 
 1. Copy the folder `wp-related-item-by-amazon-rakuten-affiliate` into the directory `wp-content/plugins/` and activate the plugin.
-3. Go to the "Related Item by Amazon and Rakuten Affiliate" settings page to customize this one.
+2. Go to the "Related Item by Amazon and Rakuten Affiliate" settings page to customize this one.
 
-== Widget
-
-TODO
-
-== Custom display through templates =
+# Widget
 
 TODO
 
-== Changelog ==
+# Custom display through templates =
 
-= 0.0.1 =
-* First commit.
+TODO
