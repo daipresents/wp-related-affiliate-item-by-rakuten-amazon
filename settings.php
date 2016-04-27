@@ -2,7 +2,16 @@
 require_once( plugin_dir_path( __FILE__ ) . 'common.php' );
 ?>
 
-<h2>Related Item by Amazon and Rakuten Affiliate Plugin (RIARA)</h2>
+<h2>Related Item by Amazon and Rakuten Affiliate (RIARA)</h2>
+
+<p>Related Item by Amazon and Rakuten Affiliate (RIARA) supports you to monetize your blog by displaying the contents which are affiliate image, link etc.<p>
+
+<p>Please set each option in this page first. If you don't set each one, this plugin use default value or doesn't display relate item.</p>
+
+<p>This plugin is free to use but please show plugin attribution (ex. by RIARA). And this plugin use default associate id 10% of the time (for donation to me!).</p>
+
+<p><a href="Plugin URI: http://daipresents.com/2016/wp-related-item-by-amazon-rakuten-affiliate-plugin/" target="_blank">Related Item by Amazon and Rakuten Affiliate Plugin Support Page</a></p>
+
 
 <form action="options.php" method="post">
   <?php

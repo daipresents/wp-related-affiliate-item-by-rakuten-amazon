@@ -1,8 +1,8 @@
 <?php
 
 $riara_search_by_list = array(
-  "Category" => "Category",
-  "Tag" => "Tag",
+  "Category" => "Category Name",
+  "Tag" => "Tag Name",
   "Tag Description" => "Tag Descritpion",
 );
 
