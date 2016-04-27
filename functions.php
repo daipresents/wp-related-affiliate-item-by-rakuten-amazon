@@ -78,4 +78,94 @@ function generate_amazon_api_url($keywords) {
   return get_site_option('riara_amazon_api_url') . '?' . $canonical_string . '&Signature=' . $params['Signature'];
 }
 
+function get_item_url($item) {
+  switch (get_site_option('riara_display_value')) {
+    case "Amazon":
+      return $item->DetailPageURL;
+    case "Rakuten":
+      return $item->affiliateUrl;
+    default:
+      return "";
+  }
+}
+
+function get_item_title($item) {
+  
+  switch (get_site_option('riara_display_value')) {
+    
+    case "Amazon":
+      return $item->ItemAttributes->Title;
+    
+    case "Rakuten":
+      if (get_site_option('riara_rakuten_api_type') == "IchibaItem") {
+        return $item->itemName;
+        
+      } elseif (get_site_option('riara_rakuten_api_type') == "BooksTotal" ||
+                get_site_option('riara_rakuten_api_type') == "BooksBook") {
+        
+        return $item->title;
+        
+      } else {
+        return "";
+      }
+
+    default:
+      return "";
+  }
+}
+
+function get_item_image($item) {
+  switch (get_site_option('riara_display_value')) {
+    
+    case "Amazon":
+      
+      switch (get_site_option('riara_image_size')) {
+        case "Small":
+          return $item->SmallImage->URL;
+        case "Medium":
+          return $item->MediumImage->URL;
+        case "Large":
+          return $item->LargeImage->URL;
+        default:
+          return "";
+      }
+    
+    case "Rakuten":
+      
+      if (get_site_option('riara_rakuten_api_type') == "IchibaItem") {
+        
+        switch (get_site_option('riara_image_size')) {
+          case "Small":
+            return $item->smallImageUrls[0];
+          case "Medium":
+            return $item->mediumImageUrls[0];
+          case "Large":
+            return $item->largeImageUrls[0];
+          default:
+            return "";
+        }
+        
+      } elseif (get_site_option('riara_rakuten_api_type') == "BooksTotal" ||
+                get_site_option('riara_rakuten_api_type') == "BooksBook") {
+        
+        switch (get_site_option('riara_image_size')) {
+          case "Small":
+            return $item->smallImageUrl;
+          case "Medium":
+            return $item->mediumImageUrl;
+          case "Large":
+            return $item->largeImageUrl;
+          default:
+            return "";
+        }
+        
+      } else {
+        return "";
+      }
+     
+    default:
+      return "";
+  }
+}
+
 ?>
