@@ -214,7 +214,7 @@ $current_general_max_item_number_mobile = get_site_option('riara_max_item_number
     $checked = "checked='checked'";
   }
 ?>
-<td><input type="checkbox" name="riara_safe_mode" id="riara_safe_mode" value="TRUE " <?php echo $checked ?> / ></td>
+<td>TODO<!--<input type="checkbox" name="riara_safe_mode" id="riara_safe_mode" value="TRUE " <?php echo $checked ?> / >--></td>
 </tr>
 <tr><th>Heading Text:</th>
 <td><input name="riara_heading_text" id="riara_heading_text" type="text" value="<?php echo $current_general_heading_text ?>" style="width: 400px" /></td></tr>
@@ -233,8 +233,6 @@ $current_general_max_item_number_mobile = get_site_option('riara_max_item_number
   </select>
 </td>
 </tr>
-
-<tr><th>Safety mode:</th><td>TODO</td></tr>
 <tr><th>Template(Text, Thumbnail, Custom):</th><td>TODO</td></tr>
 <tr>
 <th>Default banner for PC (When there is no related item):</th>
