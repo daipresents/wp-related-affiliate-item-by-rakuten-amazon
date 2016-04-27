@@ -163,15 +163,17 @@ TEST
 
 <?php
 
-// Heading Text
-$current_general_heading_text = get_site_option('riara_heading_text');
-
 // Display
 $current_general_display_value = get_site_option('riara_display_value');
 
+// Safe mode
+$current_safe_mode = get_site_option('riara_safe_mode');
+
+// Heading Text
+$current_general_heading_text = get_site_option('riara_heading_text');
+
 // Image Size
 $current_image_size = get_site_option('riara_image_size');
-
 
 // Default Banner for PC
 $current_general_default_banner_pc = get_site_option('riara_default_banner_pc');
@@ -190,9 +192,6 @@ $current_general_max_item_number_mobile = get_site_option('riara_max_item_number
 <h3>Display Setting</h3>
 
 <table>
-<tr><th>Heading Text:</th>
-<td><input name="riara_heading_text" id="riara_heading_text" type="text" value="<?php echo $current_general_heading_text ?>" style="width: 400px" /></td></tr>
-
 <tr><th>Display setting:</th>
 <td>
   <select name="riara_display_value" id="riara_display_value">
@@ -207,6 +206,18 @@ $current_general_max_item_number_mobile = get_site_option('riara_max_item_number
   </select>
 </td>
 </tr>
+<tr>
+<th>Safe Mode:</th>
+<?php
+  $checked = "";
+  if ($current_safe_mode == "TRUE") {
+    $checked = "checked='checked'";
+  }
+?>
+<td><input type="checkbox" name="riara_safe_mode" id="riara_safe_mode" value="TRUE " <?php echo $checked ?> / ></td>
+</tr>
+<tr><th>Heading Text:</th>
+<td><input name="riara_heading_text" id="riara_heading_text" type="text" value="<?php echo $current_general_heading_text ?>" style="width: 400px" /></td></tr>
 <tr>
 <th>Image Size:</th>
 <td>

@@ -39,8 +39,9 @@ function add_plugin_admin_menu() {
   register_setting('riara_group', 'riara_rakuten_affiliate_id', '');
   
   // Display Setting
-  register_setting('riara_group', 'riara_heading_text', '');
   register_setting('riara_group', 'riara_display_value', '');
+  register_setting('riara_group', 'riara_safe_mode', '');
+  register_setting('riara_group', 'riara_heading_text', '');
   register_setting('riara_group', 'riara_image_size', '');
   register_setting('riara_group', 'riara_default_banner_pc', '');
   register_setting('riara_group', 'riara_default_banner_mobile', '');

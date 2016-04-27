@@ -8,7 +8,7 @@ if ($response = file_get_contents(generate_rakuten_api_url(get_search_keyword())
   
 } else {
   error_log("TODO", 0);
-  // get_template_part('rakuten-affiliate');
+  require_once( plugin_dir_path( __FILE__ ) . 'amazon-affiliate.php' );
   return;
   
 }
