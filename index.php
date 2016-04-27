@@ -27,14 +27,14 @@ function add_plugin_admin_menu() {
   register_setting('riara_group', 'riara_search_by', '');
 
   // Amazon Setting
-  register_setting('riara_group', 'riara_amazon_api_url', '');
+  register_setting('riara_group', 'riara_amazon_api_endpoint', '');
   register_setting('riara_group', 'riara_amazon_access_key', '');
   register_setting('riara_group', 'riara_amazon_secret_access_key', '');
   register_setting('riara_group', 'riara_amazon_search_index', '');
   register_setting('riara_group', 'riara_amazon_associate_tag', '');
   
   // Rakuten Setting
-  register_setting('riara_group', 'riara_rakuten_api_type', '');
+  register_setting('riara_group', 'riara_rakuten_api_endpoint', '');
   register_setting('riara_group', 'riara_rakuten_application_id', '');
   register_setting('riara_group', 'riara_rakuten_affiliate_id', '');
   

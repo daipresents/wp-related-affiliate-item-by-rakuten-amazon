@@ -3,7 +3,7 @@ require_once( plugin_dir_path( __FILE__ ) . 'functions.php' );
 ini_set( 'display_errors', 0 );
 
 $xml = null;
-if ($response = file_get_contents(generate_rakuten_api_url(get_search_keyword()))) {
+if ($response = file_get_contents(generate_rakuten_request_url(get_search_keyword()))) {
   $xml = simplexml_load_string($response);
   
 } else {

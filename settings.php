@@ -54,7 +54,7 @@ $current_search_by = get_site_option('riara_search_by');
 
 <?php
 // API Location
-$current_amazon_api_url = get_site_option('riara_amazon_api_url');
+$current_amazon_api_endpoint = get_site_option('riara_amazon_api_endpoint');
 
 // Access Key
 $current_amazon_access_key = get_site_option('riara_amazon_access_key');
@@ -78,10 +78,10 @@ $current_amazon_associate_tag = get_site_option('riara_amazon_associate_tag');
 <tr>
 <th>API Location:</th>
   <td>
-  <select name="riara_amazon_api_url" id="riara_amazon_api_url">
-    <?php foreach ($riara_amazon_api_urls as $location => $url) { 
+  <select name="riara_amazon_api_endpoint" id="riara_amazon_api_endpoint">
+    <?php foreach ($riara_amazon_api_endpoints as $location => $url) { 
       $selected = "";
-      if ($current_amazon_api_url == $url) { 
+      if ($current_amazon_api_endpoint == $url) { 
         $selected = "selected='selected'";
       }
       ?>
@@ -123,7 +123,7 @@ TEST
 <?php
 
 // API Type
-$current_rakuten_api_type = get_site_option('riara_rakuten_api_type');
+$current_rakuten_api_endpoint = get_site_option('riara_rakuten_api_endpoint');
 
 // Application ID
 $current_rakuten_application_id = get_site_option('riara_rakuten_application_id');
@@ -138,10 +138,10 @@ $current_rakuten_affiliate_id = get_site_option('riara_rakuten_affiliate_id');
 <tr>
 <th>API Type:</th>
 <td>
-  <select name="riara_rakuten_api_type" id="riara_rakuten_api_type">
-  <?php foreach ($riara_rakuten_api_types as $type_key => $type) { 
+  <select name="riara_rakuten_api_endpoint" id="riara_rakuten_api_endpoint">
+  <?php foreach ($riara_rakuten_api_endpoints as $type_key => $type) { 
     $selected = "";
-    if ($current_rakuten_api_type == $type) { 
+    if ($current_rakuten_api_endpoint == $type) { 
       $selected = "selected='selected'";
     }
     ?>

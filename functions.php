@@ -55,7 +55,7 @@ function get_search_keyword () {
   }
 }
 
-function generate_amazon_api_url($keywords) {
+function generate_amazon_request_url($keywords) {
   // for signnature
   $params = array();
   $params['Service'] = 'AWSECommerceService';
@@ -77,13 +77,13 @@ function generate_amazon_api_url($keywords) {
   } 
 
   $canonical_string = substr($canonical_string, 1);
-  $parsed_url = parse_url(get_site_option('riara_amazon_api_url'));
+  $parsed_url = parse_url(get_site_option('riara_amazon_api_endpoint'));
   $string_to_sign = "GET\n{$parsed_url['host']}\n{$parsed_url['path']}\n{$canonical_string}";
   $params['Signature'] = rawurlencode(base64_encode(hash_hmac('sha256', $string_to_sign, get_site_option('riara_amazon_secret_access_key'), true)));
-  return get_site_option('riara_amazon_api_url') . '?' . $canonical_string . '&Signature=' . $params['Signature'];
+  return get_site_option('riara_amazon_api_endpoint') . '?' . $canonical_string . '&Signature=' . $params['Signature'];
 }
 
-function generate_rakuten_api_url($keyword) {
+function generate_rakuten_request_url($keyword) {
   $params = array();
   $params['format'] = 'xml';
   $params['sort'] = 'sales';
@@ -104,7 +104,7 @@ function generate_rakuten_api_url($keyword) {
     $canonical_string .= '&' . rawurlencode($k) . '=' . rawurlencode($v);
   }
   $canonical_string = substr($canonical_string, 1);
-  return get_site_option('riara_rakuten_api_type') . '?' . $canonical_string;
+  return get_site_option('riara_rakuten_api_endpoint') . '?' . $canonical_string;
   
 }
 
@@ -127,11 +127,11 @@ function get_item_title($item) {
       return $item->ItemAttributes->Title;
     
     case "Rakuten":
-      if (get_site_option('riara_rakuten_api_type') == "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222") {
+      if (get_site_option('riara_rakuten_api_endpoint') == "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222") {
         return $item->itemName;
         
-      } elseif (get_site_option('riara_rakuten_api_type') == "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20130522" ||
-                get_site_option('riara_rakuten_api_type') == "https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522") {
+      } elseif (get_site_option('riara_rakuten_api_endpoint') == "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20130522" ||
+                get_site_option('riara_rakuten_api_endpoint') == "https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522") {
         
         return $item->title;
         
@@ -172,7 +172,7 @@ function get_item_image($item) {
       
     case "Rakuten":
       
-      if (get_site_option('riara_rakuten_api_type') == "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222") {
+      if (get_site_option('riara_rakuten_api_endpoint') == "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222") {
         
         switch (get_site_option('riara_image_size')) {
           case "Small":
@@ -186,8 +186,8 @@ function get_item_image($item) {
             break;
         }
         
-      } elseif (get_site_option('riara_rakuten_api_type') == "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20130522" ||
-                get_site_option('riara_rakuten_api_type') == "https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522") {
+      } elseif (get_site_option('riara_rakuten_api_endpoint') == "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20130522" ||
+                get_site_option('riara_rakuten_api_endpoint') == "https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522") {
         
         switch (get_site_option('riara_image_size')) {
           case "Small":

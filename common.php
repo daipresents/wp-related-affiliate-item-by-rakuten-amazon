@@ -7,7 +7,7 @@ $riara_search_by_list = array(
   "Tag Description" => "Tag Description",
 );
 
-$riara_amazon_api_urls = array(
+$riara_amazon_api_endpoints = array(
   "JP" => "https://webservices.amazon.co.jp/onca/xml",
   "US" => "https://webservices.amazon.com/onca/xml",
   "UK" => "https://webservices.amazon.co.uk/onca/xml",
@@ -27,7 +27,7 @@ $riara_amazon_search_indexes = array(
   "Books" => "Books",
 );
 
-$riara_rakuten_api_types = array(
+$riara_rakuten_api_endpoints = array(
   "IchibaItem" => "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222",
   "BooksTotal" => "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20130522",
   "BooksBook" => "https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522",

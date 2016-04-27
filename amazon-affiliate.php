@@ -3,7 +3,7 @@ require_once( plugin_dir_path( __FILE__ ) . 'functions.php' );
 ini_set( 'display_errors', 0 );
 
 $xml = null;
-if ($response = file_get_contents(generate_amazon_api_url(get_search_keyword()))) {
+if ($response = file_get_contents(generate_amazon_request_url(get_search_keyword()))) {
   $xml = simplexml_load_string($response);
 } else {
   error_log("file_get_contents failed. Maybe failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable", 0);
