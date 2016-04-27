@@ -11,21 +11,42 @@ require_once( plugin_dir_path( __FILE__ ) . 'common.php' );
   ?>
 
 <?php
+
 // Is Display
 $current_is_display = get_site_option('riara_general_is_display');
+
+// Search Keyword
+$current_search_keyword = get_site_option('riara_general_search_keyword');
+
 ?>
 
 <h3>General Setting</h3>
 
-Display Related Item: 
-
+<table>
+<tr>
+<th>Display Related Item: </th>
 <?php
   $checked = "";
   if ($current_is_display == "TRUE") {
     $checked = "checked='checked'";
   }
 ?>
-<input type="checkbox" name="riara_general_is_display" id="riara_general_is_display" value="TRUE " <?php echo $checked ?> / >
+<td><input type="checkbox" name="riara_general_is_display" id="riara_general_is_display" value="TRUE " <?php echo $checked ?> / ></td>
+</tr>
+<tr><th>Search Keyword: </th>
+<td>
+  <select name="riara_general_search_keyword" id="riara_general_search_keyword">
+    <?php foreach ($riara_search_keywords as $keyword_key => $where) { 
+      $selected = "";
+      if ($current_search_keyword == $where) { 
+        $selected = "selected='selected'";
+      }
+      ?>
+      <option value="<?php echo $where ?>" <?php echo $selected ?>><?php echo $keyword_key ?></option>
+    <?php } //foreach ?>
+  </select>
+</td></tr>
+</table>
 
 <?php
 // API Location

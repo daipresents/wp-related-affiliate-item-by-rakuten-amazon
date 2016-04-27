@@ -23,6 +23,7 @@ function add_plugin_admin_menu() {
   
   // General Setting
   register_setting('riara_group', 'riara_general_is_display', '');
+  register_setting('riara_group', 'riara_general_search_keyword', '');
 
   // Amazon Setting
   register_setting('riara_group', 'riara_amazon_api_url', '');

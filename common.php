@@ -1,5 +1,11 @@
 <?php
 
+$riara_search_keywords = array(
+  "Category" => "Category",
+  "Tag" => "Tag",
+  "Tag Description" => "Tag Descritpion",
+);
+
 $riara_amazon_api_urls = array(
   "JP" => "https://webservices.amazon.co.jp/onca/xml",
   "US" => "https://webservices.amazon.com/onca/xml",
