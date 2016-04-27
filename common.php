@@ -1,6 +1,6 @@
 <?php
 
-$riara_search_keywords = array(
+$riara_search_by_list = array(
   "Category" => "Category",
   "Tag" => "Tag",
   "Tag Description" => "Tag Descritpion",

@@ -16,7 +16,7 @@ require_once( plugin_dir_path( __FILE__ ) . 'common.php' );
 $current_is_display = get_site_option('riara_is_display');
 
 // Search Keyword
-$current_search_keyword = get_site_option('riara_search_keyword');
+$current_search_by = get_site_option('riara_search_by');
 
 ?>
 
@@ -33,16 +33,16 @@ $current_search_keyword = get_site_option('riara_search_keyword');
 ?>
 <td><input type="checkbox" name="riara_is_display" id="riara_is_display" value="TRUE " <?php echo $checked ?> / ></td>
 </tr>
-<tr><th>Search Keyword: </th>
+<tr><th>Search Item by: </th>
 <td>
-  <select name="riara_search_keyword" id="riara_search_keyword">
-    <?php foreach ($riara_search_keywords as $keyword_key => $where) { 
+  <select name="riara_search_by" id="riara_search_by">
+    <?php foreach ($riara_search_by_list as $search_by_key => $search_by) { 
       $selected = "";
-      if ($current_search_keyword == $where) { 
+      if ($current_search_by == $search_by) { 
         $selected = "selected='selected'";
       }
       ?>
-      <option value="<?php echo $where ?>" <?php echo $selected ?>><?php echo $keyword_key ?></option>
+      <option value="<?php echo $search_by ?>" <?php echo $selected ?>><?php echo $search_by_key ?></option>
     <?php } //foreach ?>
   </select>
 </td></tr>
