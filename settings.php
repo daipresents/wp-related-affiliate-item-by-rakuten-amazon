@@ -13,10 +13,10 @@ require_once( plugin_dir_path( __FILE__ ) . 'common.php' );
 <?php
 
 // Is Display
-$current_is_display = get_site_option('riara_general_is_display');
+$current_is_display = get_site_option('riara_is_display');
 
 // Search Keyword
-$current_search_keyword = get_site_option('riara_general_search_keyword');
+$current_search_keyword = get_site_option('riara_search_keyword');
 
 ?>
 
@@ -31,11 +31,11 @@ $current_search_keyword = get_site_option('riara_general_search_keyword');
     $checked = "checked='checked'";
   }
 ?>
-<td><input type="checkbox" name="riara_general_is_display" id="riara_general_is_display" value="TRUE " <?php echo $checked ?> / ></td>
+<td><input type="checkbox" name="riara_is_display" id="riara_is_display" value="TRUE " <?php echo $checked ?> / ></td>
 </tr>
 <tr><th>Search Keyword: </th>
 <td>
-  <select name="riara_general_search_keyword" id="riara_general_search_keyword">
+  <select name="riara_search_keyword" id="riara_search_keyword">
     <?php foreach ($riara_search_keywords as $keyword_key => $where) { 
       $selected = "";
       if ($current_search_keyword == $where) { 
@@ -63,9 +63,6 @@ $current_amazon_search_index = get_site_option('riara_amazon_search_index');
 
 // Associate Tag
 $current_amazon_associate_tag = get_site_option('riara_amazon_associate_tag');
-
-// Image Size
-$current_amazon_image_size = get_site_option('riara_amazon_image_size');
 
 ?>
 
@@ -115,21 +112,6 @@ $current_amazon_image_size = get_site_option('riara_amazon_image_size');
 <th>Associate Tag (ex. daipresents-22):</th>
   <td><input name="riara_amazon_associate_tag" id="riara_amazon_associate_tag" type="text" value="<?php echo $current_amazon_associate_tag ?>" /></td>
 </tr>
-<tr>
-<th>Amazon Image Size:</th>
-<td>
-  <select name="riara_amazon_image_size" id="riara_amazon_image_size">
-  <?php foreach ($riara_amazon_image_sizes as $size_key => $size) { 
-    $selected = "";
-    if ($current_amazon_image_size == $size) { 
-      $selected = "selected='selected'";
-    }
-    ?>
-    <option value="<?php echo $size ?>" <?php echo $selected ?>><?php echo $size_key ?></option>
-  <?php } //foreach ?>
-  </select>
-</td>
-</tr>
 </table>
 
 TEST
@@ -145,8 +127,6 @@ $current_rakuten_application_id = get_site_option('riara_rakuten_application_id'
 // Affilicate ID
 $current_rakuten_affiliate_id = get_site_option('riara_rakuten_affiliate_id');
 
-// Image Size
-$current_rakuten_image_size = get_site_option('riara_rakuten_image_size');
 ?>
 
 <h3>Rakuten Web Service API</h3>
@@ -173,21 +153,6 @@ $current_rakuten_image_size = get_site_option('riara_rakuten_image_size');
 <th>Affiliate ID:</th>
 <td><input name="riara_rakuten_affiliate_id" id="riara_rakuten_affiliate_id" type="text" value="<?php echo $current_rakuten_affiliate_id ?>" style="width: 400px" /></td>
 </tr>
-<tr>
-<th>Rakuten Image Size:</th>
-<td>
-  <select name="riara_rakuten_image_size" id="riara_rakuten_image_size">
-  <?php foreach ($riara_rakuten_image_sizes as $size_key => $size) { 
-    $selected = "";
-    if ($current_rakuten_image_size == $size) { 
-      $selected = "selected='selected'";
-    }
-    ?>
-    <option value="<?php echo $size ?>" <?php echo $selected ?>><?php echo $size_key ?></option>
-  <?php } //foreach ?>
-  </select>
-</td>
-</tr>
 </table>
 
 TEST
@@ -195,22 +160,26 @@ TEST
 <?php
 
 // Heading Text
-$current_general_heading_text = get_site_option('riara_display_heading_text');
+$current_general_heading_text = get_site_option('riara_heading_text');
 
 // Display
-$current_general_display_value = get_site_option('riara_display_display_value');
+$current_general_display_value = get_site_option('riara_display_value');
+
+// Image Size
+$current_image_size = get_site_option('riara_image_size');
+
 
 // Default Banner for PC
-$current_general_default_banner_pc = get_site_option('riara_display_default_banner_pc');
+$current_general_default_banner_pc = get_site_option('riara_default_banner_pc');
 
 // Default Banner for mobile
-$current_general_default_banner_mobile = get_site_option('riara_display_default_banner_mobile');
+$current_general_default_banner_mobile = get_site_option('riara_default_banner_mobile');
 
 // Number of Item for PC 
-$current_general_max_item_number_pc = get_site_option('riara_display_max_item_number_pc');
+$current_general_max_item_number_pc = get_site_option('riara_max_item_number_pc');
 
 // Number of Item for mobile
-$current_general_max_item_number_mobile = get_site_option('riara_display_max_item_number_mobile');
+$current_general_max_item_number_mobile = get_site_option('riara_max_item_number_mobile');
 
 ?>
 
@@ -218,12 +187,12 @@ $current_general_max_item_number_mobile = get_site_option('riara_display_max_ite
 
 <table>
 <tr><th>Heading Text:</th>
-<td><input name="riara_display_heading_text" id="riara_display_heading_text" type="text" value="<?php echo $current_general_heading_text ?>" style="width: 400px" /></td></tr>
+<td><input name="riara_heading_text" id="riara_heading_text" type="text" value="<?php echo $current_general_heading_text ?>" style="width: 400px" /></td></tr>
 
 <tr><th>Display setting:</th>
 <td>
-  <select name="riara_display_display_value" id="riara_display_display_value">
-  <?php foreach ($riara_display_display_values as $display_value) { 
+  <select name="riara_display_value" id="riara_display_value">
+  <?php foreach ($riara_display_values as $display_value) { 
     $selected = "";
     if ($current_general_display_value == $display_value) { 
       $selected = "selected='selected'";
@@ -234,25 +203,41 @@ $current_general_max_item_number_mobile = get_site_option('riara_display_max_ite
   </select>
 </td>
 </tr>
+<tr>
+<th>Image Size:</th>
+<td>
+  <select name="riara_image_size" id="riara_image_size">
+  <?php foreach ($riara_image_sizes as $size_key => $size) { 
+    $selected = "";
+    if ($current_image_size == $size) { 
+      $selected = "selected='selected'";
+    }
+    ?>
+    <option value="<?php echo $size ?>" <?php echo $selected ?>><?php echo $size_key ?></option>
+  <?php } //foreach ?>
+  </select>
+</td>
+</tr>
+
 <tr><th>Safety mode:</th><td>TODO</td></tr>
 <tr><th>Template(Text, Thumbnail, Custom):</th><td>TODO</td></tr>
 <tr>
 <th>Default banner for PC (When there is no related item):</th>
 <td>
-<textarea name="riara_display_default_banner_pc" id="riara_display_default_banner_pc"  rows="8" cols="70"><?php echo $current_general_default_banner_pc ?></textarea>
+<textarea name="riara_default_banner_pc" id="riara_default_banner_pc"  rows="8" cols="70"><?php echo $current_general_default_banner_pc ?></textarea>
 </td>
 </tr>
 <tr>
 <th>Default banner for mobile (When there is no related item):</th>
 <td>
-<textarea name="riara_display_default_banner_mobile" id="riara_display_default_banner_mobile"  rows="8" cols="70"><?php echo $current_general_default_banner_mobile ?></textarea>
+<textarea name="riara_default_banner_mobile" id="riara_default_banner_mobile"  rows="8" cols="70"><?php echo $current_general_default_banner_mobile ?></textarea>
 </td>
 </tr>
 <tr>
 <th>Number of Item for PC:</th>
 <td>
-  <select name="riara_display_max_item_number_pc" id="riara_display_max_item_number_pc">
-  <?php for ($count = 1; $count <= $riara_display_max_item_number_pc; $count++){
+  <select name="riara_max_item_number_pc" id="riara_max_item_number_pc">
+  <?php for ($count = 1; $count <= $riara_max_item_number_pc; $count++){
     $selected = "";
     if ($current_general_max_item_number_pc == $count) { 
       $selected = "selected='selected'";
@@ -266,8 +251,8 @@ $current_general_max_item_number_mobile = get_site_option('riara_display_max_ite
 <tr>
 <th>Number of Item for Mobile:</th>
 <td>
-  <select name="riara_display_max_item_number_mobile" id="riara_display_max_item_number_mobile">
-  <?php for ($count = 1; $count <= $riara_display_max_item_number_mobile; $count++){
+  <select name="riara_max_item_number_mobile" id="riara_max_item_number_mobile">
+  <?php for ($count = 1; $count <= $riara_max_item_number_mobile; $count++){
     $selected = "";
     if ($current_general_max_item_number_mobile == $count) { 
       $selected = "selected='selected'";

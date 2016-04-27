@@ -22,31 +22,29 @@ function add_plugin_admin_menu() {
   );
   
   // General Setting
-  register_setting('riara_group', 'riara_general_is_display', '');
-  register_setting('riara_group', 'riara_general_search_keyword', '');
+  register_setting('riara_group', 'riara_is_display', '');
+  register_setting('riara_group', 'riara_search_keyword', '');
 
   // Amazon Setting
   register_setting('riara_group', 'riara_amazon_api_url', '');
   register_setting('riara_group', 'riara_amazon_access_key', '');
   register_setting('riara_group', 'riara_amazon_secret_access_key', '');
   register_setting('riara_group', 'riara_amazon_search_index', '');
-  register_setting('riara_group', 'riara_amazon_search_index', '');
   register_setting('riara_group', 'riara_amazon_associate_tag', '');
-  register_setting('riara_group', 'riara_amazon_image_size', '');
   
   // Rakuten Setting
   register_setting('riara_group', 'riara_rakuten_api_type', '');
   register_setting('riara_group', 'riara_rakuten_application_id', '');
   register_setting('riara_group', 'riara_rakuten_affiliate_id', '');
-  register_setting('riara_group', 'riara_rakuten_image_size', '');
   
   // Display Setting
-  register_setting('riara_group', 'riara_display_heading_text', '');
-  register_setting('riara_group', 'riara_display_display_value', '');
-  register_setting('riara_group', 'riara_display_default_banner_pc', '');
-  register_setting('riara_group', 'riara_display_default_banner_mobile', '');
-  register_setting('riara_group', 'riara_display_max_item_number_pc', '');
-  register_setting('riara_group', 'riara_display_max_item_number_mobile', '');
+  register_setting('riara_group', 'riara_heading_text', '');
+  register_setting('riara_group', 'riara_display_value', '');
+  register_setting('riara_group', 'riara_image_size', '');
+  register_setting('riara_group', 'riara_default_banner_pc', '');
+  register_setting('riara_group', 'riara_default_banner_mobile', '');
+  register_setting('riara_group', 'riara_max_item_number_pc', '');
+  register_setting('riara_group', 'riara_max_item_number_mobile', '');
 
   // Default
   register_setting('riara_group', 'riara_default_amazon_associate_tag', '');

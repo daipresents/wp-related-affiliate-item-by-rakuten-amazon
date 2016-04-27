@@ -26,27 +26,23 @@ $riara_amazon_search_indexes = array(
   "Books" => "Books",
 );
 
-$riara_amazon_image_sizes = array(
-  "Small (75x58)" => "Small",
-  "Medium (160x124)" => "Medium",
-  "Large (500x389)" => "Large",
-);
-
 $riara_rakuten_api_types = array(
   "IchibaItem" => "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222",
   "BooksTotal" => "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20130522",
   "BooksBook" => "https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522",
 );
 
-$riara_rakuten_image_sizes = array(
-  "Small (64x64)" => "Small",
-  "Medium (128x128)" => "Medium",
-  "Large (200x200)" => "Large",
+// Amazon: Small (75x58), Medium (160x124), Large (500x389)
+// Rakuten: Small (64x64), Medium (128x128), Large (200x200)
+$riara_image_sizes = array(
+  "Smal" => "Small",
+  "Medium" => "Medium",
+  "Large" => "Large",
 );
 
-$riara_display_display_values = array("Amazon", "Rakuten",);
+$riara_display_values = array("Amazon", "Rakuten",);
 
-$riara_display_max_item_number_pc = 12;
-$riara_display_max_item_number_mobile = 12;
+$riara_max_item_number_pc = 12;
+$riara_max_item_number_mobile = 12;
 
 ?>

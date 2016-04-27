@@ -10,9 +10,9 @@ function display_riara() {
   $tags = get_the_tags();
   if (!$tags){
     if (wp_is_mobile()) {
-      echo get_site_option('riara_display_default_banner_pc');
+      echo get_site_option('riara_banner_pc');
     } else {
-      echo get_site_option('riara_display_default_banner_mobile');
+      echo get_site_option('riara_banner_mobile');
     }
   } else { 
     if (true) {
