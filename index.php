@@ -9,6 +9,7 @@ Author URI: http://daipresents.com/
 */
 
 require_once( plugin_dir_path( __FILE__ ) . 'functions.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'widget.php' );
 
 // For setting on admin menu.
 function add_plugin_admin_menu() {
@@ -55,4 +56,7 @@ function add_plugin_admin_menu() {
 }
 add_action('admin_menu', 'add_plugin_admin_menu');
 
+add_action('widgets_init', function () {
+    register_widget( 'RIARA_Widget');
+} );
 ?>
