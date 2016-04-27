@@ -17,6 +17,7 @@ if ($response = file_get_contents(generate_amazon_api_url(get_search_keyword()))
 <?php echo get_site_option('riara_heading_text') ?>
 
 <?php
+  $count = 1;
   foreach ($xml->Items->Item as $item) {
 ?>
 
@@ -37,6 +38,21 @@ if ($response = file_get_contents(generate_amazon_api_url(get_search_keyword()))
   </div><!-- /.related-amazon-rakuten-affiliate-content -->
 </article><!-- /related-amazon-rakuten-affiliate-thumbnail -->
 
-<?php } //foreach ?>
+<?php
+    if (wp_is_mobile()) {
+      if ($count < get_site_option('riara_max_item_number_mobile')) {
+        $count++;
+      } else {
+        break;
+      }
+    } else {
+      if ($count < get_site_option('riara_max_item_number_pc')) {
+        $count++;
+      } else {
+        break;
+      }
+    } // if
+  } //foreach
+?>
 </aside>
 </div>
