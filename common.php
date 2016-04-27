@@ -1,9 +1,10 @@
 <?php
 
 $riara_search_by_list = array(
-  "Category" => "Category Name",
-  "Tag" => "Tag Name",
-  "Tag Description" => "Tag Descritpion",
+  "Category Name" => "Category Name",
+  "Category Description" => "Category Description",
+  "Tag Name" => "Tag Name",
+  "Tag Description" => "Tag Description",
 );
 
 $riara_amazon_api_urls = array(

@@ -23,6 +23,33 @@ function display_riara() {
   }
 }
 
+function get_search_keyword () {
+  switch (get_site_option('riara_search_by')){
+    case "Category Name":
+      $categories = get_the_category();
+      foreach($categories as $category) {
+        return $category->cat_name;
+      }
+    case "Category Description":
+      $categories = get_the_category();
+      foreach($categories as $category) {
+        return $category->category_description;
+      }
+    case "Tag Name":
+      $tags = get_the_tags();
+      foreach($tags as $tag) {
+        return $tag->name;
+      }
+    case "Tag Description":
+      $tags = get_the_tags();
+      foreach($tags as $tag) {
+        return $tag->description;
+      }
+    default:
+      return get_site_option('riara_default_search_word');
+  }
+}
+
 function generate_amazon_api_url($keywords) {
   // for signnature
   $params = array();
@@ -50,4 +77,5 @@ function generate_amazon_api_url($keywords) {
   $params['Signature'] = rawurlencode(base64_encode(hash_hmac('sha256', $string_to_sign, get_site_option('riara_amazon_secret_access_key'), true)));
   return get_site_option('riara_amazon_api_url') . '?' . $canonical_string . '&Signature=' . $params['Signature'];
 }
+
 ?>

@@ -1,15 +1,9 @@
 <?php
 require_once( plugin_dir_path( __FILE__ ) . 'functions.php' );
-
-$keywords = '';
-foreach($tags as $tag) {
-  $keywords .= $tag->description . " ";
-  break;
-}
+ini_set( 'display_errors', 0 );
 
 $xml = null;
-ini_set( 'display_errors', 0 );
-if ($response = file_get_contents(generate_amazon_api_url($keywords))) {
+if ($response = file_get_contents(generate_amazon_api_url(get_search_keyword()))) {
   $xml = simplexml_load_string($response);
 } else {
   error_log("file_get_contents failed. Maybe failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable", 0);
@@ -20,13 +14,10 @@ if ($response = file_get_contents(generate_amazon_api_url($keywords))) {
 
 <div id='related-amazon-rakuten-affiliate'>
 <aside id="related-amazon-rakuten-affiliate-items">
-
 <?php echo get_site_option('riara_heading_text') ?>
-
 <?php
   $count = 0;
   foreach ($xml->Items->Item as $item) {
-    
     if (!$item->LargeImage->URL) continue;
 ?>
 
