@@ -138,9 +138,6 @@ function get_item_title($item) {
       } else {
         return "";
       }
-
-    default:
-      return "";
   }
 }
 
