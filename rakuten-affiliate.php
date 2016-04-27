@@ -1,56 +1,43 @@
 <?php
-  $widget = '<?php echo get_site_option('riara_banner_pc')?>';
-  $tags = get_the_tags();
-  if (!$tags){
+require_once( plugin_dir_path( __FILE__ ) . 'functions.php' );
+ini_set( 'display_errors', 0 );
+
+$xml = null;
+if ($response = file_get_contents(generate_rakuten_api_url(get_search_keyword()))) {
+  $xml = simplexml_load_string($response);
+  
+} else {
+  error_log("TODO", 0);
+  // get_template_part('rakuten-affiliate');
+  return;
+  
+}
 ?>
-<div><?php echo $widget ?></div>
+
+<div id='related-amazon-rakuten-affiliate'>
+<aside id="related-amazon-rakuten-affiliate-items">
+<?php echo get_site_option('riara_heading_text') ?>
 <?php
-  }else{
-    foreach($tags as $tag) {
+  foreach ($xml->Items->Item as $item) {
 ?>
-<script type="text/javascript">
-  var recommendBooks = '';
-  jQuery.ajax({
-    type: 'GET',
-    url: '<?php echo get_site_option('riara_rakuten_api_type') ?>',
-    dataType: 'jsonp',
-    timeout:10000,
-    data: {
-      "applicationId": "<?php echo get_site_option('riara_rakuten_application_id') ?>",
-      "affiliateId": "<?php echo get_site_option('riara_rakuten_affiliate_id') ?>",
-      "title": "<?php echo $tag->description; ?>",
-      <?php if (wp_is_mobile()) { ?>
-        "hits": "<?php echo get_site_option('riara_max_item_number_mobile') ?>",
-      <?php } else { ?>
-        "hits": "<?php echo get_site_option('riara_max_item_number_pc') ?>",
-      <?php } ?>
-      "sort": "sales",
-    },
-    success: function(json)
-    {
-      if (json.count == 0){
-        recommendBooks = '<?php echo $widget ?>';
-      } else {
-         jQuery.each(json.Items, function() {
-          recommendBooks += (
-            '<div class="book">' + '<a href="' + this.Item.affiliateUrl + '" target="_blank">' + 
-            '<img src="' + this.Item.largeImageUrl + '" alt="' + this.Item.title + '" title="' + this.Item.title + '" width="160"/></a></div>'
-          );
-        });
-      }
-      jQuery("#recommendBooks").append(recommendBooks);
-    },
-    complete: function() {
-    }
-  });
-</script>
-<div id="related-entries">
-<h3>この記事に関係あるかもしれない本</h3>
-<div id="recommendBooks"></div>
+
+<article class="related-amazon-rakuten-affiliate-thumbnail">
+  <div class="related-amazon-rakuten-affiliate-thumb">
+    <a href="<?php echo get_item_url($item) ?>" title="<?php echo get_item_title($item) ?>" target="_blank">
+      <img src="<?php echo get_item_image($item) ?>" alt="<?php echo get_item_title($item) ?>" title="<?php echo get_item_title($item) ?>" />
+    </a>
+  </div><!-- /.related-amazon-rakuten-affiliate-thumb -->
+  
+  <div class="related-amazon-rakuten-affiliate-content">
+    <h3 class="related-amazon-rakuten-affiliate-title">
+      <a href="<?php echo get_item_url($item) ?>" title="<?php echo get_item_title($item) ?>">
+        <?php echo mb_substr(strip_tags(get_item_title($item)),0,30)." …"; ?>
+      </a>
+    </h3>
+    <br style="clear:both;">
+  </div><!-- /.related-amazon-rakuten-affiliate-content -->
+</article><!-- /related-amazon-rakuten-affiliate-thumbnail -->
+
+<?php } //foreach ?>
+</aside>
 </div>
-<br style="clear:both" />
-<?php
-      break;
-    }
-  }
-?>

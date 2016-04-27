@@ -15,8 +15,8 @@ if ($response = file_get_contents(generate_amazon_api_url(get_search_keyword()))
 <div id='related-amazon-rakuten-affiliate'>
 <aside id="related-amazon-rakuten-affiliate-items">
 <?php echo get_site_option('riara_heading_text') ?>
+
 <?php
-  $count = 0;
   foreach ($xml->Items->Item as $item) {
 ?>
 

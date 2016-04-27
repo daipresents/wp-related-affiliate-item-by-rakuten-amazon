@@ -14,12 +14,17 @@ function display_riara() {
     } else {
       echo get_site_option('riara_banner_mobile');
     }
-  } else { 
-    if (true) {
-      require_once( plugin_dir_path( __FILE__ ) . 'amazon-affiliate.php' );
-    } else {
-      require_once( plugin_dir_path( __FILE__ ) . 'rakuten-affiliate.php' );
+  } else {
+   
+    switch (get_site_option('riara_display_value')) {
+      case "Amazon":
+        require_once( plugin_dir_path( __FILE__ ) . 'amazon-affiliate.php' );
+        break;
+      case "Rakuten":
+        require_once( plugin_dir_path( __FILE__ ) . 'rakuten-affiliate.php' );
+        break;
     }
+    
   }
 }
 
@@ -78,6 +83,31 @@ function generate_amazon_api_url($keywords) {
   return get_site_option('riara_amazon_api_url') . '?' . $canonical_string . '&Signature=' . $params['Signature'];
 }
 
+function generate_rakuten_api_url($keyword) {
+  $params = array();
+  $params['format'] = 'xml';
+  $params['sort'] = 'sales';
+  $params['keyword'] = $keyword;
+  $params['applicationId'] = get_site_option('riara_rakuten_application_id');
+  $params['affiliateId'] = get_site_option('riara_rakuten_affiliate_id');
+  
+  if (wp_is_mobile()) {
+    $params['hits'] = get_site_option('riara_max_item_number_mobile');
+  } else {
+    $params['hits'] = get_site_option('riara_max_item_number_pc');
+  }
+
+  ksort($params);
+  
+  $canonical_string = '';
+  foreach ($params as $k => $v) {
+    $canonical_string .= '&' . rawurlencode($k) . '=' . rawurlencode($v);
+  }
+  $canonical_string = substr($canonical_string, 1);
+  return get_site_option('riara_rakuten_api_type') . '?' . $canonical_string;
+  
+}
+
 function get_item_url($item) {
   switch (get_site_option('riara_display_value')) {
     case "Amazon":
@@ -97,11 +127,11 @@ function get_item_title($item) {
       return $item->ItemAttributes->Title;
     
     case "Rakuten":
-      if (get_site_option('riara_rakuten_api_type') == "IchibaItem") {
+      if (get_site_option('riara_rakuten_api_type') == "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222") {
         return $item->itemName;
         
-      } elseif (get_site_option('riara_rakuten_api_type') == "BooksTotal" ||
-                get_site_option('riara_rakuten_api_type') == "BooksBook") {
+      } elseif (get_site_option('riara_rakuten_api_type') == "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20130522" ||
+                get_site_option('riara_rakuten_api_type') == "https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522") {
         
         return $item->title;
         
@@ -132,7 +162,7 @@ function get_item_image($item) {
     
     case "Rakuten":
       
-      if (get_site_option('riara_rakuten_api_type') == "IchibaItem") {
+      if (get_site_option('riara_rakuten_api_type') == "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222") {
         
         switch (get_site_option('riara_image_size')) {
           case "Small":
@@ -145,8 +175,8 @@ function get_item_image($item) {
             return "";
         }
         
-      } elseif (get_site_option('riara_rakuten_api_type') == "BooksTotal" ||
-                get_site_option('riara_rakuten_api_type') == "BooksBook") {
+      } elseif (get_site_option('riara_rakuten_api_type') == "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20130522" ||
+                get_site_option('riara_rakuten_api_type') == "https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522") {
         
         switch (get_site_option('riara_image_size')) {
           case "Small":
