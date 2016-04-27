@@ -86,7 +86,6 @@ function generate_amazon_request_url($keywords) {
 function generate_rakuten_request_url($keyword) {
   $params = array();
   $params['format'] = 'xml';
-  $params['sort'] = 'sales';
   $params['keyword'] = $keyword;
   $params['applicationId'] = get_site_option('riara_rakuten_application_id');
   $params['affiliateId'] = get_site_option('riara_rakuten_affiliate_id');
@@ -173,13 +172,14 @@ function get_item_image($item) {
         
         switch (get_site_option('riara_image_size')) {
           case "Small":
-            $image_url = $item->smallImageUrls[0];
+            $image_url = $item->smallImageUrls->imageUrl[0];
             break;
           case "Medium":
-            $image_url = $item->mediumImageUrls[0];
+            $image_url = $item->mediumImageUrls->imageUrl[0];
             break;
+          // not exist in API response
           case "Large":
-            $image_url = $item->largeImageUrls[0];
+            $image_url = $item->mediumImageUrls->imageUrl[0];
             break;
         }
         

@@ -7,7 +7,7 @@ if ($response = file_get_contents(generate_rakuten_request_url(get_search_keywor
   $xml = simplexml_load_string($response);
   
 } else {
-  error_log("TODO", 0);
+  error_log("file_get_contents failed. url = " . generate_rakuten_request_url(get_search_keyword()), 0);
   //require_once( plugin_dir_path( __FILE__ ) . 'amazon-affiliate.php' );
   return;
   
@@ -20,7 +20,6 @@ if ($response = file_get_contents(generate_rakuten_request_url(get_search_keywor
 <?php
   foreach ($xml->Items->Item as $item) {
 ?>
-
 <article class="related-amazon-rakuten-affiliate-thumbnail">
   <div class="related-amazon-rakuten-affiliate-thumb">
     <a href="<?php echo get_item_url($item) ?>" title="<?php echo get_item_title($item) ?>" target="_blank">
