@@ -36,7 +36,7 @@ $riara_rakuten_api_types = array(
 // Amazon: Small (75x58), Medium (160x124), Large (500x389)
 // Rakuten: Small (64x64), Medium (128x128), Large (200x200)
 $riara_image_sizes = array(
-  "Smal" => "Small",
+  "Small" => "Small",
   "Medium" => "Medium",
   "Large" => "Large",
 );

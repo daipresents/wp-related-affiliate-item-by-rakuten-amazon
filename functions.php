@@ -145,34 +145,45 @@ function get_item_title($item) {
 }
 
 function get_item_image($item) {
+  
+  $image_url = "";
+  
   switch (get_site_option('riara_display_value')) {
     
     case "Amazon":
       
       switch (get_site_option('riara_image_size')) {
         case "Small":
-          return $item->SmallImage->URL;
+          $image_url = $item->SmallImage->URL;
+          break;
         case "Medium":
-          return $item->MediumImage->URL;
+          $image_url =  $item->MediumImage->URL;
+          break;
         case "Large":
-          return $item->LargeImage->URL;
-        default:
-          return "";
+          $image_url = $item->LargeImage->URL;
+          break;
       }
-    
+      
+      if (empty($image_url)) {
+        return "http://g-ecx.images-amazon.com/images/G/09/icons/books/comingsoon_books._V376986337_BO1,204,203,200_.gif";
+      }
+      
+      return $image_url;
+      
     case "Rakuten":
       
       if (get_site_option('riara_rakuten_api_type') == "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222") {
         
         switch (get_site_option('riara_image_size')) {
           case "Small":
-            return $item->smallImageUrls[0];
+            $image_url = $item->smallImageUrls[0];
+            break;
           case "Medium":
-            return $item->mediumImageUrls[0];
+            $image_url = $item->mediumImageUrls[0];
+            break;
           case "Large":
-            return $item->largeImageUrls[0];
-          default:
-            return "";
+            $image_url = $item->largeImageUrls[0];
+            break;
         }
         
       } elseif (get_site_option('riara_rakuten_api_type') == "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20130522" ||
@@ -180,21 +191,25 @@ function get_item_image($item) {
         
         switch (get_site_option('riara_image_size')) {
           case "Small":
-            return $item->smallImageUrl;
+            $image_url = $item->smallImageUrl;
+            break;
           case "Medium":
-            return $item->mediumImageUrl;
+            $image_url = $item->mediumImageUrl;
+            break;
           case "Large":
-            return $item->largeImageUrl;
-          default:
-            return "";
+            $image_url = $item->largeImageUrl;
+            break;
         }
         
       } else {
-        return "";
       }
-     
-    default:
-      return "";
+
+      if (empty($image_url)) {
+        return "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/noimage_01.gif?_ex=130x130&s=2&r=0";
+      }
+      
+      return $image_url;
+
   }
 }
 
