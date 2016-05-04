@@ -219,7 +219,7 @@ $current_general_max_item_number_mobile = get_site_option('riara_max_item_number
 <tr><th>Heading Text:</th>
 <td><input name="riara_heading_text" id="riara_heading_text" type="text" value="<?php echo $current_general_heading_text ?>" style="width: 400px" /></td></tr>
 <tr>
-<th>Image Size:</th>
+<th>Image Size: <?php debug_obj(get_site_option('riara_image_size'));?></th>
 <td>
   <select name="riara_image_size" id="riara_image_size">
   <?php foreach ($riara_image_sizes as $size_key => $size) { 
