@@ -1,5 +1,5 @@
 <?php
-require_once( plugin_dir_path( __FILE__ ) . 'common.php' );
+require( plugin_dir_path( __FILE__ ) . 'common.php' );
 ?>
 
 <h2>Related Item by Amazon and Rakuten Affiliate (RIARA)</h2>
