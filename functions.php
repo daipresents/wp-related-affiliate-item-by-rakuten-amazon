@@ -1,4 +1,17 @@
 <?php
+define("DEBUG", true);
+
+function debug($message) {
+  if (DEBUG) {
+    echo $message . "<br>";
+  }
+}
+
+function debug_obj($obj) {
+  if (DEBUG) {
+    echo "<pre>" . var_dump($obj) . "</pre>";
+  }
+}
 
 // for setting page
 function display_riara_settings() {
@@ -141,14 +154,18 @@ function get_item_title($item) {
 }
 
 function get_item_image($item) {
+  require( plugin_dir_path( __FILE__ ) . 'common.php' );
   
   $image_url = "";
   
-  switch (get_site_option('riara_display_value')) {
+  $display_value = get_site_option('riara_display_value');
+  $size_key = array_search(get_site_option('riara_image_size'), $riara_image_sizes);
+  
+  switch ($display_value) {
     
     case "Amazon":
       
-      switch (get_site_option('riara_image_size')) {
+      switch ($size_key) {
         case "Small":
           $image_url = $item->SmallImage->URL;
           break;
@@ -168,9 +185,11 @@ function get_item_image($item) {
       
     case "Rakuten":
       
-      if (get_site_option('riara_rakuten_api_endpoint') == "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222") {
+      $rakuten_api_endpoint = get_site_option('riara_rakuten_api_endpoint');
+      
+      if ($rakuten_api_endpoint == "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222") {
         
-        switch (get_site_option('riara_image_size')) {
+        switch ($size_key) {
           case "Small":
             $image_url = $item->smallImageUrls->imageUrl[0];
             break;
@@ -183,10 +202,10 @@ function get_item_image($item) {
             break;
         }
         
-      } elseif (get_site_option('riara_rakuten_api_endpoint') == "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20130522" ||
-                get_site_option('riara_rakuten_api_endpoint') == "https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522") {
+      } elseif ($rakuten_api_endpoint == "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20130522" ||
+                $rakuten_api_endpoint == "https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522") {
         
-        switch (get_site_option('riara_image_size')) {
+        switch ($size_key) {
           case "Small":
             $image_url = $item->smallImageUrl;
             break;
@@ -208,6 +227,11 @@ function get_item_image($item) {
       return $image_url;
 
   }
+  
+}
+
+function get_image_size() {
+  return get_site_option('riara_image_size');
 }
 
 ?>

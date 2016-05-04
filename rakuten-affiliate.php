@@ -1,5 +1,6 @@
 <?php
 require_once( plugin_dir_path( __FILE__ ) . 'functions.php' );
+
 ini_set( 'display_errors', 0 );
 
 $xml = null;
@@ -23,7 +24,7 @@ if ($response = file_get_contents(generate_rakuten_request_url(get_search_keywor
 <article class="related-amazon-rakuten-affiliate-thumbnail">
   <div class="related-amazon-rakuten-affiliate-thumb">
     <a href="<?php echo get_item_url($item) ?>" title="<?php echo get_item_title($item) ?>" target="_blank">
-      <img src="<?php echo get_item_image($item) ?>" alt="<?php echo get_item_title($item) ?>" title="<?php echo get_item_title($item) ?>" />
+      <img src="<?php echo get_item_image($item) ?>" alt="<?php echo get_item_title($item) ?>" title="<?php echo get_item_title($item) ?>" width="<?php echo get_image_size() ?>" />
     </a>
   </div><!-- /.related-amazon-rakuten-affiliate-thumb -->
   
