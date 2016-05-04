@@ -212,16 +212,6 @@ $current_general_max_item_number_mobile = get_site_option('riara_max_item_number
   </select>
 </td>
 </tr>
-<tr>
-<th>Safe Mode:</th>
-<?php
-  $checked = "";
-  if ($current_safe_mode == "TRUE") {
-    $checked = "checked='checked'";
-  }
-?>
-<td>TODO<!--<input type="checkbox" name="riara_safe_mode" id="riara_safe_mode" value="TRUE " <?php echo $checked ?> / >--></td>
-</tr>
 <tr><th>Heading Text:</th>
 <td><input name="riara_heading_text" id="riara_heading_text" type="text" value="<?php echo $current_general_heading_text ?>" style="width: 400px" /></td></tr>
 <tr>

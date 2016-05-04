@@ -40,7 +40,6 @@ function add_plugin_admin_menu() {
   
   // Display Setting
   register_setting('riara_group', 'riara_display_service', '');
-  register_setting('riara_group', 'riara_safe_mode', '');
   register_setting('riara_group', 'riara_heading_text', '');
   register_setting('riara_group', 'riara_image_size', '');
   register_setting('riara_group', 'riara_skip_no_image_item', '');
