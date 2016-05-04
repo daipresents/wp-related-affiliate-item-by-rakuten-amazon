@@ -167,13 +167,13 @@ function get_item_image($item) {
   $image_url = "";
   
   $service = get_site_option('riara_display_service');
-  $size_key = array_search(get_site_option('riara_image_size'), $riara_image_sizes);
+  $size = get_site_option('riara_image_size');
   
   switch ($service) {
     
     case "Amazon":
       
-      switch ($size_key) {
+      switch ($size) {
         case "Small":
           $image_url = $item->SmallImage->URL;
           break;
@@ -186,7 +186,7 @@ function get_item_image($item) {
       }
       
       if (empty($image_url)) {
-        return "http://g-ecx.images-amazon.com/images/G/09/icons/books/comingsoon_books._V376986337_BO1,204,203,200_.gif";
+        return AMAZON_NO_IMAGE;
       }
       
       return $image_url;
@@ -198,7 +198,7 @@ function get_item_image($item) {
       
       if ($api_name == "IchibaItem") {
         
-        switch ($size_key) {
+        switch ($size) {
           case "Small":
             $image_url = $item->smallImageUrls->imageUrl[0];
             break;
@@ -214,7 +214,7 @@ function get_item_image($item) {
       } elseif ($api_name == "BooksTotal" ||
                 $api_name == "BooksBook" ) {
         
-        switch ($size_key) {
+        switch ($size) {
           case "Small":
             $image_url = $item->smallImageUrl;
             break;
@@ -230,7 +230,7 @@ function get_item_image($item) {
       }
 
       if (empty($image_url)) {
-        return "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/noimage_01.gif?_ex=130x130&s=2&r=0";
+        return RAKUTEN_NO_IMAGE;
       }
       
       return $image_url;
@@ -239,8 +239,14 @@ function get_item_image($item) {
   
 }
 
-function get_image_size() {
-  return get_site_option('riara_image_size');
+function get_image_width() {
+  require( plugin_dir_path( __FILE__ ) . 'common.php' );
+  return $riara_image_widths[get_site_option('riara_image_size')];
+}
+
+function get_image_height() {
+  require( plugin_dir_path( __FILE__ ) . 'common.php' );
+  return $riara_image_heights[get_site_option('riara_image_size')];
 }
 
 ?>

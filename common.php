@@ -1,4 +1,6 @@
 <?php
+define("AMAZON_NO_IMAGE", "http://g-ecx.images-amazon.com/images/G/09/icons/books/comingsoon_books._V376986337_BO1,204,203,200_.gif");
+define("RAKUTEN_NO_IMAGE", "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/noimage_01.gif?_ex=130x130&s=2&r=0");
 
 $riara_search_by_list = array(
   "Category Name" => "Category Name",
@@ -33,19 +35,32 @@ $riara_rakuten_api_endpoints = array(
   "BooksBook" => "https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522",
 );
 
+// Image Size
+$riara_image_sizes = array(
+  "Small" => "Small",
+  "Medium" => "Medium",
+  "Large" => "Large",
+);
+
 // Amazon: Small (75x58), Medium (160x124), Large (500x389)
 // Item size are Small (64x64), Medium (128x128), Large (200x200) in Rakuten wchich are wrriten in API docs but they return only following image size:
 // Rakuten Ichiba: Small (64x64), Medium (128x128), Large (Nothing)
 // Rakuten Books : Small (64x42), Medium (120x80), Large (180x120)
-$riara_image_sizes = array(
+$riara_image_widths = array(
   "Small" => 42,
   "Medium" => 80,
   "Large" => 120,
 );
 
+$riara_image_heights = array(
+  "Small" => 80,
+  "Medium" => 170,
+  "Large" => 240,
+);
+
 $riara_display_services = array("Amazon", "Rakuten",);
 
-$riara_max_item_number_pc = 12;
-$riara_max_item_number_mobile = 12;
+$riara_max_item_number_pc = 10;
+$riara_max_item_number_mobile = 10;
 
 ?>

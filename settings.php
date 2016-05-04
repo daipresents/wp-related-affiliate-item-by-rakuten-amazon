@@ -222,13 +222,13 @@ $current_general_max_item_number_mobile = get_site_option('riara_max_item_number
 <th>Image Size: <?php debug_obj(get_site_option('riara_image_size'));?></th>
 <td>
   <select name="riara_image_size" id="riara_image_size">
-  <?php foreach ($riara_image_sizes as $size_key => $size) { 
+  <?php foreach ($riara_image_sizes as $size_key => $size_value) { 
     $selected = "";
-    if ($current_image_size == $size) { 
+    if ($current_image_size == $size_value) { 
       $selected = "selected='selected'";
     }
     ?>
-    <option value="<?php echo $size ?>" <?php echo $selected ?>><?php echo $size_key ?></option>
+    <option value="<?php echo $size_value ?>" <?php echo $selected ?>><?php echo $size_key ?></option>
   <?php } //foreach ?>
   </select>
 </td>

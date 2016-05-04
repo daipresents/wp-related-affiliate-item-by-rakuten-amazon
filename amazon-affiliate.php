@@ -21,10 +21,10 @@ if ($response = file_get_contents(generate_amazon_request_url(get_search_keyword
   foreach ($xml->Items->Item as $item) {
 ?>
 
-<article class="related-amazon-rakuten-affiliate" style="width: <?php echo get_image_size() ?>px;">
+<article class="related-amazon-rakuten-affiliate" style="width:<?php echo get_image_width() ?>px; height:<?php echo get_image_height() ?>px">
   <div class="related-amazon-rakuten-affiliate-thumbnail">
     <a href="<?php echo get_item_url($item) ?>" title="<?php echo get_item_title($item) ?>" target="_blank">
-      <img src="<?php echo get_item_image($item) ?>" alt="<?php echo get_item_title($item) ?>" title="<?php echo get_item_title($item) ?>" width="<?php echo get_image_size() ?>" />
+      <img src="<?php echo get_item_image($item) ?>" alt="<?php echo get_item_title($item) ?>" title="<?php echo get_item_title($item) ?>" width="<?php echo get_image_width() ?>" />
     </a>
   </div><!-- .related-amazon-rakuten-affiliate-thumb -->
   
