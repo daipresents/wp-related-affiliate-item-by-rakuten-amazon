@@ -167,10 +167,9 @@ function get_item_image($item) {
   
   $image_url = "";
   
-  $service = get_site_option('riara_display_service');
   $size = get_site_option('riara_image_size');
   
-  switch ($service) {
+  switch (get_site_option('riara_display_service')) {
     
     case "Amazon":
       
@@ -254,16 +253,38 @@ function get_item_image($item) {
 
 function get_image_width() {
   require( plugin_dir_path( __FILE__ ) . 'common.php' );
-  return $riara_image_widths[get_site_option('riara_image_size')];
+  
+  switch (get_site_option('riara_display_service')) {
+    
+    case "Amazon":
+      return $riara_amazon_image_widths[get_site_option('riara_image_size')];
+
+    case "Rakuten":
+      return $riara_rakuten_image_widths[get_site_option('riara_image_size')];
+    
+  }
 }
 
 function get_item_height() {
   require( plugin_dir_path( __FILE__ ) . 'common.php' );
 
-  if (get_site_option('riara_is_display_title')) {
-    return $riara_item_heights[get_site_option('riara_image_size')];
-  } else {
-    return $riara_default_item_heights[get_site_option('riara_image_size')];
+  switch (get_site_option('riara_display_service')) {
+    
+    case "Amazon":
+      if (get_site_option('riara_is_display_title')) {
+        // Image and name
+        return $riara_amazon_item_heights[get_site_option('riara_image_size')];
+      } else {
+        // Only image
+        return $riara_amazon_image_heights[get_site_option('riara_image_size')];
+      }
+
+    case "Rakuten":
+      if (get_site_option('riara_is_display_title')) {
+        return $riara_rakuten_item_heights[get_site_option('riara_image_size')];
+      } else {
+        return $riara_rakuten_default_item_heights[get_site_option('riara_image_size')];
+      }
   }
 }
 

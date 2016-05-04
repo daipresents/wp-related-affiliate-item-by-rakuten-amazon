@@ -42,22 +42,40 @@ $riara_image_sizes = array(
 );
 
 // Amazon: Small (75x58), Medium (160x124), Large (500x389)
+$riara_amazon_image_widths = array(
+  "Small" => "55px",
+  "Medium" => "120px",
+  "Large" => "160px",
+);
+
+$riara_amazon_image_heights = array(
+  "Small" => "75px",
+  "Medium" => "180px",
+  "Large" => "240px",
+);
+
+$riara_amazon_item_heights = array(
+  "Small" => "150px",
+  "Medium" => "225px",
+  "Large" => "280px",
+);
+
 // Item size are Small (64x64), Medium (128x128), Large (200x200) in Rakuten wchich are wrriten in API docs but they return only following image size:
 // Rakuten Ichiba: Small (64x64), Medium (128x128), Large (Nothing)
 // Rakuten Books : Small (64x42), Medium (120x80), Large (180x120)
-$riara_image_widths = array(
+$riara_rakuten_image_widths = array(
   "Small" => "42px",
   "Medium" => "80px",
   "Large" => "120px",
 );
 
-$riara_item_heights = array(
+$riara_rakuten_item_heights = array(
   "Small" => "80px",
   "Medium" => "170px",
   "Large" => "240px",
 );
 
-$riara_default_item_heights = array(
+$riara_rakuten_default_item_heights = array(
   "Small" => "70px",
   "Medium" => "130px",
   "Large" => "200px",
