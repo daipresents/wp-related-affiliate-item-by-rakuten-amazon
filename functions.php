@@ -186,8 +186,9 @@ function get_item_image($item) {
     case "Rakuten":
       
       $rakuten_api_endpoint = get_site_option('riara_rakuten_api_endpoint');
+      $api_name = array_search($rakuten_api_endpoint, $riara_rakuten_api_endpoints);
       
-      if ($rakuten_api_endpoint == "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222") {
+      if ($api_name == "IchibaItem") {
         
         switch ($size_key) {
           case "Small":
@@ -202,8 +203,8 @@ function get_item_image($item) {
             break;
         }
         
-      } elseif ($rakuten_api_endpoint == "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20130522" ||
-                $rakuten_api_endpoint == "https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522") {
+      } elseif ($api_name == "BooksTotal" ||
+                $api_name == "BooksBook" ) {
         
         switch ($size_key) {
           case "Small":

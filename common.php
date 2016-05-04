@@ -34,12 +34,13 @@ $riara_rakuten_api_endpoints = array(
 );
 
 // Amazon: Small (75x58), Medium (160x124), Large (500x389)
+// Item size are Small (64x64), Medium (128x128), Large (200x200) in Rakuten wchich are wrriten in API docs but they return only following image size:
 // Rakuten Ichiba: Small (64x64), Medium (128x128), Large (Nothing)
-// Rakuten Books : Small (64x64), Medium (128x128), Large (200x200)
+// Rakuten Books : Small (64x42), Medium (120x80), Large (180x120)
 $riara_image_sizes = array(
-  "Small" => 58,
-  "Medium" => 124,
-  "Large" => 200,
+  "Small" => 42,
+  "Medium" => 80,
+  "Large" => 120,
 );
 
 $riara_display_values = array("Amazon", "Rakuten",);
