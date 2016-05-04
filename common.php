@@ -43,7 +43,7 @@ $riara_image_sizes = array(
   "Large" => 120,
 );
 
-$riara_display_values = array("Amazon", "Rakuten",);
+$riara_display_services = array("Amazon", "Rakuten",);
 
 $riara_max_item_number_pc = 12;
 $riara_max_item_number_mobile = 12;

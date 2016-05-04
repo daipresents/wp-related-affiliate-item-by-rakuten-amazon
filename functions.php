@@ -29,7 +29,7 @@ function display_riara() {
     }
   } else {
    
-    switch (get_site_option('riara_display_value')) {
+    switch (get_site_option('riara_display_service')) {
       case "Amazon":
         require_once( plugin_dir_path( __FILE__ ) . 'amazon-affiliate.php' );
         break;
@@ -121,7 +121,7 @@ function generate_rakuten_request_url($keyword) {
 }
 
 function get_item_url($item) {
-  switch (get_site_option('riara_display_value')) {
+  switch (get_site_option('riara_display_service')) {
     case "Amazon":
       return $item->DetailPageURL;
     case "Rakuten":
@@ -133,7 +133,7 @@ function get_item_url($item) {
 
 function get_item_title($item) {
   
-  switch (get_site_option('riara_display_value')) {
+  switch (get_site_option('riara_display_service')) {
     
     case "Amazon":
       return $item->ItemAttributes->Title;
@@ -158,10 +158,10 @@ function get_item_image($item) {
   
   $image_url = "";
   
-  $display_value = get_site_option('riara_display_value');
+  $service = get_site_option('riara_display_service');
   $size_key = array_search(get_site_option('riara_image_size'), $riara_image_sizes);
   
-  switch ($display_value) {
+  switch ($service) {
     
     case "Amazon":
       

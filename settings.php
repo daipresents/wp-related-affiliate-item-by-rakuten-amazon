@@ -164,7 +164,7 @@ TEST
 <?php
 
 // Display
-$current_general_display_value = get_site_option('riara_display_value');
+$current_general_display_service = get_site_option('riara_display_service');
 
 // Safe mode
 $current_safe_mode = get_site_option('riara_safe_mode');
@@ -192,16 +192,16 @@ $current_general_max_item_number_mobile = get_site_option('riara_max_item_number
 <h3>Display Setting</h3>
 
 <table>
-<tr><th>Display setting:</th>
+<tr><th>Display service:</th>
 <td>
-  <select name="riara_display_value" id="riara_display_value">
-  <?php foreach ($riara_display_values as $display_value) { 
+  <select name="riara_display_service" id="riara_display_service">
+  <?php foreach ($riara_display_services as $display_service) { 
     $selected = "";
-    if ($current_general_display_value == $display_value) { 
+    if ($current_general_display_service == $display_service) { 
       $selected = "selected='selected'";
     }
     ?>
-    <option value="<?php echo $display_value ?>" <?php echo $selected ?>><?php echo $display_value ?></option>
+    <option value="<?php echo $display_service ?>" <?php echo $selected ?>><?php echo $display_service ?></option>
   <?php } //foreach ?>
   </select>
 </td>
