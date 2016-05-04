@@ -21,23 +21,22 @@ if ($response = file_get_contents(generate_rakuten_request_url(get_search_keywor
 <?php
   foreach ($xml->Items->Item as $item) {
 ?>
-<article class="related-amazon-rakuten-affiliate-thumbnail">
-  <div class="related-amazon-rakuten-affiliate-thumb">
+<article class="related-amazon-rakuten-affiliate" style="width: <?php echo get_image_size() ?>px;">
+  <div class="related-amazon-rakuten-affiliate-thumbnail">
     <a href="<?php echo get_item_url($item) ?>" title="<?php echo get_item_title($item) ?>" target="_blank">
       <img src="<?php echo get_item_image($item) ?>" alt="<?php echo get_item_title($item) ?>" title="<?php echo get_item_title($item) ?>" width="<?php echo get_image_size() ?>" />
     </a>
   </div><!-- .related-amazon-rakuten-affiliate-thumb -->
   
   <div class="related-amazon-rakuten-affiliate-content">
-    <h3 class="related-amazon-rakuten-affiliate-title">
-      <a href="<?php echo get_item_url($item) ?>" title="<?php echo get_item_title($item) ?>">
-        <?php echo mb_substr(strip_tags(get_item_title($item)),0,30)." …"; ?>
-      </a>
-    </h3>
-    <br style="clear:both;">
+    <a href="<?php echo get_item_url($item) ?>" title="<?php echo get_item_title($item) ?>">
+      <?php echo mb_substr(strip_tags(get_item_title($item)),0,30)." …"; ?>
+    </a>
   </div><!-- .related-amazon-rakuten-affiliate-content -->
 </article><!-- .related-amazon-rakuten-affiliate-thumbnail -->
 
 <?php } //foreach ?>
+
+<br style="clear:both;">
 </aside><!-- #related-amazon-rakuten-affiliate-items -->
 </div><!-- #related-amazon-rakuten-affiliate -->

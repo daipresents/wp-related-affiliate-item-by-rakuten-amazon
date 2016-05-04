@@ -13,6 +13,14 @@ function debug_obj($obj) {
   }
 }
 
+// Initialization
+function add_init(){
+    // add css
+    debug("load css");
+    wp_register_style('riara_css', plugins_url('style.css', __FILE__));
+    wp_enqueue_style('riara_css');
+}
+
 // for setting page
 function display_riara_settings() {
   require_once( plugin_dir_path( __FILE__ ) . 'settings.php' );

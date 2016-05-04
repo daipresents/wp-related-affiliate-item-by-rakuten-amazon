@@ -60,4 +60,7 @@ add_action('admin_menu', 'add_plugin_admin_menu');
 add_action('widgets_init', function () {
     register_widget( 'RIARA_Widget');
 } );
+
+add_action( 'wp_enqueue_scripts', 'add_init' );
+
 ?>
