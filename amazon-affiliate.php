@@ -26,7 +26,7 @@ if ($response = file_get_contents(generate_amazon_request_url(get_search_keyword
     <a href="<?php echo get_item_url($item) ?>" title="<?php echo get_item_title($item) ?>" target="_blank">
       <img src="<?php echo get_item_image($item) ?>" alt="<?php echo get_item_title($item) ?>" title="<?php echo get_item_title($item) ?>" width="<?php echo get_image_size() ?>" />
     </a>
-  </div><!-- /.related-amazon-rakuten-affiliate-thumb -->
+  </div><!-- .related-amazon-rakuten-affiliate-thumb -->
   
   <div class="related-amazon-rakuten-affiliate-content">
     <h3 class="related-amazon-rakuten-affiliate-title">
@@ -35,8 +35,8 @@ if ($response = file_get_contents(generate_amazon_request_url(get_search_keyword
       </a>
     </h3>
     <br style="clear:both;">
-  </div><!-- /.related-amazon-rakuten-affiliate-content -->
-</article><!-- /related-amazon-rakuten-affiliate-thumbnail -->
+  </div><!-- .related-amazon-rakuten-affiliate-content -->
+</article><!-- .related-amazon-rakuten-affiliate-thumbnail -->
 
 <?php
     if (wp_is_mobile()) {
@@ -54,5 +54,5 @@ if ($response = file_get_contents(generate_amazon_request_url(get_search_keyword
     } // if
   } //foreach
 ?>
-</aside>
-</div>
+</aside><!-- #related-amazon-rakuten-affiliate-items -->
+</div><!-- #related-amazon-rakuten-affiliate -->
