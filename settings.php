@@ -175,6 +175,9 @@ $current_general_heading_text = get_site_option('riara_heading_text');
 // Image Size
 $current_image_size = get_site_option('riara_image_size');
 
+// Skip No Image Item
+$current_skip_no_image_item = get_site_option('riara_skip_no_image_item');
+
 // Display Title
 $current_is_display_title = get_site_option('riara_is_display_title');
 
@@ -222,7 +225,7 @@ $current_general_max_item_number_mobile = get_site_option('riara_max_item_number
 <tr><th>Heading Text:</th>
 <td><input name="riara_heading_text" id="riara_heading_text" type="text" value="<?php echo $current_general_heading_text ?>" style="width: 400px" /></td></tr>
 <tr>
-<th>Image Size: <?php debug_obj(get_site_option('riara_image_size'));?></th>
+<th>Image Size: <?php debug("(" . get_site_option('riara_image_size') . ")");?></th>
 <td>
   <select name="riara_image_size" id="riara_image_size">
   <?php foreach ($riara_image_sizes as $size_key => $size_value) { 
@@ -235,6 +238,16 @@ $current_general_max_item_number_mobile = get_site_option('riara_max_item_number
   <?php } //foreach ?>
   </select>
 </td>
+</tr>
+<tr>
+<th>Skip No Image Item: <?php debug("(" . get_site_option('riara_skip_no_image_item') . ")");?></th>
+<?php
+  $checked = "";
+  if ($current_skip_no_image_item == "TRUE") {
+    $checked = "checked='checked'";
+  }
+?>
+<td><input type="checkbox" name="riara_skip_no_image_item" id="riara_skip_no_image_item" value="TRUE " <?php echo $checked ?> / ></td>
 </tr>
 <tr>
 <th>Display Title:</th>

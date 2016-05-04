@@ -20,11 +20,15 @@ if ($response = file_get_contents(generate_rakuten_request_url(get_search_keywor
 <?php echo get_site_option('riara_heading_text') ?>
 <?php
   foreach ($xml->Items->Item as $item) {
+    $image_url = get_item_image($item);
+    if (empty($image_url)) {
+      continue;
+    }
 ?>
 <article class="related-amazon-rakuten-affiliate" style="width:<?php echo get_image_width() ?>; height:<?php echo get_item_height() ?>">
   <div class="related-amazon-rakuten-affiliate-thumbnail">
     <a href="<?php echo get_item_url($item) ?>" title="<?php echo get_item_title($item) ?>" target="_blank">
-      <img src="<?php echo get_item_image($item) ?>" alt="<?php echo get_item_title($item) ?>" title="<?php echo get_item_title($item) ?>" width="<?php echo get_image_width() ?>" />
+      <img src="<?php echo $image_url ?>" alt="<?php echo get_item_title($item) ?>" title="<?php echo get_item_title($item) ?>" width="<?php echo get_image_width() ?>" />
     </a>
   </div><!-- .related-amazon-rakuten-affiliate-thumb -->
   <?php if (get_site_option('riara_is_display_title')){ ?>

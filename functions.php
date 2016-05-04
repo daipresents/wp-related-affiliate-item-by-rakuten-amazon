@@ -185,11 +185,15 @@ function get_item_image($item) {
           break;
       }
       
-      if (empty($image_url)) {
-        return AMAZON_NO_IMAGE;
+      if (empty($image_url)){
+        if (get_site_option('riara_skip_no_image_item')) {
+          return NULL;
+        } else {
+          return AMAZON_NO_IMAGE;
+        }
+      } else {
+        return $image_url;
       }
-      
-      return $image_url;
       
     case "Rakuten":
       
@@ -199,13 +203,16 @@ function get_item_image($item) {
       if ($api_name == "IchibaItem") {
         
         switch ($size) {
+        
           case "Small":
             $image_url = $item->smallImageUrls->imageUrl[0];
             break;
+            
           case "Medium":
             $image_url = $item->mediumImageUrls->imageUrl[0];
             break;
-          // not exist in API response
+            
+          // Large size doesn't exist in API response
           case "Large":
             $image_url = $item->mediumImageUrls->imageUrl[0];
             break;
@@ -215,12 +222,15 @@ function get_item_image($item) {
                 $api_name == "BooksBook" ) {
         
         switch ($size) {
+        
           case "Small":
             $image_url = $item->smallImageUrl;
             break;
+            
           case "Medium":
             $image_url = $item->mediumImageUrl;
             break;
+            
           case "Large":
             $image_url = $item->largeImageUrl;
             break;
@@ -228,13 +238,17 @@ function get_item_image($item) {
         
       } else {
       }
-
-      if (empty($image_url)) {
-        return RAKUTEN_NO_IMAGE;
+      
+      // Rakuten API always return image url (include no image url)
+      if(strpos($image_url,'noimage') !== false) {
+        
+        if (get_site_option('riara_skip_no_image_item')) {
+          return NULL;
+        }
       }
       
       return $image_url;
-
+      
   }
   
 }

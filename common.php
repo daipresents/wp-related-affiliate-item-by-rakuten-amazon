@@ -1,6 +1,5 @@
 <?php
 define("AMAZON_NO_IMAGE", "http://g-ecx.images-amazon.com/images/G/09/icons/books/comingsoon_books._V376986337_BO1,204,203,200_.gif");
-define("RAKUTEN_NO_IMAGE", "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/noimage_01.gif?_ex=130x130&s=2&r=0");
 
 $riara_search_by_list = array(
   "Category Name" => "Category Name",
