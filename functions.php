@@ -244,9 +244,14 @@ function get_image_width() {
   return $riara_image_widths[get_site_option('riara_image_size')];
 }
 
-function get_image_height() {
+function get_item_height() {
   require( plugin_dir_path( __FILE__ ) . 'common.php' );
-  return $riara_image_heights[get_site_option('riara_image_size')];
+
+  if (get_site_option('riara_is_display_title')) {
+    return $riara_item_heights[get_site_option('riara_image_size')];
+  } else {
+    return $riara_default_item_heights[get_site_option('riara_image_size')];
+  }
 }
 
 ?>

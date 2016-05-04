@@ -47,15 +47,21 @@ $riara_image_sizes = array(
 // Rakuten Ichiba: Small (64x64), Medium (128x128), Large (Nothing)
 // Rakuten Books : Small (64x42), Medium (120x80), Large (180x120)
 $riara_image_widths = array(
-  "Small" => 42,
-  "Medium" => 80,
-  "Large" => 120,
+  "Small" => "42px",
+  "Medium" => "80px",
+  "Large" => "120px",
 );
 
-$riara_image_heights = array(
-  "Small" => 80,
-  "Medium" => 170,
-  "Large" => 240,
+$riara_item_heights = array(
+  "Small" => "80px",
+  "Medium" => "170px",
+  "Large" => "240px",
+);
+
+$riara_default_item_heights = array(
+  "Small" => "70px",
+  "Medium" => "130px",
+  "Large" => "200px",
 );
 
 $riara_display_services = array("Amazon", "Rakuten",);
