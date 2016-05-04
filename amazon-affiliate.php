@@ -5,9 +5,18 @@ ini_set( 'display_errors', 0 );
 $xml = null;
 if ($response = file_get_contents(generate_amazon_request_url(get_search_keyword()))) {
   $xml = simplexml_load_string($response);
+
+  // No result
+  if ($xml->Items->Request->Errors) {
+    error_log("Error code: " . $xml->Items->Request->Errors->Error->Code . " Message: " . $xml->Items->Request->Errors->Error->Message , 0);
+    echo get_default_banner();
+    return;
+  }
+  
 } else {
-  error_log("file_get_contents failed. Maybe failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable", 0);
-  //require_once( plugin_dir_path( __FILE__ ) . 'rakuten-affiliate.php' );
+  debug("API error");
+  error_log("file_get_contents failed. Maybe failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable or please check your API setting (Access Key, Secret Access Key)", 0);
+  echo get_default_banner();
   return;
 }
 ?>

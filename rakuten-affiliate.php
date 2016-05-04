@@ -7,11 +7,17 @@ $xml = null;
 if ($response = file_get_contents(generate_rakuten_request_url(get_search_keyword()))) {
   $xml = simplexml_load_string($response);
   
-} else {
-  error_log("file_get_contents failed. url = " . generate_rakuten_request_url(get_search_keyword()), 0);
-  //require_once( plugin_dir_path( __FILE__ ) . 'amazon-affiliate.php' );
-  return;
+  // No result
+  if ($xml->count == 0) {
+    echo get_default_banner();
+    return;
+  }
   
+} else {
+  // API error
+  error_log("file_get_contents failed. url = " . generate_rakuten_request_url(get_search_keyword()), 0);
+  echo get_default_banner();
+  return;
 }
 ?>
 

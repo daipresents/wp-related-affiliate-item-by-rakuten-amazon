@@ -267,4 +267,12 @@ function get_item_height() {
   }
 }
 
+function get_default_banner() {
+  if (wp_is_mobile()) {
+    return get_site_option('riara_default_banner_mobile');
+  } else {
+    return get_site_option('riara_default_banner_pc');
+  }
+}
+
 ?>
