@@ -34,7 +34,8 @@ $riara_rakuten_api_endpoints = array(
 );
 
 // Amazon: Small (75x58), Medium (160x124), Large (500x389)
-// Rakuten: Small (64x64), Medium (128x128), Large (200x200)
+// Rakuten Ichiba: Small (64x64), Medium (128x128), Large (Nothing)
+// Rakuten Books : Small (64x64), Medium (128x128), Large (200x200)
 $riara_image_sizes = array(
   "Small" => 58,
   "Medium" => 124,
