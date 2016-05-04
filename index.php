@@ -52,7 +52,6 @@ function add_plugin_admin_menu() {
 
   // Default
   register_setting('riara_group', 'riara_default_amazon_associate_tag', '');
-  register_setting('riara_group', 'riara_default_rakuten_application_id', '');
   register_setting('riara_group', 'riara_default_rakuten_affiliate_id', '');
   register_setting('riara_group', 'riara_default_search_word', '');
 
