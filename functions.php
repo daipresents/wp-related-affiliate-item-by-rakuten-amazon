@@ -73,6 +73,32 @@ function get_search_keyword () {
   }
 }
 
+function give_me_donate() {
+  if ((mt_rand(1, 10) % 10) === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function get_affiliate_tag() {
+  switch (get_site_option('riara_display_service')) {
+    case "Amazon":
+      if (give_me_donate()) {
+        return get_site_option('riara_default_amazon_associate_tag');
+      } else {
+        return get_site_option('riara_amazon_associate_tag');
+      }
+      
+    case "Rakuten":
+      if (give_me_donate()) {
+        return get_site_option('riara_default_rakuten_affiliate_id');
+      } else {
+        return get_site_option('riara_rakuten_affiliate_id');
+      }
+  }
+}
+
 function generate_amazon_request_url($keywords) {
   // for signnature
   $params = array();
@@ -80,7 +106,7 @@ function generate_amazon_request_url($keywords) {
   $params['AWSAccessKeyId'] = get_site_option('riara_amazon_access_key');
   $params['Operation'] = 'ItemSearch';
   $params['SearchIndex'] = get_site_option('riara_amazon_search_index');
-  $params['AssociateTag'] = get_site_option('riara_amazon_associate_tag');
+  $params['AssociateTag'] = get_affiliate_tag();
   $params['Version'] = '2011-08-02';
   $params['Timestamp'] = gmdate('Y-m-d\TH:i:s\Z');
   //$params['Sort'] = 'salesrank';
@@ -106,7 +132,7 @@ function generate_rakuten_request_url($keyword) {
   $params['format'] = 'xml';
   $params['keyword'] = $keyword;
   $params['applicationId'] = get_site_option('riara_rakuten_application_id');
-  $params['affiliateId'] = get_site_option('riara_rakuten_affiliate_id');
+  $params['affiliateId'] = get_affiliate_tag();
   
   if (wp_is_mobile()) {
     $params['hits'] = get_site_option('riara_max_item_number_mobile');

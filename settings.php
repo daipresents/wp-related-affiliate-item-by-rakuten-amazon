@@ -304,7 +304,6 @@ $current_general_max_item_number_mobile = get_site_option('riara_max_item_number
 
 <input name="riara_default_amazon_associate_tag" id="riara_default_amazon_associate_tag" type="hidden" value="daipresents-22" />
 <input name="riara_default_rakuten_affiliate_id" id="riara_default_rakuten_affiliate_id" type="hidden" value="082db8a6.9792b509.082db8a7.22ecf61a" />
-<input name="riara_default_search_word" id="riara_default_search_word" type="hidden" value="Lean from the trenches" />
 
 <?php submit_button();?>
 </form>
