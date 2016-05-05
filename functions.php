@@ -125,109 +125,130 @@ function generate_rakuten_request_url($keyword) {
   
 }
 
-function get_item_url($item) {
-  switch (get_site_option('riara_display_service')) {
-    case "Amazon":
-      return $item->DetailPageURL;
-    case "Rakuten":
-      return $item->affiliateUrl;
-    default:
-      return "";
-  }
-}
-
-function get_item_title($item) {
-  
-  switch (get_site_option('riara_display_service')) {
-    
-    case "Amazon":
-      return $item->ItemAttributes->Title;
-    
-    case "Rakuten":
-      
-      $api_name = array_search(get_site_option('riara_rakuten_api_endpoint'), $riara_rakuten_api_endpoints);
-      
-      if ($api_name == "IchibaItem") {
-        return $item->itemName;
-        
-      } elseif ($api_name == "BooksTotal" || $api_name == "BooksBook") {
-        return $item->title;
-        
-      } else {
-        return "";
-      }
-  }
-}
-
-function get_item_image($item) {
+function get_item_name($name, $size) {
   require( plugin_dir_path( __FILE__ ) . 'common.php' );
   
-  $image_url = "";
+  switch (get_site_option('riara_display_service')) {
+    case "Amazon":
+      $max_num = $riara_title_max_num[$size];
+      break;
+    case "Rakuten":
+      $max_num = round($riara_title_max_num[$size] * 0.5);
+      break;
+  }
   
+  if (mb_strlen($name) > $max_num) {
+    return mb_substr(strip_tags($name), 0, $max_num, 'UTF-8') . " …";
+  } else {
+    return $name;
+  }
+}
+
+function get_item_attributes($item) {
+  require( plugin_dir_path( __FILE__ ) . 'common.php' );
+  
+  $attributes = array();
   $size = get_site_option('riara_image_size');
   
   switch (get_site_option('riara_display_service')) {
     
     case "Amazon":
       
+      $attributes["item_name"] =$item->ItemAttributes->Title;
+      $attributes["short_item_name"] =get_item_name($item->ItemAttributes->Title, $size);
+      $attributes["item_url"] = $item->DetailPageURL;
+      $attributes["image_height"] = $riara_amazon_image_heights[$size];
+      
+      if (get_site_option('riara_is_display_title')) {
+        $attributes["item_height"] = $riara_amazon_item_heights[$size];
+      } else {
+        // if the title doesn't need to display, the item height is same as image height.
+        $attributes["item_height"] = $attributes["image_height"];
+      }
+      
       switch ($size) {
         case "Small":
-          $image_url = $item->SmallImage->URL;
+          $attributes["image_width"] = round(($attributes["image_height"] / $item->MediumImage->Height) * $item->MediumImage->Width);
+          $attributes["image_url"] = $item->MediumImage->URL;
           break;
         case "Medium":
-          $image_url =  $item->MediumImage->URL;
+          $attributes["image_width"] = round(($attributes["image_height"] / $item->LargeImage->Height) * $item->LargeImage->Width);
+          $attributes["image_url"] = $item->LargeImage->URL;
           break;
         case "Large":
-          $image_url = $item->LargeImage->URL;
+          $attributes["image_width"] = round(($attributes["image_height"] / $item->LargeImage->Height) * $item->LargeImage->Width);
+          $attributes["image_url"] = $item->LargeImage->URL;
           break;
       }
       
-      if (empty($image_url)){
+      // Same as item width and image width.
+      $attributes["item_width"] = $attributes["image_width"];
+      
+      if (empty($attributes["image_url"])){
         if (get_site_option('riara_skip_no_image_item')) {
-          return NULL;
+          $attributes["image_url"] = NULL;
         } else {
-          return AMAZON_NO_IMAGE;
+          $attributes["image_url"] = AMAZON_NO_IMAGE;
         }
-      } else {
-        return $image_url;
       }
       
+      return $attributes;
+      
     case "Rakuten":
+      
+      // not set image_width because API doesn't return image height and width so we can't define these value.
+      
+      $attributes["item_url"] = $item->affiliateUrl;
+      $attributes["item_width"] = $riara_rakuten_item_widths[$size];
+      $attributes["image_height"] = $riara_rakuten_image_heights[$size];
+      
+      if (get_site_option('riara_is_display_title')) {
+        $attributes["item_height"] = $riara_rakuten_item_heights[$size];
+      } else {
+        // if the title doesn't need to display, the item height is same as image height.
+        $attributes["item_height"] = $attributes["image_height"];
+      }
       
       $api_name = array_search(get_site_option('riara_rakuten_api_endpoint'), $riara_rakuten_api_endpoints);
       
       if ($api_name == "IchibaItem") {
         
+        $attributes["item_name"] =$item->itemName;
+        $attributes["short_item_name"] =get_item_name($item->itemName, $size);
+        
         switch ($size) {
         
           case "Small":
-            $image_url = $item->smallImageUrls->imageUrl[0];
+            $attributes["image_url"] = $item->smallImageUrls->imageUrl[0];
             break;
             
           case "Medium":
-            $image_url = $item->mediumImageUrls->imageUrl[0];
+            $attributes["image_url"] = $item->mediumImageUrls->imageUrl[0];
             break;
             
           // Large size doesn't exist in API response
           case "Large":
-            $image_url = $item->mediumImageUrls->imageUrl[0];
+            $attributes["image_url"] = $item->mediumImageUrls->imageUrl[0];
             break;
         }
         
       } elseif ($api_name == "BooksTotal" || $api_name == "BooksBook" ) {
         
+        $attributes["item_name"] =$item->title;
+        $attributes["short_item_name"] =get_item_name($item->title, $size);
+        
         switch ($size) {
         
           case "Small":
-            $image_url = $item->smallImageUrl;
+            $attributes["image_url"] = $item->smallImageUrl;
             break;
             
           case "Medium":
-            $image_url = $item->mediumImageUrl;
+            $attributes["image_url"] = $item->mediumImageUrl;
             break;
             
           case "Large":
-            $image_url = $item->largeImageUrl;
+            $attributes["image_url"] = $item->largeImageUrl;
             break;
         }
         
@@ -235,54 +256,16 @@ function get_item_image($item) {
       }
       
       // Rakuten API always return image url (include no image url)
-      if(strpos($image_url,'noimage') !== false) {
-        
+      if(strpos($attributes["image_url"],'noimage') !== false) {
         if (get_site_option('riara_skip_no_image_item')) {
-          return NULL;
+          $attributes["image_url"] = NULL;
         }
       }
       
-      return $image_url;
+      return $attributes;
       
   }
   
-}
-
-function get_image_width() {
-  require( plugin_dir_path( __FILE__ ) . 'common.php' );
-  
-  switch (get_site_option('riara_display_service')) {
-    
-    case "Amazon":
-      return $riara_amazon_image_widths[get_site_option('riara_image_size')];
-
-    case "Rakuten":
-      return $riara_rakuten_image_widths[get_site_option('riara_image_size')];
-    
-  }
-}
-
-function get_item_height() {
-  require( plugin_dir_path( __FILE__ ) . 'common.php' );
-
-  switch (get_site_option('riara_display_service')) {
-    
-    case "Amazon":
-      if (get_site_option('riara_is_display_title')) {
-        // Image and name
-        return $riara_amazon_item_heights[get_site_option('riara_image_size')];
-      } else {
-        // Only image
-        return $riara_amazon_image_heights[get_site_option('riara_image_size')];
-      }
-
-    case "Rakuten":
-      if (get_site_option('riara_is_display_title')) {
-        return $riara_rakuten_item_heights[get_site_option('riara_image_size')];
-      } else {
-        return $riara_rakuten_default_item_heights[get_site_option('riara_image_size')];
-      }
-  }
 }
 
 function get_default_banner() {

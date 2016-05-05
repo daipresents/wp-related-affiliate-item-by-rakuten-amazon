@@ -26,21 +26,23 @@ if ($response = file_get_contents(generate_rakuten_request_url(get_search_keywor
 <?php echo get_site_option('riara_heading_text') ?>
 <?php
   foreach ($xml->Items->Item as $item) {
-    $image_url = get_item_image($item);
-    if (empty($image_url)) {
+  
+    $attributes = get_item_attributes($item);
+    if (empty($attributes["image_url"])) {
       continue;
     }
 ?>
-<article class="related-amazon-rakuten-affiliate" style="width:<?php echo get_image_width() ?>; height:<?php echo get_item_height() ?>">
+
+<article class="related-amazon-rakuten-affiliate" style="width:<?php echo $attributes["item_width"] ?>px; height:<?php echo $attributes["item_height"] ?>px">
   <div class="related-amazon-rakuten-affiliate-thumbnail">
-    <a href="<?php echo get_item_url($item) ?>" title="<?php echo get_item_title($item) ?>" target="_blank">
-      <img src="<?php echo $image_url ?>" alt="<?php echo get_item_title($item) ?>" title="<?php echo get_item_title($item) ?>" width="<?php echo get_image_width() ?>" />
+    <a href="<?php echo $attributes["item_url"] ?>" title="<?php echo $attributes["item_name"] ?>" target="_blank">
+      <img src="<?php echo $attributes["image_url"] ?>" alt="<?php echo $attributes["item_name"] ?>" title="<?php echo $attributes["item_name"] ?>" style="height:<?php echo $attributes["image_height"] ?>px;" />
     </a>
   </div><!-- .related-amazon-rakuten-affiliate-thumb -->
   <?php if (get_site_option('riara_is_display_title')){ ?>
   <div class="related-amazon-rakuten-affiliate-content">
-    <a href="<?php echo get_item_url($item) ?>" title="<?php echo get_item_title($item) ?>">
-      <?php echo mb_substr(strip_tags(get_item_title($item)),0,30)." …"; ?>
+    <a href="<?php echo $attributes["item_url"] ?>" title="<?php echo $attributes["item_name"] ?>">
+      <?php echo $attributes["short_item_name"] ?>
     </a>
   </div><!-- .related-amazon-rakuten-affiliate-content -->
   <?php } ?>

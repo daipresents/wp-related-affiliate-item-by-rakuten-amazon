@@ -10,17 +10,17 @@ $riara_search_by_list = array(
 
 $riara_amazon_api_endpoints = array(
   "JP" => "https://webservices.amazon.co.jp/onca/xml",
-  "US" => "https://webservices.amazon.com/onca/xml",
-  "UK" => "https://webservices.amazon.co.uk/onca/xml",
-  "MX" => "https://webservices.amazon.com.mx/onca/xml",
-  "IT" => "https://webservices.amazon.it/onca/xml",
-  "IN" => "https://webservices.amazon.in/onca/xml",
-  "FR" => "https://webservices.amazon.fr/onca/xml",
-  "ES" => "https://webservices.amazon.es/onca/xml",
-  "DE" => "https://webservices.amazon.de/onca/xml",
-  "CN" => "https://webservices.amazon.cn/onca/xml",
-  "CA" => "https://webservices.amazon.ca/onca/xml",
-  "BR" => "https://webservices.amazon.com.br/onca/xml",
+//  "US" => "https://webservices.amazon.com/onca/xml",
+//  "UK" => "https://webservices.amazon.co.uk/onca/xml",
+//  "MX" => "https://webservices.amazon.com.mx/onca/xml",
+//  "IT" => "https://webservices.amazon.it/onca/xml",
+//  "IN" => "https://webservices.amazon.in/onca/xml",
+//  "FR" => "https://webservices.amazon.fr/onca/xml",
+//  "ES" => "https://webservices.amazon.es/onca/xml",
+//  "DE" => "https://webservices.amazon.de/onca/xml",
+//  "CN" => "https://webservices.amazon.cn/onca/xml",
+//  "CA" => "https://webservices.amazon.ca/onca/xml",
+//  "BR" => "https://webservices.amazon.com.br/onca/xml",
 );
 
 $riara_amazon_search_indexes = array(
@@ -34,6 +34,12 @@ $riara_rakuten_api_endpoints = array(
   "BooksBook" => "https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522",
 );
 
+$riara_title_max_num = array(
+  "Small"  => 12,
+  "Medium" => 18,
+  "Large"  => 35,
+);
+
 // Image Size
 $riara_image_sizes = array(
   "Small" => "Small",
@@ -42,43 +48,37 @@ $riara_image_sizes = array(
 );
 
 // Amazon: Small (75x58), Medium (160x124), Large (500x389)
-$riara_amazon_image_widths = array(
-  "Small" => "55px",
-  "Medium" => "120px",
-  "Large" => "160px",
-);
-
 $riara_amazon_image_heights = array(
-  "Small" => "75px",
-  "Medium" => "180px",
-  "Large" => "250px",
+  "Small"  => 160,
+  "Medium" => 230,
+  "Large"  => 300,
 );
 
 $riara_amazon_item_heights = array(
-  "Small" => "150px",
-  "Medium" => "225px",
-  "Large" => "280px",
+  "Small"  => 200,
+  "Medium" => 270,
+  "Large"  => 340,
 );
 
 // Item size are Small (64x64), Medium (128x128), Large (200x200) in Rakuten wchich are wrriten in API docs but they return only following image size:
 // Rakuten Ichiba: Small (64x64), Medium (128x128), Large (Nothing)
 // Rakuten Books : Small (64x42), Medium (120x80), Large (180x120)
-$riara_rakuten_image_widths = array(
-  "Small" => "42px",
-  "Medium" => "80px",
-  "Large" => "120px",
+$riara_rakuten_image_heights = array(
+  "Small"  =>  60,
+  "Medium" => 115,
+  "Large"  => 170,
+);
+
+$riara_rakuten_item_widths = array(
+  "Small"  =>  42,
+  "Medium" =>  80,
+  "Large"  => 120,
 );
 
 $riara_rakuten_item_heights = array(
-  "Small" => "80px",
-  "Medium" => "170px",
-  "Large" => "240px",
-);
-
-$riara_rakuten_default_item_heights = array(
-  "Small" => "70px",
-  "Medium" => "130px",
-  "Large" => "200px",
+  "Small"  => 135,
+  "Medium" => 160,
+  "Large"  => 225,
 );
 
 $riara_display_services = array("Amazon", "Rakuten",);

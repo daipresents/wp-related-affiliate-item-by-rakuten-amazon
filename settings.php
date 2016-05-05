@@ -175,11 +175,11 @@ $current_general_heading_text = get_site_option('riara_heading_text');
 // Image Size
 $current_image_size = get_site_option('riara_image_size');
 
-// Skip No Image Item
-$current_skip_no_image_item = get_site_option('riara_skip_no_image_item');
-
 // Display Title
 $current_is_display_title = get_site_option('riara_is_display_title');
+
+// Skip No Image Item
+$current_skip_no_image_item = get_site_option('riara_skip_no_image_item');
 
 // Default Banner for PC
 $current_general_default_banner_pc = get_site_option('riara_default_banner_pc');
@@ -230,6 +230,16 @@ $current_general_max_item_number_mobile = get_site_option('riara_max_item_number
 </td>
 </tr>
 <tr>
+<th>Display Item Name:</th>
+<?php
+  $checked = "";
+  if ($current_is_display_title == "TRUE") {
+    $checked = "checked='checked'";
+  }
+?>
+<td><input type="checkbox" name="riara_is_display_title" id="riara_is_display_title" value="TRUE " <?php echo $checked ?> / ></td>
+</tr>
+<tr>
 <th>Skip No Image Item: </th>
 <?php
   $checked = "";
@@ -238,16 +248,6 @@ $current_general_max_item_number_mobile = get_site_option('riara_max_item_number
   }
 ?>
 <td><input type="checkbox" name="riara_skip_no_image_item" id="riara_skip_no_image_item" value="TRUE " <?php echo $checked ?> / ></td>
-</tr>
-<tr>
-<th>Display Title:</th>
-<?php
-  $checked = "";
-  if ($current_is_display_title == "TRUE") {
-    $checked = "checked='checked'";
-  }
-?>
-<td><input type="checkbox" name="riara_is_display_title" id="riara_is_display_title" value="TRUE " <?php echo $checked ?> / ></td>
 </tr>
 <tr><th>Template(Text, Thumbnail, Custom):</th><td>TODO</td></tr>
 <tr>
