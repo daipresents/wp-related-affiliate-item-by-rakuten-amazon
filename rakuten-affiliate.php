@@ -39,7 +39,7 @@ if ($response = file_get_contents(generate_rakuten_request_url(get_search_keywor
       <img src="<?php echo $attributes["image_url"] ?>" alt="<?php echo $attributes["item_name"] ?>" title="<?php echo $attributes["item_name"] ?>" style="height:<?php echo $attributes["image_height"] ?>px;" />
     </a>
   </div><!-- .related-amazon-rakuten-affiliate-thumb -->
-  <?php if (get_site_option('riara_is_display_title')){ ?>
+  <?php if (get_site_option('riara_is_display_item_name')){ ?>
   <div class="related-amazon-rakuten-affiliate-content">
     <a href="<?php echo $attributes["item_url"] ?>" title="<?php echo $attributes["item_name"] ?>">
       <?php echo $attributes["short_item_name"] ?>

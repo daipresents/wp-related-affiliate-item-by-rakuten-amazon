@@ -159,7 +159,7 @@ function get_item_attributes($item) {
       $attributes["item_url"] = $item->DetailPageURL;
       $attributes["image_height"] = $riara_amazon_image_heights[$size];
       
-      if (get_site_option('riara_is_display_title')) {
+      if (get_site_option('riara_is_display_item_name')) {
         $attributes["item_height"] = $riara_amazon_item_heights[$size];
       } else {
         // if the title doesn't need to display, the item height is same as image height.
@@ -202,7 +202,7 @@ function get_item_attributes($item) {
       $attributes["item_width"] = $riara_rakuten_item_widths[$size];
       $attributes["image_height"] = $riara_rakuten_image_heights[$size];
       
-      if (get_site_option('riara_is_display_title')) {
+      if (get_site_option('riara_is_display_item_name')) {
         $attributes["item_height"] = $riara_rakuten_item_heights[$size];
       } else {
         // if the title doesn't need to display, the item height is same as image height.

@@ -43,7 +43,7 @@ function add_plugin_admin_menu() {
   register_setting('riara_group', 'riara_heading_text', '');
   register_setting('riara_group', 'riara_image_size', '');
   register_setting('riara_group', 'riara_skip_no_image_item', '');
-  register_setting('riara_group', 'riara_is_display_title', '');
+  register_setting('riara_group', 'riara_is_display_item_name', '');
   register_setting('riara_group', 'riara_default_banner_pc', '');
   register_setting('riara_group', 'riara_default_banner_mobile', '');
   register_setting('riara_group', 'riara_max_item_number_pc', '');
