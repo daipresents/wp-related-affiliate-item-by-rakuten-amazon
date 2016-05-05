@@ -52,4 +52,5 @@ if ($response = file_get_contents(generate_rakuten_request_url(get_search_keywor
 
 <br style="clear:both;">
 </aside><!-- #related-amazon-rakuten-affiliate-items -->
+<div id="related-amazon-rakuten-affiliate-powered-by">powered by <a href="http://daipresents.com/2016/wp-related-item-by-amazon-rakuten-affiliate-plugin/" target="_blank">daipresents.com</a></div>
 </div><!-- #related-amazon-rakuten-affiliate -->
