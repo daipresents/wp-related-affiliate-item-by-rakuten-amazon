@@ -26,27 +26,24 @@ function display_riara_settings() {
   require_once( plugin_dir_path( __FILE__ ) . 'settings.php' );
 }
 
-// display_item
+// display_related item by Amazon, Rakuten affiliate.
 function display_riara() {
-  $tags = get_the_tags();
-  if (!$tags){
-    if (wp_is_mobile()) {
-      echo get_site_option('riara_banner_pc');
-    } else {
-      echo get_site_option('riara_banner_mobile');
-    }
-  } else {
-   
-    switch (get_site_option('riara_display_service')) {
-      case "Amazon":
-        require_once( plugin_dir_path( __FILE__ ) . 'amazon-affiliate.php' );
-        break;
-      case "Rakuten":
-        require_once( plugin_dir_path( __FILE__ ) . 'rakuten-affiliate.php' );
-        break;
-    }
-    
+  
+  // if not set the keyword, not request to API.
+  if (empty(get_search_keyword())) {
+    echo get_default_banner();
+    return;
   }
+  
+  switch (get_site_option('riara_display_service')) {
+    case "Amazon":
+      require_once( plugin_dir_path( __FILE__ ) . 'amazon-affiliate.php' );
+      break;
+    case "Rakuten":
+      require_once( plugin_dir_path( __FILE__ ) . 'rakuten-affiliate.php' );
+      break;
+  }
+    
 }
 
 function get_search_keyword () {
@@ -72,7 +69,7 @@ function get_search_keyword () {
         return $tag->description;
       }
     default:
-      return get_site_option('riara_default_search_word');
+      return NULL;
   }
 }
 

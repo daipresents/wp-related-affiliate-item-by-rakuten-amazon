@@ -14,7 +14,6 @@ if ($response = file_get_contents(generate_amazon_request_url(get_search_keyword
   }
   
 } else {
-  debug("API error");
   error_log("file_get_contents failed. Maybe failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable or please check your API setting (Access Key, Secret Access Key)", 0);
   echo get_default_banner();
   return;
