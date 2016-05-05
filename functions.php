@@ -26,6 +26,20 @@ function display_riara_settings() {
   require_once( plugin_dir_path( __FILE__ ) . 'settings.php' );
 }
 
+function test_display_riara() {
+  switch (get_site_option('riara_display_service')) {
+    case "Amazon":
+      if ($response = file_get_contents(generate_amazon_request_url("Lean from the trenches"))) {
+        var_dump(simplexml_load_string($response));
+      }
+    
+    case "Rakuten":
+      if ($response = file_get_contents(generate_rakuten_request_url("Lean from the trenches"))) {
+        var_dump(simplexml_load_string($response));
+      }
+  }
+}
+
 // display_related item by Amazon, Rakuten affiliate.
 function display_riara() {
   

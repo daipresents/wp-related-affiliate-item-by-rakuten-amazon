@@ -18,6 +18,11 @@ require( plugin_dir_path( __FILE__ ) . 'common.php' );
 
 <p><?php _e('This plugin is free to use but please show plugin attribution link (powered by daipresents.com). And this plugin use my associate id 10% of the time to display item link for donation to me. Thank you for your cooperation. Support page is ', 'riara'); ?><a href="http://daipresents.com/2016/wp-related-item-by-amazon-rakuten-affiliate-plugin/" target="_blank"><?php _e('here', 'riara'); ?></a>.</p>
 
+<h3><?php _e('The result of current setting', 'riara') ?></h3>
+<div>
+<textarea name="kanso" rows="5" cols="100"><?php test_display_riara() ?></textarea>
+</div>
+
 <form action="options.php" method="post">
   <?php
     settings_fields( 'riara_group' );
@@ -34,7 +39,7 @@ $current_search_by = get_site_option('riara_search_by');
 
 ?>
 
-<h3>General Setting</h3>
+<h3><?php _e('General Setting', 'riara') ?></h3>
 
 <table>
 <tr>
@@ -126,8 +131,6 @@ $current_amazon_associate_tag = get_site_option('riara_amazon_associate_tag');
 </tr>
 </table>
 
-TODO: Test API button
-
 <?php
 
 // API Type
@@ -166,8 +169,6 @@ $current_rakuten_affiliate_id = get_site_option('riara_rakuten_affiliate_id');
 <td><input name="riara_rakuten_affiliate_id" id="riara_rakuten_affiliate_id" type="text" value="<?php echo $current_rakuten_affiliate_id ?>" style="width: 400px" /></td>
 </tr>
 </table>
-
-TODO: Test API button
 
 <?php
 
