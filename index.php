@@ -11,6 +11,9 @@ Author URI: http://daipresents.com/
 require_once( plugin_dir_path( __FILE__ ) . 'functions.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'widget.php' );
 
+load_plugin_textdomain
+( 'riara', false, basename( dirname( __FILE__ ) ) . '/languages' );
+
 // For setting on admin menu.
 function add_plugin_admin_menu() {
   add_submenu_page( 

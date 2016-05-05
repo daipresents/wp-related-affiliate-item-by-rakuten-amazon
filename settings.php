@@ -2,7 +2,7 @@
 require( plugin_dir_path( __FILE__ ) . 'common.php' );
 ?>
 
-<h2>Related Item by Amazon and Rakuten Affiliate (RIARA)</h2>
+<h2><?php _e('Related Item by Amazon and Rakuten Affiliate (RIARA)', 'riara'); ?> </h2>
 
 <p>Related Item by Amazon and Rakuten Affiliate (RIARA) supports you to monetize your blog by displaying the contents which are affiliate image, link etc. Please set each option in this page first. If you don't set each one, this plugin use default value or doesn't display relate item.</p>
 
