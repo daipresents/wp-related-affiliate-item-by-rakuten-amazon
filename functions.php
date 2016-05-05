@@ -87,14 +87,24 @@ function get_affiliate_tag() {
       if (give_me_donate()) {
         return get_site_option('riara_default_amazon_associate_tag');
       } else {
-        return get_site_option('riara_amazon_associate_tag');
+        $tag = get_site_option('riara_amazon_associate_tag');
+        if (empty($tag)) {
+          return get_site_option('riara_default_amazon_associate_tag');
+        } else {
+          return $tag;
+        }
       }
       
     case "Rakuten":
       if (give_me_donate()) {
         return get_site_option('riara_default_rakuten_affiliate_id');
       } else {
-        return get_site_option('riara_rakuten_affiliate_id');
+        $tag = get_site_option('riara_rakuten_affiliate_id');
+        if (empty($tag)) {
+          return get_site_option('riara_default_rakuten_affiliate_id');
+        } else {
+          return $tag;
+        }
       }
   }
 }
