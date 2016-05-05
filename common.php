@@ -51,7 +51,7 @@ $riara_amazon_image_widths = array(
 $riara_amazon_image_heights = array(
   "Small" => "75px",
   "Medium" => "180px",
-  "Large" => "240px",
+  "Large" => "250px",
 );
 
 $riara_amazon_item_heights = array(
