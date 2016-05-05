@@ -3,12 +3,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Related Item by Amazon Rakuten Affiliate\n"
-"Report-Msgid-Bugs-To: https://github.com/daipresents/wp-related-item-by-amazon-rakuten-"
-"affiliatePOT-Creation-Date: 2016-05-05 19:48+0900\n"
+"Report-Msgid-Bugs-To: https://github.com/daipresents/wp-related-item-by-amazon-rakuten-affiliatePOT-Creation-Date: 2016-05-05 19:48+0900\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-05-05 19:52+0900\n"
+"PO-Revision-Date: 2016-05-05 23:23+0900\n"
 "Last-Translator: Dai Fujihara <daipresents@gmail.com>\n"
 "Language-Team: Dai Fujihara <daipresents@gmail.com>\n"
 "Language: ja_JP\n"
@@ -18,3 +17,72 @@ msgstr ""
 # settings.php
 msgid "Related Item by Amazon and Rakuten Affiliate (RIARA)"
 msgstr "関連商品表示プラグイン by Amazonアソシエイト、 楽天アフィリエイト (RIARA)"
+
+msgid "Related Item by Amazon and Rakuten Affiliate (RIARA) supports you to monetize your blog by displaying the contents which are affiliate image, link etc. Please set each option in this page first. If you don't set each one, this plugin use default value or doesn't display relate item."
+msgstr "このプラグイン（Related Item by Amazon and Rakuten Affiliate : RIARA）記事に関連したアフィリエイト画像やリンクを表示することで、ブログを簡単にマネタイズできるプラグインです。利用のためにはAmazon Product Advertising API、楽天WebサービスAPIの設定をしてください。"
+
+msgid "This plugin is free to use but please show plugin attribution link (powered by daipresents.com). And this plugin use my associate id 10% of the time to display item link for donation to me. Thank you for your cooperation. Support page is "
+msgstr "プラグインは無料で利用可能ですが、プラグインページヘのリンク（powered by daipresents.com）を表示しておいてください。また、プラグイン作成の寄付として10％の確率で作者のアソシエイトIDを使った商品リンクを作成します。ご協力をお願いします。サポート－ページは"
+
+msgid "here"
+msgstr "こちら"
+
+msgid "If you like to display related item, please check this option. This check box is the switch: "
+msgstr "関連商品を表示する場合はチェックしてください。ここでON/OFFの設定ができます。"
+
+msgid "Search Item by "
+msgstr "関連商品を探すキーワード "
+
+msgid "API Endpoint "
+msgstr "APIのエンドポイント "
+
+msgid "Access Key "
+msgstr "アクセスキー "
+
+msgid "Secret Access Key "
+msgstr "シークレットアクセスキー "
+
+msgid "Search Index "
+msgstr "サーチインデックス "
+
+msgid "Associate Tag (ex. daipresents-22) "
+msgstr "アソシエイトタグ （例： daipresents-22） "
+
+msgid "API Type "
+msgstr "利用するAPI "
+
+msgid "Application ID "
+msgstr "アプリケーションID "
+
+msgid "Affiliate ID "
+msgstr "アフィリエイトID "
+
+msgid "Display Setting"
+msgstr "表示設定"
+
+msgid "Display service "
+msgstr "表示するサービス "
+
+msgid "Heading Text (ex. <h3>Related Item</h3>) "
+msgstr "見出し（例： <h3>関係するアイテム</h3>） "
+
+msgid "Image Size "
+msgstr "画像の大きさ "
+
+msgid "Display Item Name "
+msgstr "商品名を表示する "
+
+msgid "Skip No Image Item "
+msgstr "画像のない商品をスキップ "
+
+msgid "Default banner for PC when there is no related item. Any plain HTML is OK. "
+msgstr "商品がなかった場合に表示するバナー。バナー以外でもOK（PC） "
+
+msgid "Default banner for mobile when there is no related item. Any plain HTML is OK. "
+msgstr "商品がなかった場合に表示するバナー。バナー以外でもOK（モバイル） "
+
+msgid "Number of Item for PC "
+msgstr "表示する商品数（PC） "
+
+msgid "Number of Item for mobile "
+msgstr "表示する商品数（モバイル） "

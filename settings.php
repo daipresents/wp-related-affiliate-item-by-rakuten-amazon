@@ -1,12 +1,22 @@
+<style>
+th, td {
+  border-bottom: solid 1px #ffffff;
+}
+
+th {
+  width: 250px;
+}
+</style>
+
 <?php
 require( plugin_dir_path( __FILE__ ) . 'common.php' );
 ?>
 
-<h2><?php _e('Related Item by Amazon and Rakuten Affiliate (RIARA)', 'riara'); ?> </h2>
+<h2><?php _e('Related Item by Amazon and Rakuten Affiliate (RIARA)', 'riara'); ?></h2>
 
-<p>Related Item by Amazon and Rakuten Affiliate (RIARA) supports you to monetize your blog by displaying the contents which are affiliate image, link etc. Please set each option in this page first. If you don't set each one, this plugin use default value or doesn't display relate item.</p>
+<p><?php _e('Related Item by Amazon and Rakuten Affiliate (RIARA) supports you to monetize your blog by displaying the contents which are affiliate image, link etc. Please set each option in this page first. If you don\'t set each one, this plugin use default value or doesn\'t display relate item.', 'riara'); ?></p>
 
-<p>This plugin is free to use but please show plugin attribution (ex. by RIARA). And this plugin use default associate id 10% of the time (for donation to me!). Support page is <a href="http://daipresents.com/2016/wp-related-item-by-amazon-rakuten-affiliate-plugin/" target="_blank">here</a>.</p>
+<p><?php _e('This plugin is free to use but please show plugin attribution link (powered by daipresents.com). And this plugin use my associate id 10% of the time to display item link for donation to me. Thank you for your cooperation. Support page is ', 'riara'); ?><a href="http://daipresents.com/2016/wp-related-item-by-amazon-rakuten-affiliate-plugin/" target="_blank"><?php _e('here', 'riara'); ?></a>.</p>
 
 <form action="options.php" method="post">
   <?php
@@ -28,7 +38,7 @@ $current_search_by = get_site_option('riara_search_by');
 
 <table>
 <tr>
-<th>Display Related Item: </th>
+<th><?php _e('If you like to display related item, please check this option. This check box is the switch: ', 'riara'); ?></th>
 <?php
   $checked = "";
   if ($current_is_display == "TRUE") {
@@ -37,7 +47,7 @@ $current_search_by = get_site_option('riara_search_by');
 ?>
 <td><input type="checkbox" name="riara_is_display" id="riara_is_display" value="TRUE " <?php echo $checked ?> / ></td>
 </tr>
-<tr><th>Search Item by: </th>
+<tr><th><?php _e('Search Item by ', 'riara') ?></th>
 <td>
   <select name="riara_search_by" id="riara_search_by">
     <?php foreach ($riara_search_by_list as $search_by_key => $search_by) { 
@@ -72,11 +82,9 @@ $current_amazon_associate_tag = get_site_option('riara_amazon_associate_tag');
 
 <h3>Amazon Product Advertising API</h3>
 
-<p>If you like to use Amazon Product Advertising  API to display item, you need to set these options.</p>
-
 <table>
 <tr>
-<th>API Location:</th>
+<th><?php _e('API Endpoint ', 'riara'); ?></th>
   <td>
   <select name="riara_amazon_api_endpoint" id="riara_amazon_api_endpoint">
     <?php foreach ($riara_amazon_api_endpoints as $location => $url) { 
@@ -90,15 +98,15 @@ $current_amazon_associate_tag = get_site_option('riara_amazon_associate_tag');
   </select>
   </td>
 </tr>
-<th>Access Key:</th>
+<th><?php _e('Access Key ', 'riara') ?></th>
   <td><input name="riara_amazon_access_key" id="riara_amazon_access_key" type="text" value="<?php echo $current_amazon_access_key ?>" style="width: 400px" /></td>
 </tr>
 <tr>
-<th>Secret Access Key:</th>
+<th><?php _e('Secret Access Key ', 'riara') ?></th>
   <td><input name="riara_amazon_secret_access_key" id="riara_amazon_secret_access_key" type="text" value="<?php echo $current_amazon_secret_access_key ?>"  style="width: 400px" /></td>
 </tr>
 <tr>
-<th>Search Index:</th>
+<th><?php _e('Search Index ', 'riara') ?></th>
 <td>
   <select name="riara_amazon_search_index" id="riara_amazon_search_index">
   <?php foreach ($riara_amazon_search_indexes as $index_key => $index) { 
@@ -113,12 +121,12 @@ $current_amazon_associate_tag = get_site_option('riara_amazon_associate_tag');
 </td>
 </tr>
 <tr>
-<th>Associate Tag (ex. daipresents-22):</th>
+<th><?php _e('Associate Tag (ex. daipresents-22) ', 'riara') ?></th>
   <td><input name="riara_amazon_associate_tag" id="riara_amazon_associate_tag" type="text" value="<?php echo $current_amazon_associate_tag ?>" /></td>
 </tr>
 </table>
 
-TEST
+TODO: Test API button
 
 <?php
 
@@ -136,7 +144,7 @@ $current_rakuten_affiliate_id = get_site_option('riara_rakuten_affiliate_id');
 <h3>Rakuten Web Service API</h3>
 <table>
 <tr>
-<th>API Type:</th>
+<th><?php _e('API Type ', 'riara') ?></th>
 <td>
   <select name="riara_rakuten_api_endpoint" id="riara_rakuten_api_endpoint">
   <?php foreach ($riara_rakuten_api_endpoints as $type_key => $type) { 
@@ -150,16 +158,16 @@ $current_rakuten_affiliate_id = get_site_option('riara_rakuten_affiliate_id');
   </select>
 </td>
 </tr>
-<th>Application ID:</th>
+<th><?php _e('Application ID ', 'riara') ?></th>
 <td><input name="riara_rakuten_application_id" id="riara_rakuten_application_id" type="text" value="<?php echo $current_rakuten_application_id ?>" style="width: 400px" /></td>
 </tr>
 <tr>
-<th>Affiliate ID:</th>
+<th><?php _e('Affiliate ID ', 'riara') ?></th>
 <td><input name="riara_rakuten_affiliate_id" id="riara_rakuten_affiliate_id" type="text" value="<?php echo $current_rakuten_affiliate_id ?>" style="width: 400px" /></td>
 </tr>
 </table>
 
-TEST
+TODO: Test API button
 
 <?php
 
@@ -195,10 +203,10 @@ $current_general_max_item_number_mobile = get_site_option('riara_max_item_number
 
 ?>
 
-<h3>Display Setting</h3>
+<h3><?php _e('Display Setting', 'riara') ?></h3>
 
 <table>
-<tr><th>Display service:</th>
+<tr><th><?php _e('Display service ', 'riara') ?></th>
 <td>
   <select name="riara_display_service" id="riara_display_service">
   <?php foreach ($riara_display_services as $display_service) { 
@@ -212,10 +220,10 @@ $current_general_max_item_number_mobile = get_site_option('riara_max_item_number
   </select>
 </td>
 </tr>
-<tr><th>Heading Text:</th>
+<tr><th><?php _e('Heading Text (ex. <h3>Related Item</h3>) ', 'riara') ?></th>
 <td><input name="riara_heading_text" id="riara_heading_text" type="text" value="<?php echo $current_general_heading_text ?>" style="width: 400px" /></td></tr>
 <tr>
-<th>Image Size: </th>
+<th><?php _e('Image Size ', 'riara') ?></th>
 <td>
   <select name="riara_image_size" id="riara_image_size">
   <?php foreach ($riara_image_sizes as $size_key => $size_value) { 
@@ -230,7 +238,7 @@ $current_general_max_item_number_mobile = get_site_option('riara_max_item_number
 </td>
 </tr>
 <tr>
-<th>Display Item Name:</th>
+<th><?php _e('Display Item Name ', 'riara') ?></th>
 <?php
   $checked = "";
   if ($current_is_display_item_name == "TRUE") {
@@ -240,7 +248,7 @@ $current_general_max_item_number_mobile = get_site_option('riara_max_item_number
 <td><input type="checkbox" name="riara_is_display_item_name" id="riara_is_display_item_name" value="TRUE " <?php echo $checked ?> / ></td>
 </tr>
 <tr>
-<th>Skip No Image Item: </th>
+<th><?php _e('Skip No Image Item ', 'riara') ?></th>
 <?php
   $checked = "";
   if ($current_skip_no_image_item == "TRUE") {
@@ -251,19 +259,19 @@ $current_general_max_item_number_mobile = get_site_option('riara_max_item_number
 </tr>
 <tr><th>Template(Text, Thumbnail, Custom):</th><td>TODO</td></tr>
 <tr>
-<th>Default banner for PC (When there is no related item):</th>
+<th><?php _e('Default banner for PC when there is no related item. Any plain HTML is OK. ', 'riara') ?></th>
 <td>
 <textarea name="riara_default_banner_pc" id="riara_default_banner_pc"  rows="8" cols="70"><?php echo $current_general_default_banner_pc ?></textarea>
 </td>
 </tr>
 <tr>
-<th>Default banner for mobile (When there is no related item):</th>
+<th><?php _e('Default banner for mobile when there is no related item. Any plain HTML is OK. ', 'riara') ?></th>
 <td>
 <textarea name="riara_default_banner_mobile" id="riara_default_banner_mobile"  rows="8" cols="70"><?php echo $current_general_default_banner_mobile ?></textarea>
 </td>
 </tr>
 <tr>
-<th>Number of Item for PC:</th>
+<th><?php _e('Number of Item for PC ', 'riara') ?></th>
 <td>
   <select name="riara_max_item_number_pc" id="riara_max_item_number_pc">
   <?php for ($count = 1; $count <= $riara_max_item_number_pc; $count++){
@@ -278,7 +286,7 @@ $current_general_max_item_number_mobile = get_site_option('riara_max_item_number
 </td>
 </tr>
 <tr>
-<th>Number of Item for Mobile:</th>
+<th><?php _e('Number of Item for mobile ', 'riara') ?></th>
 <td>
   <select name="riara_max_item_number_mobile" id="riara_max_item_number_mobile">
   <?php for ($count = 1; $count <= $riara_max_item_number_mobile; $count++){
