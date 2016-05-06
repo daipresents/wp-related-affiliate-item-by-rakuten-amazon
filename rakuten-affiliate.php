@@ -21,9 +21,9 @@ if ($response = file_get_contents(generate_rakuten_request_url(get_search_keywor
 }
 ?>
 
-<div id='related-amazon-rakuten-affiliate'>
-<aside id="related-amazon-rakuten-affiliate-items">
-<?php echo get_site_option('riara_heading_text') ?>
+<div id='wp-raira'>
+<aside id="wp-raira-items">
+<?php echo get_site_option('wp_raira_heading_text') ?>
 <?php
   foreach ($xml->Items->Item as $item) {
   
@@ -33,24 +33,24 @@ if ($response = file_get_contents(generate_rakuten_request_url(get_search_keywor
     }
 ?>
 
-<article class="related-amazon-rakuten-affiliate" style="width:<?php echo $attributes["item_width"] ?>px; height:<?php echo $attributes["item_height"] ?>px">
-  <div class="related-amazon-rakuten-affiliate-thumbnail">
+<article class="wp-raira" style="width:<?php echo $attributes["item_width"] ?>px; height:<?php echo $attributes["item_height"] ?>px">
+  <div class="wp-raira-thumbnail">
     <a href="<?php echo $attributes["item_url"] ?>" title="<?php echo $attributes["item_name"] ?>" target="_blank">
       <img src="<?php echo $attributes["image_url"] ?>" alt="<?php echo $attributes["item_name"] ?>" title="<?php echo $attributes["item_name"] ?>" style="height:<?php echo $attributes["image_height"] ?>px;" />
     </a>
-  </div><!-- .related-amazon-rakuten-affiliate-thumb -->
-  <?php if (get_site_option('riara_is_display_item_name')){ ?>
-  <div class="related-amazon-rakuten-affiliate-content">
+  </div><!-- .wp-raira-thumb -->
+  <?php if (get_site_option('wp_raira_is_display_item_name')){ ?>
+  <div class="wp-raira-content">
     <a href="<?php echo $attributes["item_url"] ?>" title="<?php echo $attributes["item_name"] ?>">
       <?php echo $attributes["short_item_name"] ?>
     </a>
-  </div><!-- .related-amazon-rakuten-affiliate-content -->
+  </div><!-- .wp-raira-content -->
   <?php } ?>
-</article><!-- .related-amazon-rakuten-affiliate-thumbnail -->
+</article><!-- .wp-raira-thumbnail -->
 
 <?php } //foreach ?>
 
 <br style="clear:both;">
-</aside><!-- #related-amazon-rakuten-affiliate-items -->
-<div id="related-amazon-rakuten-affiliate-powered-by">powered by <a href="http://daipresents.com/2016/wp-related-item-by-amazon-rakuten-affiliate-plugin/" target="_blank">daipresents.com</a></div>
-</div><!-- #related-amazon-rakuten-affiliate -->
+</aside><!-- #wp-raira-items -->
+<div id="wp-raira-powered-by">powered by <a href="http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/" target="_blank">daipresents.com</a></div>
+</div><!-- #wp-raira -->

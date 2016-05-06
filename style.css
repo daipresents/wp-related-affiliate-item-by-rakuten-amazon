@@ -1,24 +1,24 @@
 
-#related-amazon-rakuten-affiliate-items {
+#wp-raira-items {
   width: 100%;
 }
 
-.related-amazon-rakuten-affiliate {
+.wp-raira {
   float: left;
   margin-right: 5px;
   margin-bottom: 5px;
 }
 
-.related-amazon-rakuten-affiliate-thumbnail {
+.wp-raira-thumbnail {
 }
 
-.related-amazon-rakuten-affiliate-content {
+.wp-raira-content {
   text-size: 0.5em;
   padding-top: 5px;
   line-height: 100%;
 }
 
-#related-amazon-rakuten-affiliate-powered-by{
+#wp-raira-powered-by{
   width: 100%;
   text-align: right;
   font-size: 5px;

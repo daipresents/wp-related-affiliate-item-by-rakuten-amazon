@@ -17,17 +17,17 @@ function debug_obj($obj) {
 function add_init(){
     // add css
     debug("load css");
-    wp_register_style('riara_css', plugins_url('style.css', __FILE__));
-    wp_enqueue_style('riara_css');
+    wp_register_style('wp_raira_css', plugins_url('style.css', __FILE__));
+    wp_enqueue_style('wp_raira_css');
 }
 
 // for setting page
-function display_riara_settings() {
+function display_wp_raira_settings() {
   require_once( plugin_dir_path( __FILE__ ) . 'settings.php' );
 }
 
 function test_display_riara() {
-  switch (get_site_option('riara_display_service')) {
+  switch (get_site_option('wp_raira_display_service')) {
     case "Amazon":
       if ($response = file_get_contents(generate_amazon_request_url("Lean from the trenches"))) {
         var_dump(simplexml_load_string($response));
@@ -49,7 +49,7 @@ function display_riara() {
     return;
   }
   
-  switch (get_site_option('riara_display_service')) {
+  switch (get_site_option('wp_raira_display_service')) {
     case "Amazon":
       require_once( plugin_dir_path( __FILE__ ) . 'amazon-affiliate.php' );
       break;
@@ -61,7 +61,7 @@ function display_riara() {
 }
 
 function get_search_keyword () {
-  switch (get_site_option('riara_search_by')){
+  switch (get_site_option('wp_raira_search_by')){
     case "Category Name":
       $categories = get_the_category();
       foreach($categories as $category) {
@@ -96,14 +96,14 @@ function give_me_donate() {
 }
 
 function get_affiliate_tag() {
-  switch (get_site_option('riara_display_service')) {
+  switch (get_site_option('wp_raira_display_service')) {
     case "Amazon":
       if (give_me_donate()) {
-        return get_site_option('riara_default_amazon_associate_tag');
+        return get_site_option('wp_raira_default_amazon_associate_tag');
       } else {
-        $tag = get_site_option('riara_amazon_associate_tag');
+        $tag = get_site_option('wp_raira_amazon_associate_tag');
         if (empty($tag)) {
-          return get_site_option('riara_default_amazon_associate_tag');
+          return get_site_option('wp_raira_default_amazon_associate_tag');
         } else {
           return $tag;
         }
@@ -111,11 +111,11 @@ function get_affiliate_tag() {
       
     case "Rakuten":
       if (give_me_donate()) {
-        return get_site_option('riara_default_rakuten_affiliate_id');
+        return get_site_option('wp_raira_default_rakuten_affiliate_id');
       } else {
-        $tag = get_site_option('riara_rakuten_affiliate_id');
+        $tag = get_site_option('wp_raira_rakuten_affiliate_id');
         if (empty($tag)) {
-          return get_site_option('riara_default_rakuten_affiliate_id');
+          return get_site_option('wp_raira_default_rakuten_affiliate_id');
         } else {
           return $tag;
         }
@@ -127,9 +127,9 @@ function generate_amazon_request_url($keywords) {
   // for signnature
   $params = array();
   $params['Service'] = 'AWSECommerceService';
-  $params['AWSAccessKeyId'] = get_site_option('riara_amazon_access_key');
+  $params['AWSAccessKeyId'] = get_site_option('wp_raira_amazon_access_key');
   $params['Operation'] = 'ItemSearch';
-  $params['SearchIndex'] = get_site_option('riara_amazon_search_index');
+  $params['SearchIndex'] = get_site_option('wp_raira_amazon_search_index');
   $params['AssociateTag'] = get_affiliate_tag();
   $params['Version'] = '2011-08-02';
   $params['Timestamp'] = gmdate('Y-m-d\TH:i:s\Z');
@@ -145,23 +145,23 @@ function generate_amazon_request_url($keywords) {
   } 
 
   $canonical_string = substr($canonical_string, 1);
-  $parsed_url = parse_url(get_site_option('riara_amazon_api_endpoint'));
+  $parsed_url = parse_url(get_site_option('wp_raira_amazon_api_endpoint'));
   $string_to_sign = "GET\n{$parsed_url['host']}\n{$parsed_url['path']}\n{$canonical_string}";
-  $params['Signature'] = rawurlencode(base64_encode(hash_hmac('sha256', $string_to_sign, get_site_option('riara_amazon_secret_access_key'), true)));
-  return get_site_option('riara_amazon_api_endpoint') . '?' . $canonical_string . '&Signature=' . $params['Signature'];
+  $params['Signature'] = rawurlencode(base64_encode(hash_hmac('sha256', $string_to_sign, get_site_option('wp_raira_amazon_secret_access_key'), true)));
+  return get_site_option('wp_raira_amazon_api_endpoint') . '?' . $canonical_string . '&Signature=' . $params['Signature'];
 }
 
 function generate_rakuten_request_url($keyword) {
   $params = array();
   $params['format'] = 'xml';
   $params['keyword'] = $keyword;
-  $params['applicationId'] = get_site_option('riara_rakuten_application_id');
+  $params['applicationId'] = get_site_option('wp_raira_rakuten_application_id');
   $params['affiliateId'] = get_affiliate_tag();
   
   if (wp_is_mobile()) {
-    $params['hits'] = get_site_option('riara_max_item_number_mobile');
+    $params['hits'] = get_site_option('wp_raira_max_item_number_mobile');
   } else {
-    $params['hits'] = get_site_option('riara_max_item_number_pc');
+    $params['hits'] = get_site_option('wp_raira_max_item_number_pc');
   }
 
   ksort($params);
@@ -171,19 +171,19 @@ function generate_rakuten_request_url($keyword) {
     $canonical_string .= '&' . rawurlencode($k) . '=' . rawurlencode($v);
   }
   $canonical_string = substr($canonical_string, 1);
-  return get_site_option('riara_rakuten_api_endpoint') . '?' . $canonical_string;
+  return get_site_option('wp_raira_rakuten_api_endpoint') . '?' . $canonical_string;
   
 }
 
 function get_item_name($name, $size) {
   require( plugin_dir_path( __FILE__ ) . 'common.php' );
   
-  switch (get_site_option('riara_display_service')) {
+  switch (get_site_option('wp_raira_display_service')) {
     case "Amazon":
-      $max_num = $riara_title_max_num[$size];
+      $max_num = $wp_raira_title_max_num[$size];
       break;
     case "Rakuten":
-      $max_num = round($riara_title_max_num[$size] * 0.5);
+      $max_num = round($wp_raira_title_max_num[$size] * 0.5);
       break;
   }
   
@@ -198,19 +198,19 @@ function get_item_attributes($item) {
   require( plugin_dir_path( __FILE__ ) . 'common.php' );
   
   $attributes = array();
-  $size = get_site_option('riara_image_size');
+  $size = get_site_option('wp_raira_image_size');
   
-  switch (get_site_option('riara_display_service')) {
+  switch (get_site_option('wp_raira_display_service')) {
     
     case "Amazon":
       
       $attributes["item_name"] =$item->ItemAttributes->Title;
       $attributes["short_item_name"] =get_item_name($item->ItemAttributes->Title, $size);
       $attributes["item_url"] = $item->DetailPageURL;
-      $attributes["image_height"] = $riara_amazon_image_heights[$size];
+      $attributes["image_height"] = $wp_raira_amazon_image_heights[$size];
       
-      if (get_site_option('riara_is_display_item_name')) {
-        $attributes["item_height"] = $riara_amazon_item_heights[$size];
+      if (get_site_option('wp_raira_is_display_item_name')) {
+        $attributes["item_height"] = $wp_raira_amazon_item_heights[$size];
       } else {
         // if the title doesn't need to display, the item height is same as image height.
         $attributes["item_height"] = $attributes["image_height"];
@@ -235,7 +235,7 @@ function get_item_attributes($item) {
       $attributes["item_width"] = $attributes["image_width"];
       
       if (empty($attributes["image_url"])){
-        if (get_site_option('riara_skip_no_image_item')) {
+        if (get_site_option('wp_raira_skip_no_image_item')) {
           $attributes["image_url"] = NULL;
         } else {
           $attributes["image_url"] = AMAZON_NO_IMAGE;
@@ -249,17 +249,17 @@ function get_item_attributes($item) {
       // not set image_width because API doesn't return image height and width so we can't define these value.
       
       $attributes["item_url"] = $item->affiliateUrl;
-      $attributes["item_width"] = $riara_rakuten_item_widths[$size];
-      $attributes["image_height"] = $riara_rakuten_image_heights[$size];
+      $attributes["item_width"] = $wp_raira_rakuten_item_widths[$size];
+      $attributes["image_height"] = $wp_raira_rakuten_image_heights[$size];
       
-      if (get_site_option('riara_is_display_item_name')) {
-        $attributes["item_height"] = $riara_rakuten_item_heights[$size];
+      if (get_site_option('wp_raira_is_display_item_name')) {
+        $attributes["item_height"] = $wp_raira_rakuten_item_heights[$size];
       } else {
         // if the title doesn't need to display, the item height is same as image height.
         $attributes["item_height"] = $attributes["image_height"];
       }
       
-      $api_name = array_search(get_site_option('riara_rakuten_api_endpoint'), $riara_rakuten_api_endpoints);
+      $api_name = array_search(get_site_option('wp_raira_rakuten_api_endpoint'), $wp_raira_rakuten_api_endpoints);
       
       if ($api_name == "IchibaItem") {
         
@@ -307,7 +307,7 @@ function get_item_attributes($item) {
       
       // Rakuten API always return image url (include no image url)
       if(strpos($attributes["image_url"],'noimage') !== false) {
-        if (get_site_option('riara_skip_no_image_item')) {
+        if (get_site_option('wp_raira_skip_no_image_item')) {
           $attributes["image_url"] = NULL;
         }
       }
@@ -320,9 +320,9 @@ function get_item_attributes($item) {
 
 function get_default_banner() {
   if (wp_is_mobile()) {
-    return get_site_option('riara_default_banner_mobile');
+    return get_site_option('wp_raira_default_banner_mobile');
   } else {
-    return get_site_option('riara_default_banner_pc');
+    return get_site_option('wp_raira_default_banner_pc');
   }
 }
 

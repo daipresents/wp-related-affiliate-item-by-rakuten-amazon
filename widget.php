@@ -1,9 +1,9 @@
 <?php
-class RIARA_Widget extends WP_Widget{
+class wp_raira_Widget extends WP_Widget{
 
   function __construct() {
     parent::__construct(
-        'riara_widget',
+        'wp_raira_widget',
         'Related Item by Amazon and Rakuten Affiliate Widget',
         array( 'description' => 'Display Related Item by Amazon and Rakuten Affiliate.', )
     );
