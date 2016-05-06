@@ -50,15 +50,15 @@ $wp_raira_image_sizes = array(
 
 // Amazon: Small (75x58), Medium (160x124), Large (500x389)
 $wp_raira_amazon_image_heights = array(
-  "Small"  => 160,
-  "Medium" => 230,
-  "Large"  => 300,
+  "Small"  => 130,
+  "Medium" => 200,
+  "Large"  => 270,
 );
 
 $wp_raira_amazon_item_heights = array(
-  "Small"  => 200,
-  "Medium" => 270,
-  "Large"  => 340,
+  "Small"  => 170,
+  "Medium" => 240,
+  "Large"  => 310,
 );
 
 // Item size are Small (64x64), Medium (128x128), Large (200x200) in Rakuten wchich are wrriten in API docs but they return only following image size:
