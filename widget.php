@@ -4,8 +4,8 @@ class wp_raira_Widget extends WP_Widget{
   function __construct() {
     parent::__construct(
         'wp_raira_widget',
-        'Related Item by Amazon and Rakuten Affiliate Widget',
-        array( 'description' => 'Display Related Item by Amazon and Rakuten Affiliate.', )
+        __("Related Affiliate Item by Amazon and Rakuten Widget", "wp-raira"),
+        array( 'description' => __("Display Related Affiliate Item by Amazon and Rakuten. Add this widget to the place which you want to set.", "wp-raira"), )
     );
   }
 
@@ -24,7 +24,7 @@ class wp_raira_Widget extends WP_Widget{
    * @return string|void
    */
   public function form( $instance ){
-    echo "<p>Add this widget to the place which you want to set. You can also use this code. <br><code>&lt;?php display_riara(); ?&gt;</code></p>";
+    _e("Support page is <a href='http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/' target='_blank'>here</a>. You can also use this code. <br><code>&lt;?php display_riara(); ?&gt;</code>", "wp-raira");
   }
 
   /**

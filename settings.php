@@ -3,8 +3,13 @@ th, td {
   border-bottom: solid 1px #ffffff;
 }
 
-th {
-  width: 250px;
+.option_name {
+  width: 200px;
+}
+
+.option_description {
+  width:250px;
+  font-size: 0.9em;
 }
 </style>
 
@@ -12,62 +17,23 @@ th {
 require( plugin_dir_path( __FILE__ ) . 'common.php' );
 ?>
 
-<h2><?php _e('Related Affiliate Item by Rakuten and Amazon (RAIRA)', 'wp-raira'); ?></h2>
+<h2><?php _e("Related Affiliate Item by Rakuten and Amazon (RAIRA)", "wp-raira"); ?></h2>
 
-<p><?php _e('This plugin supports you to monetize your blog by displaying the contents which are affiliate image, link etc. Please set each option in this page first. If you don\'t set each one, this plugin use default value or doesn\'t display relate item.', 'wp-raira'); ?></p>
+<p><?php _e("This plugin supports you to monetize your blog by displaying the contents which are affiliate image, link etc. Please set each option in this page first. If you don\'t set each one, this plugin use default value or doesn\'t display relate item.", "wp-raira"); ?></p>
 
-<p><?php _e('This plugin is free to use but please show plugin attribution link (powered by daipresents.com). And this plugin use my associate id 10% of the time to display item link for donation to me. Thank you for your cooperation. Support page is ', 'wp-raira'); ?><a href="http://daipresents.com/2016/wp-related-item-by-amazon-rakuten-affiliate-plugin/" target="_blank"><?php _e('here', 'wp-raira'); ?></a>.</p>
+<p><?php _e("This plugin is free to use but please show plugin attribution link (powered by daipresents.com). And this plugin use my associate id 10% of the time to display item link for donation to me. Thank you for your cooperation. Support page is <a href='http://daipresents.com/2016/wp-related-item-by-amazon-rakuten-affiliate-plugin/' target='_blank'>here</a>.", 'wp-raira'); ?></p>
 
-<h3><?php _e('The result of current setting', 'wp-raira') ?></h3>
+<h3><?php _e("The result of current setting", "wp-raira") ?></h3>
 <div>
 <textarea name="kanso" rows="5" cols="100"><?php test_display_riara() ?></textarea>
 </div>
 
 <form action="options.php" method="post">
-  <?php
-    settings_fields( 'wp_raira_group' );
-    do_settings_sections( 'default' );
-  ?>
-
 <?php
 
-// Is Display
-$current_is_display = get_site_option('wp_raira_is_display');
+settings_fields( 'wp_raira_group' );
+do_settings_sections( 'default' );
 
-// Search Keyword
-$current_search_by = get_site_option('wp_raira_search_by');
-
-?>
-
-<h3><?php _e('General Setting', 'wp-raira') ?></h3>
-
-<table>
-<tr>
-<th><?php _e('If you like to display related affiliate item, please check this option. This check box is the switch: ', 'wp-raira'); ?></th>
-<?php
-  $checked = "";
-  if ($current_is_display == "TRUE") {
-    $checked = "checked='checked'";
-  }
-?>
-<td><input type="checkbox" name="wp_raira_is_display" id="wp_raira_is_display" value="TRUE " <?php echo $checked ?> / ></td>
-</tr>
-<tr><th><?php _e('Search Item by ', 'wp-raira') ?></th>
-<td>
-  <select name="wp_raira_search_by" id="wp_raira_search_by">
-    <?php foreach ($wp_raira_search_by_list as $search_by_key => $search_by) { 
-      $selected = "";
-      if ($current_search_by == $search_by) { 
-        $selected = "selected='selected'";
-      }
-      ?>
-      <option value="<?php echo $search_by ?>" <?php echo $selected ?>><?php echo $search_by_key ?></option>
-    <?php } //foreach ?>
-  </select>
-</td></tr>
-</table>
-
-<?php
 // API Location
 $current_amazon_api_endpoint = get_site_option('wp_raira_amazon_api_endpoint');
 
@@ -89,8 +55,9 @@ $current_amazon_associate_tag = get_site_option('wp_raira_amazon_associate_tag')
 
 <table>
 <tr>
-<th><?php _e('API Endpoint ', 'wp-raira'); ?></th>
-  <td>
+<td class="option_name"><?php _e("API Endpoint", "wp-raira"); ?></td>
+<td class="option_description"><?php _e("You can select the location of API. If you like to show Japanese product, you should select 'JP' location.", "wp-raira"); ?></td>
+<td>
   <select name="wp_raira_amazon_api_endpoint" id="wp_raira_amazon_api_endpoint">
     <?php foreach ($wp_raira_amazon_api_endpoints as $location => $url) { 
       $selected = "";
@@ -103,15 +70,19 @@ $current_amazon_associate_tag = get_site_option('wp_raira_amazon_associate_tag')
   </select>
   </td>
 </tr>
-<th><?php _e('Access Key ', 'wp-raira') ?></th>
-  <td><input name="wp_raira_amazon_access_key" id="wp_raira_amazon_access_key" type="text" value="<?php echo $current_amazon_access_key ?>" style="width: 400px" /></td>
+<tr>
+<td class="option_name"><?php _e("Access Key", "wp-raira") ?></td>
+<td class="option_description"><?php _e("Get access key for Amazon Product Advertising API from <a href='http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/#amazon' target='_blank'>here</a>.", "wp-raira"); ?></td>
+<td><input name="wp_raira_amazon_access_key" id="wp_raira_amazon_access_key" type="text" value="<?php echo $current_amazon_access_key ?>" style="width: 400px" /></td>
 </tr>
 <tr>
-<th><?php _e('Secret Access Key ', 'wp-raira') ?></th>
-  <td><input name="wp_raira_amazon_secret_access_key" id="wp_raira_amazon_secret_access_key" type="text" value="<?php echo $current_amazon_secret_access_key ?>"  style="width: 400px" /></td>
+<td class="option_name"><?php _e("Secret Access Key", "wp-raira") ?></td>
+<td class="option_description"><?php _e("Get secret access key for Amazon Product Advertising API from <a href='http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/#amazon' target='_blank'>here</a>.", "wp-raira"); ?></td>
+<td><input name="wp_raira_amazon_secret_access_key" id="wp_raira_amazon_secret_access_key" type="text" value="<?php echo $current_amazon_secret_access_key ?>"  style="width: 400px" /></td>
 </tr>
 <tr>
-<th><?php _e('Search Index ', 'wp-raira') ?></th>
+<td class="option_name"><?php _e("Search Index", "wp-raira") ?></td>
+<td class="option_description"><?php _e("The genre of item for search.", "wp-raira"); ?></td>
 <td>
   <select name="wp_raira_amazon_search_index" id="wp_raira_amazon_search_index">
   <?php foreach ($wp_raira_amazon_search_indexes as $index_key => $index) { 
@@ -126,8 +97,9 @@ $current_amazon_associate_tag = get_site_option('wp_raira_amazon_associate_tag')
 </td>
 </tr>
 <tr>
-<th><?php _e('Associate Tag (ex. daipresents-22) ', 'wp-raira') ?></th>
-  <td><input name="wp_raira_amazon_associate_tag" id="wp_raira_amazon_associate_tag" type="text" value="<?php echo $current_amazon_associate_tag ?>" /></td>
+<td class="option_name"><?php _e("Associate Tag", "wp-raira") ?></td>
+<td class="option_description"><?php _e("Your Amazon accociate tag. e.g. daipresents-22", "wp-raira"); ?></td>
+<td><input name="wp_raira_amazon_associate_tag" id="wp_raira_amazon_associate_tag" type="text" value="<?php echo $current_amazon_associate_tag ?>" /></td>
 </tr>
 </table>
 
@@ -147,7 +119,8 @@ $current_rakuten_affiliate_id = get_site_option('wp_raira_rakuten_affiliate_id')
 <h3>Rakuten Web Service API</h3>
 <table>
 <tr>
-<th><?php _e('API Type ', 'wp-raira') ?></th>
+<td class="option_name"><?php _e("API Type", "wp-raira") ?></td>
+<td class="option_description"><?php _e("API you like to use to display item.", "wp-raira"); ?></td>
 <td>
   <select name="wp_raira_rakuten_api_endpoint" id="wp_raira_rakuten_api_endpoint">
   <?php foreach ($wp_raira_rakuten_api_endpoints as $type_key => $type) { 
@@ -161,16 +134,24 @@ $current_rakuten_affiliate_id = get_site_option('wp_raira_rakuten_affiliate_id')
   </select>
 </td>
 </tr>
-<th><?php _e('Application ID ', 'wp-raira') ?></th>
+<td class="option_name"><?php _e("Application ID", "wp-raira") ?></td>
+<td class="option_description"><?php _e("Get application ID for Rakuten Web Service API from <a href='http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/#rakuten' target='_blank'>here</a>.", "wp-raira"); ?></td>
 <td><input name="wp_raira_rakuten_application_id" id="wp_raira_rakuten_application_id" type="text" value="<?php echo $current_rakuten_application_id ?>" style="width: 400px" /></td>
 </tr>
 <tr>
-<th><?php _e('Affiliate ID ', 'wp-raira') ?></th>
+<td class="option_name"><?php _e("Affiliate ID", "wp-raira") ?></td>
+<td class="option_description"><?php _e("Get affiliate ID for Rakuten Web Service API from <a href='http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/#rakuten' target='_blank'>here</a>.", "wp-raira"); ?></td>
 <td><input name="wp_raira_rakuten_affiliate_id" id="wp_raira_rakuten_affiliate_id" type="text" value="<?php echo $current_rakuten_affiliate_id ?>" style="width: 400px" /></td>
 </tr>
 </table>
 
 <?php
+
+// Is Display
+$current_is_display = get_site_option('wp_raira_is_display');
+
+// Search Keyword
+$current_search_by = get_site_option('wp_raira_search_by');
 
 // Display
 $current_general_display_service = get_site_option('wp_raira_display_service');
@@ -204,10 +185,38 @@ $current_general_max_item_number_mobile = get_site_option('wp_raira_max_item_num
 
 ?>
 
-<h3><?php _e('Display Setting', 'wp-raira') ?></h3>
+<h3><?php _e("Display Setting", "wp-raira") ?></h3>
 
 <table>
-<tr><th><?php _e('Display service ', 'wp-raira') ?></th>
+<tr>
+<td class="option_name"><?php _e("Display related affiliate item", "wp-raira"); ?></td>
+<td class="option_description"><?php _e("If you like to display related affiliate item, please check this option. This check box is the switch.", "wp-raira"); ?></td>
+<?php
+  $checked = "";
+  if ($current_is_display == "TRUE") {
+    $checked = "checked='checked'";
+  }
+?>
+<td><input type="checkbox" name="wp_raira_is_display" id="wp_raira_is_display" value="TRUE " <?php echo $checked ?> / ></td>
+</tr>
+<tr>
+<td class="option_name"><?php _e("Search Item by", "wp-raira") ?></td>
+<td class="option_description"><?php _e("This plugin try to find the related item by using this part of article.", "wp-raira") ?></td>
+<td>
+  <select name="wp_raira_search_by" id="wp_raira_search_by">
+    <?php foreach ($wp_raira_search_by_list as $search_by_key => $search_by) { 
+      $selected = "";
+      if ($current_search_by == $search_by) { 
+        $selected = "selected='selected'";
+      }
+      ?>
+      <option value="<?php echo $search_by ?>" <?php echo $selected ?>><?php echo $search_by_key ?></option>
+    <?php } //foreach ?>
+  </select>
+</td>
+</tr>
+<tr><td class="option_name"><?php _e("Display service", "wp-raira") ?></td>
+<td class="option_description"><?php _e("Select a service for displaying affiliate item.", "wp-raira"); ?></td>
 <td>
   <select name="wp_raira_display_service" id="wp_raira_display_service">
   <?php foreach ($wp_raira_display_services as $display_service) { 
@@ -221,10 +230,13 @@ $current_general_max_item_number_mobile = get_site_option('wp_raira_max_item_num
   </select>
 </td>
 </tr>
-<tr><th><?php _e('Heading Text (ex. <h3>Related Item</h3>) ', 'wp-raira') ?></th>
+<tr>
+<td class="option_name"><?php _e("Heading Text", "wp-raira") ?></td>
+<td class="option_description"><?php _e("You can display heading text above the related item. (e.g. &lt;h3&gt;Related Item&lt;/h3&gt;)", "wp-raira"); ?></td>
 <td><input name="wp_raira_heading_text" id="wp_raira_heading_text" type="text" value="<?php echo $current_general_heading_text ?>" style="width: 400px" /></td></tr>
 <tr>
-<th><?php _e('Image Size ', 'wp-raira') ?></th>
+<td class="option_name"><?php _e("Image Size", "wp-raira") ?></td>
+<td class="option_description"><?php _e("Amazon image is bigger than Rakuten one.", "wp-raira"); ?></td>
 <td>
   <select name="wp_raira_image_size" id="wp_raira_image_size">
   <?php foreach ($wp_raira_image_sizes as $size_key => $size_value) { 
@@ -239,7 +251,8 @@ $current_general_max_item_number_mobile = get_site_option('wp_raira_max_item_num
 </td>
 </tr>
 <tr>
-<th><?php _e('Display Item Name ', 'wp-raira') ?></th>
+<td class="option_name"><?php _e("Display Item Name", "wp-raira") ?></td>
+<td class="option_description"><?php _e("If you like to display item name. Please check here. But if you select the size of image 'Small', I don't recommend to show the title because of limited space.", "wp-raira"); ?></td>
 <?php
   $checked = "";
   if ($current_is_display_item_name == "TRUE") {
@@ -249,7 +262,8 @@ $current_general_max_item_number_mobile = get_site_option('wp_raira_max_item_num
 <td><input type="checkbox" name="wp_raira_is_display_item_name" id="wp_raira_is_display_item_name" value="TRUE " <?php echo $checked ?> / ></td>
 </tr>
 <tr>
-<th><?php _e('Skip No Image Item ', 'wp-raira') ?></th>
+<td class="option_name"><?php _e("Skip No Image Item", "wp-raira") ?></td>
+<td class="option_description"><?php _e("If you like to skip to display item of no image. Please check here.", "wp-raira"); ?></td>
 <?php
   $checked = "";
   if ($current_skip_no_image_item == "TRUE") {
@@ -258,21 +272,28 @@ $current_general_max_item_number_mobile = get_site_option('wp_raira_max_item_num
 ?>
 <td><input type="checkbox" name="wp_raira_skip_no_image_item" id="wp_raira_skip_no_image_item" value="TRUE " <?php echo $checked ?> / ></td>
 </tr>
-<tr><th>Template(Text, Thumbnail, Custom):</th><td>TODO</td></tr>
 <tr>
-<th><?php _e('Default banner for PC when there is no related item. Any plain HTML is OK. ', 'wp-raira') ?></th>
+<td class="option_name"><?php _e("Template", "wp-raira"); ?></td>
+<td class="option_description"><?php _e("Preparing now. (Text, Thumbnail, Custom)", "wp-raira"); ?></td>
+<td>TODO</td>
+</tr>
+<tr>
+<td class="option_name"><?php _e("Default banner for PC", "wp-raira") ?></td>
+<td class="option_description"><?php _e("When there is no related item, you can display this value. Any plain HTML is OK.", "wp-raira"); ?></td>
 <td>
 <textarea name="wp_raira_default_banner_pc" id="wp_raira_default_banner_pc"  rows="8" cols="70"><?php echo $current_general_default_banner_pc ?></textarea>
 </td>
 </tr>
 <tr>
-<th><?php _e('Default banner for mobile when there is no related item. Any plain HTML is OK. ', 'wp-raira') ?></th>
+<td class="option_name"><?php _e("Default banner for mobile", "wp-raira") ?></td>
+<td class="option_description"><?php _e("When there is no related item, you can display this value. Any plain HTML is OK.", "wp-raira"); ?></td>
 <td>
 <textarea name="wp_raira_default_banner_mobile" id="wp_raira_default_banner_mobile"  rows="8" cols="70"><?php echo $current_general_default_banner_mobile ?></textarea>
 </td>
 </tr>
 <tr>
-<th><?php _e('Number of Item for PC ', 'wp-raira') ?></th>
+<td class="option_name"><?php _e("Number of Item for PC", "wp-raira") ?></td>
+<td class="option_description"><?php _e("The number of relate item for PC view.", "wp-raira"); ?></td>
 <td>
   <select name="wp_raira_max_item_number_pc" id="wp_raira_max_item_number_pc">
   <?php for ($count = 1; $count <= $wp_raira_max_item_number_pc; $count++){
@@ -287,7 +308,8 @@ $current_general_max_item_number_mobile = get_site_option('wp_raira_max_item_num
 </td>
 </tr>
 <tr>
-<th><?php _e('Number of Item for mobile ', 'wp-raira') ?></th>
+<td class="option_name"><?php _e("Number of Item for mobile", "wp-raira") ?></td>
+<td class="option_description"><?php _e("The number of relate item for mobile view. The recommend number is half of PC one.", "wp-raira"); ?></td>
 <td>
   <select name="wp_raira_max_item_number_mobile" id="wp_raira_max_item_number_mobile">
   <?php for ($count = 1; $count <= $wp_raira_max_item_number_mobile; $count++){

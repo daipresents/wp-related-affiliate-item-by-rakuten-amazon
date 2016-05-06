@@ -6,87 +6,155 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2016-05-06 00:26+0900\n"
-"PO-Revision-Date: 2016-05-06 11:54+0900\n"
+"PO-Revision-Date: 2016-05-06 16:45+0900\n"
 "Last-Translator: Dai Fujihara <daipresents@gmail.com>\n"
 "Language-Team: Dai Fujihara <daipresents@gmail.com>\n"
 "Language: ja_JP\n"
 "X-Generator: Poedit 1.8.7\n"
 
+# #################
 # settings.php
+# #################
 msgid "Related Affiliate Item by Rakuten and Amazon (RAIRA)"
 msgstr "関連アフィリエイト商品表示プラグイン by Amazonアソシエイト、 楽天アフィリエイト (RIARA)"
 
 msgid "This plugin supports you to monetize your blog by displaying the contents which are affiliate image, link etc. Please set each option in this page first. If you don't set each one, this plugin use default value or doesn't display relate item."
 msgstr "このプラグイン（Related Affiliate Item by Rakuten and Amazon : RIARA）記事に関連したアフィリエイト商品画像やリンクを表示することで、ブログを簡単にマネタイズできるプラグインです。利用のためにはAmazon Product Advertising API、楽天WebサービスAPIの設定をしてください。"
 
-msgid "This plugin is free to use but please show plugin attribution link (powered by daipresents.com). And this plugin use my associate id 10% of the time to display item link for donation to me. Thank you for your cooperation. Support page is "
-msgstr "プラグインは無料で利用可能ですが、プラグインページヘのリンク（powered by daipresents.com）を表示しておいてください。また、プラグイン作成の寄付として10％の確率で作者のアソシエイトIDを使った商品リンクを作成します。ご協力をお願いします。サポート－ページは"
-
-msgid "here"
-msgstr "こちら"
+msgid "This plugin is free to use but please show plugin attribution link (powered by daipresents.com). And this plugin use my associate id 10% of the time to display item link for donation to me. Thank you for your cooperation. Support page is <a href='http://daipresents.com/2016/wp-related-item-by-amazon-rakuten-affiliate-plugin/' target='_blank'>here</a>."
+msgstr "プラグインは無料で利用可能ですが、プラグインページヘのリンク（powered by daipresents.com）を表示しておいてください。また、プラグイン作成の寄付として10％の確率で作者のアソシエイトIDを使った商品リンクを作成します。ご協力をお願いします。サポートページは<a href='http://daipresents.com/2016/wp-related-item-by-amazon-rakuten-affiliate-plugin/' target='_blank'>こちら</a>。"
 
 msgid "The result of current setting"
 msgstr "現在の設定の結果チェック"
 
-msgid "General Setting"
-msgstr "全体設定"
+msgid "API Endpoint"
+msgstr "APIのエンドポイント"
 
-msgid "If you like to display related affiliate item, please check this option. This check box is the switch: "
-msgstr "関連アフィリエイト商品を表示する場合はチェックしてください。ここでON/OFFの設定ができます。"
+msgid "You can select the location of API. If you like to show Japanese product, you should select 'JP' location."
+msgstr "APIのロケーションを選んでください。日本の商品を紹介するなら'JP'を選びましょう。"
 
-msgid "Search Item by "
-msgstr "関連アフィリエイト商品を探すキーワード "
+msgid "Access Key"
+msgstr "アクセスキー"
 
-msgid "API Endpoint "
-msgstr "APIのエンドポイント "
+msgid "Get access key for Amazon Product Advertising API from <a href='http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/#amazon' target='_blank'>here</a>."
+msgstr "Amazon Product Advertising APIのアクセスキーの取得方法は<a href='http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/#amazon' target='_blank'>こちら</a>。"
 
-msgid "Access Key "
-msgstr "アクセスキー "
+msgid "Secret Access Key"
+msgstr "シークレットアクセスキー"
 
-msgid "Secret Access Key "
-msgstr "シークレットアクセスキー "
+msgid "Get secret access key for Amazon Product Advertising API from <a href='http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/#amazon' target='_blank'>here</a>."
+msgstr "Amazon Product Advertising APIのシークレットアクセスキーの取得方法は<a href='http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/#amazon' target='_blank'>こちら</a>。"
 
-msgid "Search Index "
-msgstr "サーチインデックス "
+msgid "Search Index"
+msgstr "サーチインデックス"
 
-msgid "Associate Tag (ex. daipresents-22) "
-msgstr "アソシエイトタグ （例： daipresents-22） "
+msgid "The genre of item for search."
+msgstr "検索する商品のジャンル"
 
-msgid "API Type "
-msgstr "利用するAPI "
+msgid "Associate Tag"
+msgstr "アソシエイトタグ"
 
-msgid "Application ID "
-msgstr "アプリケーションID "
+msgid "Your Amazon accociate tag. e.g. daipresents-22"
+msgstr "あなたのAmazonアソシエイトタグ 例：daipresents-22"
 
-msgid "Affiliate ID "
-msgstr "アフィリエイトID "
+msgid "API Type"
+msgstr "利用するAPI"
+
+msgid "API you like to use to display item."
+msgstr "商品表示で利用するAPI"
+
+msgid "Application ID"
+msgstr "アプリケーションID"
+
+msgid "Get application ID for Rakuten Web Service API from <a href='http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/#rakuten' target='_blank'>here</a>."
+msgstr "楽天WebサービスAPIのアプリケーションIDの取得方法は<a href='http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/#rakuten' target='_blank'>こちら</a>。"
+
+msgid "Affiliate ID"
+msgstr "アフィリエイトID"
+
+msgid "Get affiliate ID for Rakuten Web Service API from <a href='http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/#rakuten' target='_blank'>here</a>."
+msgstr "楽天WebサービスAPIのアフィリエイトIDの取得方法は<a href='http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/#rakuten' target='_blank'>こちら</a>。"
 
 msgid "Display Setting"
 msgstr "表示設定"
 
-msgid "Display service "
-msgstr "表示するサービス "
+msgid "Display related affiliate item"
+msgstr "関連アフィリエイト商品の表示"
 
-msgid "Heading Text (ex. <h3>Related Item</h3>) "
-msgstr "見出し（例： <h3>関係するアイテム</h3>） "
+msgid "If you like to display related affiliate item, please check this option. This check box is the switch."
+msgstr "関連アフィリエイト商品を表示する場合はチェックしてください。ここでON/OFFの設定ができます。"
 
-msgid "Image Size "
-msgstr "画像の大きさ "
+msgid "Search Item by"
+msgstr "関連アフィリエイト商品を探すキーワード"
 
-msgid "Display Item Name "
-msgstr "商品名を表示する "
+msgid "This plugin try to find the related item by using this part of article."
+msgstr "記事に設定されたこの項目を使って関係する商品を検索します。"
 
-msgid "Skip No Image Item "
-msgstr "画像のない商品をスキップ "
+msgid "Display service"
+msgstr "表示するサービス"
 
-msgid "Default banner for PC when there is no related item. Any plain HTML is OK. "
-msgstr "商品がなかった場合に表示するバナー。バナー以外でもOK（PC） "
+msgid "Select a service for displaying affiliate item."
+msgstr "関連アフィリエイト商品表示に利用するサービスを選んでください。"
 
-msgid "Default banner for mobile when there is no related item. Any plain HTML is OK. "
-msgstr "商品がなかった場合に表示するバナー。バナー以外でもOK（モバイル） "
+msgid "Heading Text"
+msgstr "見出し"
 
-msgid "Number of Item for PC "
-msgstr "表示する商品数（PC） "
+msgid "You can display heading text above the related item. (e.g. &lt;h3&gt;Related Item&lt;/h3&gt;)"
+msgstr "関連アフィリエイト商品の上部に見出しを設定できます。（例： &lt;h3&gt;関係するアイテム&lt;/h3&gt;）"
 
-msgid "Number of Item for mobile "
-msgstr "表示する商品数（モバイル） "
+msgid "Image Size"
+msgstr "商品画像の大きさ"
+
+msgid "Amazon image is bigger than Rakuten one."
+msgstr "Amazonのほうが楽天より画像が大きくキレイです。"
+
+msgid "Display Item Name"
+msgstr "商品名を表示する"
+
+msgid "If you like to display item name. Please check here. But if you select the size of image 'Small', I don't recommend to show the title because of limited space."
+msgstr "商品名を表示する場合はチェックしてください。ただし、画像サイズが小さいとデザインが崩れてしまうので注意が必要です。"
+
+msgid "Skip No Image Item"
+msgstr "画像のない商品をスキップ"
+
+msgid "If you like to skip to display item of no image. Please check here."
+msgstr "画像のない商品を表示しない場合はチェックしてください。"
+
+msgid "Template"
+msgstr "テンプレート"
+
+msgid "Preparing now. (Text, Thumbnail, Custom)"
+msgstr "準備中。(一覧表示, サムネイル表示, カスタム)"
+
+msgid "Default banner for PC"
+msgstr "PCユーザ向けデフォルトバナー"
+
+msgid "When there is no related item, you can display this value. Any plain HTML is OK."
+msgstr "商品がなかった場合に表示するバナー。バナー以外でもOK。"
+
+msgid "Default banner for mobile"
+msgstr "モバイルユーザ向けデフォルトバナー"
+
+msgid "Number of Item for PC"
+msgstr "表示する商品数（PC）"
+
+msgid "The number of relate item for PC view."
+msgstr "PCユーザに表示する商品の数"
+
+msgid "Number of Item for mobile"
+msgstr "表示する商品数（モバイル）"
+
+msgid "The number of relate item for mobile view. The recommend number is half of PC one."
+msgstr "モバイルユーザに表示する商品の数。PCの半分ぐらいがオススメ。"
+
+# #################
+# widget.php
+# #################
+msgid "Related Affiliate Item by Amazon and Rakuten Widget"
+msgstr "関連アフィリエイト商品表示ウィジェット"
+
+msgid "Display Related Affiliate Item by Amazon and Rakuten. Add this widget to the place which you want to set."
+msgstr "記事に関連したアフィリエイト商品を表示します。このウィジェットを表示したい場所に置いてください。"
+
+msgid "Support page is <a href='http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/' target='_blank'>here</a>. You can also use this code. <br><code>&lt;?php display_riara(); ?&gt;</code>"
+msgstr "サポートページは<a href='http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/' target='_blank'>こちら</a>。PHPで直接書く場合は以下のようになります。<br><code>&lt;?php display_riara(); ?&gt;</code>"
