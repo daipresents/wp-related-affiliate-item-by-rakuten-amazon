@@ -1,5 +1,5 @@
 <?php
-define("DEBUG", true);
+define("DEBUG", false);
 
 function debug($message) {
   if (DEBUG) {
@@ -16,7 +16,6 @@ function debug_obj($obj) {
 // Initialization
 function add_init(){
     // add css
-    debug("load css");
     wp_register_style('wp_raira_css', plugins_url('style.css', __FILE__));
     wp_enqueue_style('wp_raira_css');
 }
