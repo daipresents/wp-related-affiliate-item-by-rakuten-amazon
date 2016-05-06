@@ -52,5 +52,5 @@ if ($response = file_get_contents(generate_rakuten_request_url(get_search_keywor
 
 <br style="clear:both;">
 </aside><!-- #wp-raira-items -->
-<div id="wp-raira-powered-by">powered by <a href="http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/" target="_blank">daipresents.com</a></div>
+<div id="wp-raira-powered-by">powered by <a href="<?php echo POWERED_BY ?>" target="_blank">daipresents.com</a></div>
 </div><!-- #wp-raira -->

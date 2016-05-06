@@ -1,4 +1,5 @@
 <?php
+define("POWERED_BY", "http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/");
 define("AMAZON_NO_IMAGE", "http://g-ecx.images-amazon.com/images/G/09/icons/books/comingsoon_books._V376986337_BO1,204,203,200_.gif");
 
 $wp_raira_search_by_list = array(
