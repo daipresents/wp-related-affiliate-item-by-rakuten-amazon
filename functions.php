@@ -43,7 +43,7 @@ function test_display_riara() {
 function display_riara() {
   
   // if not set the keyword, not request to API.
-  if (empty(get_search_keyword())) {
+  if (empty(get_search_keyword()) || !get_site_option('wp_raira_is_display')) {
     echo get_default_banner();
     return;
   }
