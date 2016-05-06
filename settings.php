@@ -43,7 +43,7 @@ $current_search_by = get_site_option('wp_raira_search_by');
 
 <table>
 <tr>
-<th><?php _e('If you like to display related item, please check this option. This check box is the switch: ', 'wp-raira'); ?></th>
+<th><?php _e('If you like to display related affiliate item, please check this option. This check box is the switch: ', 'wp-raira'); ?></th>
 <?php
   $checked = "";
   if ($current_is_display == "TRUE") {

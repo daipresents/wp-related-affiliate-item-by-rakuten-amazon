@@ -6,7 +6,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2016-05-06 00:26+0900\n"
-"PO-Revision-Date: 2016-05-06 11:42+0900\n"
+"PO-Revision-Date: 2016-05-06 11:54+0900\n"
 "Last-Translator: Dai Fujihara <daipresents@gmail.com>\n"
 "Language-Team: Dai Fujihara <daipresents@gmail.com>\n"
 "Language: ja_JP\n"
@@ -14,10 +14,10 @@ msgstr ""
 
 # settings.php
 msgid "Related Affiliate Item by Rakuten and Amazon (RAIRA)"
-msgstr "関連商品表示プラグイン by Amazonアソシエイト、 楽天アフィリエイト (RIARA)"
+msgstr "関連アフィリエイト商品表示プラグイン by Amazonアソシエイト、 楽天アフィリエイト (RIARA)"
 
 msgid "This plugin supports you to monetize your blog by displaying the contents which are affiliate image, link etc. Please set each option in this page first. If you don't set each one, this plugin use default value or doesn't display relate item."
-msgstr "このプラグイン（Related Affiliate Item by Rakuten and Amazon : RIARA）記事に関連したアフィリエイト画像やリンクを表示することで、ブログを簡単にマネタイズできるプラグインです。利用のためにはAmazon Product Advertising API、楽天WebサービスAPIの設定をしてください。"
+msgstr "このプラグイン（Related Affiliate Item by Rakuten and Amazon : RIARA）記事に関連したアフィリエイト商品画像やリンクを表示することで、ブログを簡単にマネタイズできるプラグインです。利用のためにはAmazon Product Advertising API、楽天WebサービスAPIの設定をしてください。"
 
 msgid "This plugin is free to use but please show plugin attribution link (powered by daipresents.com). And this plugin use my associate id 10% of the time to display item link for donation to me. Thank you for your cooperation. Support page is "
 msgstr "プラグインは無料で利用可能ですが、プラグインページヘのリンク（powered by daipresents.com）を表示しておいてください。また、プラグイン作成の寄付として10％の確率で作者のアソシエイトIDを使った商品リンクを作成します。ご協力をお願いします。サポート－ページは"
@@ -31,11 +31,11 @@ msgstr "現在の設定の結果チェック"
 msgid "General Setting"
 msgstr "全体設定"
 
-msgid "If you like to display related item, please check this option. This check box is the switch: "
-msgstr "関連商品を表示する場合はチェックしてください。ここでON/OFFの設定ができます。"
+msgid "If you like to display related affiliate item, please check this option. This check box is the switch: "
+msgstr "関連アフィリエイト商品を表示する場合はチェックしてください。ここでON/OFFの設定ができます。"
 
 msgid "Search Item by "
-msgstr "関連商品を探すキーワード "
+msgstr "関連アフィリエイト商品を探すキーワード "
 
 msgid "API Endpoint "
 msgstr "APIのエンドポイント "
