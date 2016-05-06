@@ -26,7 +26,33 @@ $wp_raira_amazon_api_endpoints = array(
 
 $wp_raira_amazon_search_indexes = array(
   "All" => "All",
+  "Apparel" => "Apparel",
+  "Automotive" => "Automotive",
+  "Baby" => "Baby",
+  "Beauty" => "Beauty",
+  "Blended" => "Blended",
   "Books" => "Books",
+  "Classical" => "Classical",
+  "DVD" => "DVD",
+  "Electronics" => "Electronics",
+  "ForeignBooks" => "ForeignBooks",
+  "Grocery" => "Grocery",
+  "HealthPersonalCare" => "HealthPersonalCare",
+  "Hobbies" => "Hobbies",
+  "HomeImprovement" => "HomeImprovement",
+  "Jewelry" => "Jewelry",
+  "Kitchen" => "Kitchen",
+  "Music" => "Music",
+  "MusicTracks" => "MusicTracks",
+  "OfficeProducts" => "OfficeProducts",
+  "Shoes" => "Shoes",
+  "Software" => "Software",
+  "SportingGoods" => "SportingGoods",
+  "Toys" => "Toys",
+  "VHS" => "VHS",
+  "Video" => "Video",
+  "VideoGames" => "VideoGames",
+  "Watches" => "Watches",
 );
 
 $wp_raira_rakuten_api_endpoints = array(
