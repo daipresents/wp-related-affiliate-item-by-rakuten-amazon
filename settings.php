@@ -19,9 +19,9 @@ require( plugin_dir_path( __FILE__ ) . 'common.php' );
 
 <h2><?php _e("Related Affiliate Item by Rakuten and Amazon (RAIRA)", "wp-raira"); ?></h2>
 
-<p><?php _e("This plugin supports you to monetize your blog by displaying the contents which are affiliate image, link etc. Please set each option in this page first. If you don\'t set each one, this plugin use default value or doesn\'t display relate item.", "wp-raira"); ?></p>
+<p><?php _e("This plugin supports you to monetize your blog by displaying the contents which are affiliate image, link etc. Please set each option in this page first. If you don't set each one, this plugin use default value or doesn't display relate item.", "wp-raira"); ?></p>
 
-<p><?php _e("This plugin is free to use but please show plugin attribution link (powered by daipresents.com). And this plugin use my associate id 10% of the time to display item link for donation to me. Thank you for your cooperation. Support page is <a href='http://daipresents.com/2016/wp-related-item-by-amazon-rakuten-affiliate-plugin/' target='_blank'>here</a>.", 'wp-raira'); ?></p>
+<p><?php _e("If you want to use this plugin, please read support page first. Support page is <a href='http://daipresents.com/2016/wp-related-item-by-amazon-rakuten-affiliate-plugin/' target='_blank'>here</a>.", 'wp-raira'); ?></p>
 
 <h3><?php _e("The result of current setting", "wp-raira") ?></h3>
 <div>
