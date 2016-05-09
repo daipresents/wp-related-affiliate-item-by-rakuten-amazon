@@ -2,6 +2,8 @@
 require_once( plugin_dir_path( __FILE__ ) . 'functions.php' );
 ini_set( 'display_errors', 0 );
 
+$start_time = get_start_time();
+
 $xml = null;
 if ($response = file_get_contents(generate_amazon_request_url(get_search_keyword()))) {
   $xml = simplexml_load_string($response);
@@ -73,3 +75,5 @@ if ($response = file_get_contents(generate_amazon_request_url(get_search_keyword
 </aside><!-- #wp-raira-items -->
 <div id="wp-raira-powered-by">powered by <a href="<?php echo POWERED_BY ?>" target="_blank">daipresents.com</a></div>
 </div><!-- #wp-raira -->
+
+<?php display_performance_time($start_time); ?>

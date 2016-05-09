@@ -13,6 +13,18 @@ function debug_obj($obj) {
   }
 }
 
+function get_start_time() {
+  if (DEBUG) {
+    return microtime(true);
+  }
+}
+
+function display_performance_time($start) {
+  if (DEBUG) {
+    echo microtime(true) - $start . "sec";
+  }
+}
+
 // Initialization
 function add_init(){
     // add css
