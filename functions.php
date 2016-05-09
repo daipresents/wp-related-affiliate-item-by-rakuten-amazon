@@ -1,26 +1,26 @@
 <?php
-define("DEBUG", false);
+define('WP_DEBUG', true);
 
 function debug($message) {
-  if (DEBUG) {
+  if (WP_DEBUG) {
     echo $message . "<br>";
   }
 }
 
 function debug_obj($obj) {
-  if (DEBUG) {
+  if (WP_DEBUG) {
     echo "<pre>" . var_dump($obj) . "</pre>";
   }
 }
 
 function get_start_time() {
-  if (DEBUG) {
+  if (WP_DEBUG) {
     return microtime(true);
   }
 }
 
 function display_performance_time($start) {
-  if (DEBUG) {
+  if (WP_DEBUG) {
     echo microtime(true) - $start . "sec";
   }
 }
