@@ -77,10 +77,9 @@ add_action('widgets_init', function () {
     register_widget( 'RAIRA_Widget');
 } );
 
-add_action( 'wp_enqueue_scripts', 'add_init' );
+add_action( 'wp_enqueue_scripts', 'init_script_and_style' );
 
-// Initialization
-function add_init(){
+function init_script_and_style(){
     // add css
     wp_register_style('wp_raira_css', plugins_url('style.css', __FILE__));
     wp_enqueue_style('wp_raira_css');
