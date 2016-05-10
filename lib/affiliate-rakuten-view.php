@@ -34,7 +34,7 @@ if(empty($xml)) {
   </div><!-- .wp-raira-thumb -->
   <?php if (get_site_option('wp_raira_is_display_item_name')){ ?>
   <div class="wp-raira-content">
-    <a href="<?php echo $attributes["item_url"] ?>" title="<?php echo $attributes["item_name"] ?>">
+    <a href="<?php echo $attributes["item_url"] ?>" title="<?php echo $attributes["item_name"] ?>" target="_blank">
       <?php echo $attributes["short_item_name"] ?>
     </a>
   </div><!-- .wp-raira-content -->
