@@ -15,7 +15,7 @@ class RAIRA_Widget extends WP_Widget{
    * @param array $instance
    */
   public function widget( $args, $instance ) {
-      display_riara();
+      display_raira();
   }
 
   /**
@@ -24,7 +24,7 @@ class RAIRA_Widget extends WP_Widget{
    * @return string|void
    */
   public function form( $instance ){
-    _e("Support page is <a href='http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/' target='_blank'>here</a>. You can also use this code. <br><code>&lt;?php display_riara(); ?&gt;</code>", "wp-raira");
+    _e("Support page is <a href='http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/' target='_blank'>here</a>. You can also use this code. <br><code>&lt;?php display_raira(); ?&gt;</code>", "wp-raira");
   }
 
   /**

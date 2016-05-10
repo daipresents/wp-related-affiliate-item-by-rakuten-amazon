@@ -90,8 +90,8 @@ function display_wp_raira_settings() {
   require_once( plugin_dir_path( __FILE__ ) . 'lib/setting-view.php' );
 }
 
-// display_related item by Amazon, Rakuten affiliate.
-function display_riara() {
+// display_related affiliate item by Rakuten and Amazon.
+function display_raira() {
   switch (get_site_option('wp_raira_display_service')) {
     case "Amazon":
       require_once( plugin_dir_path( __FILE__ ) . 'lib/affiliate-amazon-view.php' );
