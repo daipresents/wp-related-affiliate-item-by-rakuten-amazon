@@ -178,6 +178,7 @@ class Affiliate {
     $params['AssociateTag'] = $this->get_affiliate_tag();
     $params['Version'] = '2011-08-02';
     $params['Timestamp'] = gmdate('Y-m-d\TH:i:s\Z');
+    // if this option set, the result is not natural so comment out.
     //$params['Sort'] = 'salesrank';
     $params['ResponseGroup'] = 'Medium';
     $params['Keywords'] = $keywords;
