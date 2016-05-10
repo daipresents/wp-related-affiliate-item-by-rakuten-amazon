@@ -2,7 +2,6 @@
 require_once( plugin_dir_path( __FILE__ ) . 'functions.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'affiliate.php' );
 
-define("WP_DEBUG", true);
 $start_time = get_start_time();
 
 $Affiliate = new Affiliate();
