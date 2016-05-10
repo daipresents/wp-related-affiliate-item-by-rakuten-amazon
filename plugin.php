@@ -13,8 +13,9 @@
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-?>
-<?php
+*/
+
+/*
 Plugin Name: Related Affiliate Item by Rakuten and Amazon (RAIRA)
 Plugin URI: http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/
 Description: This plugin support you to monetize your blog by displaying the contents which are affiliate image, link etc.
@@ -22,9 +23,6 @@ Author: @daipresents
 Version: 0.1
 Author URI: http://daipresents.com/
 */
-
-require_once( plugin_dir_path( __FILE__ ) . 'functions.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'widget.php' );
 
 load_plugin_textdomain
 ( 'wp-raira', false, basename( dirname( __FILE__ ) ) . '/languages' );
@@ -75,9 +73,34 @@ function add_plugin_admin_menu() {
 add_action('admin_menu', 'add_plugin_admin_menu');
 
 add_action('widgets_init', function () {
-    register_widget( 'wp_raira_Widget');
+    require_once( plugin_dir_path( __FILE__ ) . 'lib/widget.php' );
+    register_widget( 'RAIRA_Widget');
 } );
 
 add_action( 'wp_enqueue_scripts', 'add_init' );
+
+// Initialization
+function add_init(){
+    // add css
+    wp_register_style('wp_raira_css', plugins_url('style.css', __FILE__));
+    wp_enqueue_style('wp_raira_css');
+}
+
+function display_wp_raira_settings() {
+  require_once( plugin_dir_path( __FILE__ ) . 'lib/setting-view.php' );
+}
+
+// display_related item by Amazon, Rakuten affiliate.
+function display_riara() {
+  switch (get_site_option('wp_raira_display_service')) {
+    case "Amazon":
+      require_once( plugin_dir_path( __FILE__ ) . 'lib/affiliate-amazon-view.php' );
+      return;
+    
+    case "Rakuten":
+      require_once( plugin_dir_path( __FILE__ ) . 'lib/affiliate-rakuten-view.php' );
+      return;
+  }
+}
 
 ?>

@@ -6,7 +6,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2016-05-06 00:26+0900\n"
-"PO-Revision-Date: 2016-05-06 19:45+0900\n"
+"PO-Revision-Date: 2016-05-10 10:40+0900\n"
 "Last-Translator: Dai Fujihara <daipresents@gmail.com>\n"
 "Language-Team: Dai Fujihara <daipresents@gmail.com>\n"
 "Language: ja_JP\n"
@@ -22,7 +22,7 @@ msgid "This plugin supports you to monetize your blog by displaying the contents
 msgstr "このプラグイン（Related Affiliate Item by Rakuten and Amazon : RIARA）記事に関連したアフィリエイト商品画像やリンクを表示することで、ブログを簡単にマネタイズできるプラグインです。利用のためにはAmazon Product Advertising API、楽天WebサービスAPIの設定をしてください。"
 
 msgid "If you want to use this plugin, please read support page first. Support page is <a href='http://daipresents.com/2016/wp-related-item-by-amazon-rakuten-affiliate-plugin/' target='_blank'>here</a>."
-msgstr "プラグインを利用する前に、<a href='http://daipresents.com/2016/wp-related-item-by-amazon-rakuten-affiliate-plugin/' target='_blank'>サポートページ</a>を一読ください。"
+msgstr "プラグインを利用する前に、<a href='http://daipresents.com/2016/wp-related-affiliate-item-by-rakuten-amazon-plugin/' target='_blank'>サポートページ</a>を一読ください。"
 
 msgid "The result of current setting"
 msgstr "現在の設定の結果チェック"

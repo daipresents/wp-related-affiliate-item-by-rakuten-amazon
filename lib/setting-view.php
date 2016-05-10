@@ -1,3 +1,80 @@
+<?php
+require_once( plugin_dir_path( __FILE__ ) . 'affiliate.php' );
+$Affiliate = new Affiliate();
+$test_result = $Affiliate->execute(true);
+
+$wp_raira_search_by_list = array(
+  "Category Name" => "Category Name",
+  "Category Description" => "Category Description",
+  "Tag Name" => "Tag Name",
+  "Tag Description" => "Tag Description",
+);
+
+$wp_raira_amazon_api_endpoints = array(
+  "JP" => "https://webservices.amazon.co.jp/onca/xml",
+//  "US" => "https://webservices.amazon.com/onca/xml",
+//  "UK" => "https://webservices.amazon.co.uk/onca/xml",
+//  "MX" => "https://webservices.amazon.com.mx/onca/xml",
+//  "IT" => "https://webservices.amazon.it/onca/xml",
+//  "IN" => "https://webservices.amazon.in/onca/xml",
+//  "FR" => "https://webservices.amazon.fr/onca/xml",
+//  "ES" => "https://webservices.amazon.es/onca/xml",
+//  "DE" => "https://webservices.amazon.de/onca/xml",
+//  "CN" => "https://webservices.amazon.cn/onca/xml",
+//  "CA" => "https://webservices.amazon.ca/onca/xml",
+//  "BR" => "https://webservices.amazon.com.br/onca/xml",
+);
+
+$wp_raira_amazon_search_indexes = array(
+  "All" => "All",
+  "Apparel" => "Apparel",
+  "Automotive" => "Automotive",
+  "Baby" => "Baby",
+  "Beauty" => "Beauty",
+  "Blended" => "Blended",
+  "Books" => "Books",
+  "Classical" => "Classical",
+  "DVD" => "DVD",
+  "Electronics" => "Electronics",
+  "ForeignBooks" => "ForeignBooks",
+  "Grocery" => "Grocery",
+  "HealthPersonalCare" => "HealthPersonalCare",
+  "Hobbies" => "Hobbies",
+  "HomeImprovement" => "HomeImprovement",
+  "Jewelry" => "Jewelry",
+  "Kitchen" => "Kitchen",
+  "Music" => "Music",
+  "MusicTracks" => "MusicTracks",
+  "OfficeProducts" => "OfficeProducts",
+  "Shoes" => "Shoes",
+  "Software" => "Software",
+  "SportingGoods" => "SportingGoods",
+  "Toys" => "Toys",
+  "VHS" => "VHS",
+  "Video" => "Video",
+  "VideoGames" => "VideoGames",
+  "Watches" => "Watches",
+);
+
+$wp_raira_rakuten_api_endpoints = array(
+  "IchibaItem" => "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222",
+  "BooksTotal" => "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20130522",
+  "BooksBook" => "https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522",
+);
+
+$wp_raira_display_services = array("Amazon", "Rakuten",);
+
+// Image Size
+$wp_raira_image_sizes = array(
+  "Small"  => "Small",
+  "Medium" => "Medium",
+  "Large"  => "Large",
+);
+  
+$wp_raira_max_item_number_pc = 10;
+$wp_raira_max_item_number_mobile = 10;
+
+?>
 <style>
 th, td {
   border-bottom: solid 1px #ffffff;
@@ -13,10 +90,6 @@ th, td {
 }
 </style>
 
-<?php
-require( plugin_dir_path( __FILE__ ) . 'common.php' );
-?>
-
 <h2><?php _e("Related Affiliate Item by Rakuten and Amazon (RAIRA)", "wp-raira"); ?></h2>
 
 <p><?php _e("This plugin supports you to monetize your blog by displaying the contents which are affiliate image, link etc. Please set each option in this page first. If you don't set each one, this plugin use default value or doesn't display relate item.", "wp-raira"); ?></p>
@@ -25,7 +98,7 @@ require( plugin_dir_path( __FILE__ ) . 'common.php' );
 
 <h3><?php _e("The result of current setting", "wp-raira") ?></h3>
 <div>
-<textarea name="kanso" rows="5" cols="100"><?php test_display_riara() ?></textarea>
+<textarea name="kanso" rows="5" cols="100"><?php var_dump($test_result) ?></textarea>
 </div>
 
 <form action="options.php" method="post">

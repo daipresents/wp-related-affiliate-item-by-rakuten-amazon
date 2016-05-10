@@ -1,23 +1,14 @@
 <?php
 require_once( plugin_dir_path( __FILE__ ) . 'functions.php' );
-ini_set( 'display_errors', 0 );
+require_once( plugin_dir_path( __FILE__ ) . 'affiliate.php' );
 
+define("WP_DEBUG", true);
 $start_time = get_start_time();
 
-$xml = null;
-if ($response = file_get_contents(generate_rakuten_request_url(get_search_keyword()))) {
-  $xml = simplexml_load_string($response);
-  
-  // No result
-  if ($xml->count == 0) {
-    echo get_default_banner();
-    return;
-  }
-  
-} else {
-  // API error
-  error_log("file_get_contents failed. url = " . generate_rakuten_request_url(get_search_keyword()), 0);
-  echo get_default_banner();
+$Affiliate = new Affiliate();
+$xml = $Affiliate->execute();
+
+if(empty($xml)) {
   return;
 }
 ?>
@@ -28,7 +19,9 @@ if ($response = file_get_contents(generate_rakuten_request_url(get_search_keywor
 <?php
   foreach ($xml->Items->Item as $item) {
   
-    $attributes = get_item_attributes($item);
+    $attributes = $Affiliate->get_item_attributes($item);
+    
+    // Skip no image item or not. The image url of no image item is NULL.
     if (empty($attributes["image_url"])) {
       continue;
     }
@@ -53,7 +46,6 @@ if ($response = file_get_contents(generate_rakuten_request_url(get_search_keywor
 
 <br style="clear:both;">
 </aside><!-- #wp-raira-items -->
-<div id="wp-raira-powered-by">powered by <a href="<?php echo POWERED_BY ?>" target="_blank">daipresents.com</a></div>
 </div><!-- #wp-raira -->
 
 <?php display_performance_time($start_time); ?>
