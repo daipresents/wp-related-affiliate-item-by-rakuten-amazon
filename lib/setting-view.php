@@ -223,11 +223,11 @@ $current_rakuten_affiliate_id = get_site_option('wp_raira_rakuten_affiliate_id')
 // Is Display
 $current_is_display = get_site_option('wp_raira_is_display');
 
-// Search Keyword
-$current_search_by = get_site_option('wp_raira_search_by');
-
 // Display
 $current_general_display_service = get_site_option('wp_raira_display_service');
+
+// Search Keyword
+$current_search_by = get_site_option('wp_raira_search_by');
 
 // Safe mode
 $current_safe_mode = get_site_option('wp_raira_safe_mode');
@@ -263,7 +263,7 @@ $current_general_max_item_number_mobile = get_site_option('wp_raira_max_item_num
 <table>
 <tr>
 <td class="option_name"><?php _e("Display related affiliate item", "wp-raira"); ?></td>
-<td class="option_description"><?php _e("If you like to display related affiliate item, please check this option. This check box is the switch.", "wp-raira"); ?></td>
+<td class="option_description"><?php _e("If you like to display related affiliate item, please check this option. This check box is the switch to display item without removing widget.", "wp-raira"); ?></td>
 <?php
   $checked = "";
   if ($current_is_display == "TRUE") {
@@ -271,6 +271,21 @@ $current_general_max_item_number_mobile = get_site_option('wp_raira_max_item_num
   }
 ?>
 <td><input type="checkbox" name="wp_raira_is_display" id="wp_raira_is_display" value="TRUE " <?php echo $checked ?> / ></td>
+</tr>
+<tr><td class="option_name"><?php _e("Display service", "wp-raira") ?></td>
+<td class="option_description"><?php _e("Select a service for displaying affiliate item.", "wp-raira"); ?></td>
+<td>
+  <select name="wp_raira_display_service" id="wp_raira_display_service">
+  <?php foreach ($wp_raira_display_services as $display_service) { 
+    $selected = "";
+    if ($current_general_display_service == $display_service) { 
+      $selected = "selected='selected'";
+    }
+    ?>
+    <option value="<?php echo $display_service ?>" <?php echo $selected ?>><?php echo $display_service ?></option>
+  <?php } //foreach ?>
+  </select>
+</td>
 </tr>
 <tr>
 <td class="option_name"><?php _e("Search Item by", "wp-raira") ?></td>
@@ -285,21 +300,6 @@ $current_general_max_item_number_mobile = get_site_option('wp_raira_max_item_num
       ?>
       <option value="<?php echo $search_by ?>" <?php echo $selected ?>><?php echo $search_by_key ?></option>
     <?php } //foreach ?>
-  </select>
-</td>
-</tr>
-<tr><td class="option_name"><?php _e("Display service", "wp-raira") ?></td>
-<td class="option_description"><?php _e("Select a service for displaying affiliate item.", "wp-raira"); ?></td>
-<td>
-  <select name="wp_raira_display_service" id="wp_raira_display_service">
-  <?php foreach ($wp_raira_display_services as $display_service) { 
-    $selected = "";
-    if ($current_general_display_service == $display_service) { 
-      $selected = "selected='selected'";
-    }
-    ?>
-    <option value="<?php echo $display_service ?>" <?php echo $selected ?>><?php echo $display_service ?></option>
-  <?php } //foreach ?>
   </select>
 </td>
 </tr>
