@@ -60,6 +60,18 @@ class Affiliate {
     "Large"  => 225,
   );
 
+  // return the result or false
+  private function get_api_response($url) {
+    $ch = curl_init();
+    curl_setopt( $ch, CURLOPT_URL, $url );
+    curl_setopt( $ch, CURLOPT_HEADER, false );
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+    curl_setopt( $ch, CURLOPT_TIMEOUT, 5 );
+    $result = curl_exec( $ch );
+    curl_close( $ch );
+    return $result;
+  }
+  
   public function execute($test = false) {
     
     // not display error message for security.
@@ -84,7 +96,7 @@ class Affiliate {
     switch (get_site_option('wp_raira_display_service')) {
       
       case "Amazon":
-        if ($response = file_get_contents($this->generate_amazon_request_url($keywords))) {
+        if ($response = $this->get_api_response($this->generate_amazon_request_url($keywords))) {
           $xml = simplexml_load_string($response);
           
           // No result
@@ -104,7 +116,7 @@ class Affiliate {
         
       case "Rakuten":
         $url = $this->generate_rakuten_request_url($keywords);
-        if ($response = file_get_contents($url)) {
+        if ($response = $this->get_api_response($url)) {
           $xml = simplexml_load_string($response);
           
           // No result
