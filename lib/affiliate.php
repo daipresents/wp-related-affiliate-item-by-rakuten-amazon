@@ -17,6 +17,9 @@
 
 class Affiliate {
 
+  // 62 x 42
+  const AMAZON_NO_IMAGE = "http://g-ecx.images-amazon.com/images/G/09/icons/books/comingsoon_books._V376986337_BO1,204,203,200_.gif";
+  
   private $wp_raira_title_max_num = array(
     "Small"  => 12,
     "Medium" => 18,
@@ -271,7 +274,36 @@ class Affiliate {
         $attributes["item_name"] =$item->ItemAttributes->Title;
         $attributes["short_item_name"] = $this->get_item_name($item->ItemAttributes->Title, $size);
         $attributes["item_url"] = $item->DetailPageURL;
+        
+        // Fixed height
         $attributes["image_height"] = $this->wp_raira_amazon_image_heights[$size];
+        
+        if ($size == "Small") {
+          if($attributes["image_url"] = $item->MediumImage->URL) {
+            $attributes["image_width"] = round(($attributes["image_height"] / $item->MediumImage->Height) * $item->MediumImage->Width);
+          } else {
+            // no image case
+            if (get_site_option('wp_raira_skip_no_image_item')) {
+              $attributes["image_url"] = NULL;
+            } else {
+              $attributes["image_url"] = Affiliate::AMAZON_NO_IMAGE;
+            }
+            $attributes["image_width"] = round(($attributes["image_height"] / 62) * 42);
+          }
+          
+        } elseif ($size == "Medium" || $size == "Large") {
+          if($attributes["image_url"] = $item->LargeImage->URL) {
+            $attributes["image_width"] = round(($attributes["image_height"] / $item->LargeImage->Height) * $item->LargeImage->Width);
+          } else {
+            // no image case
+            if (get_site_option('wp_raira_skip_no_image_item')) {
+              $attributes["image_url"] = NULL;
+            } else {
+              $attributes["image_url"] = Affiliate::AMAZON_NO_IMAGE;
+            }
+            $attributes["image_width"] = round(($attributes["image_height"] / 62) * 42);
+          }
+        }
         
         if (get_site_option('wp_raira_is_display_item_name')) {
           $attributes["item_height"] = $this->wp_raira_amazon_item_heights[$size];
@@ -280,31 +312,8 @@ class Affiliate {
           $attributes["item_height"] = $attributes["image_height"];
         }
         
-        switch ($size) {
-          case "Small":
-            $attributes["image_width"] = round(($attributes["image_height"] / $item->MediumImage->Height) * $item->MediumImage->Width);
-            $attributes["image_url"] = $item->MediumImage->URL;
-            break;
-          case "Medium":
-            $attributes["image_width"] = round(($attributes["image_height"] / $item->LargeImage->Height) * $item->LargeImage->Width);
-            $attributes["image_url"] = $item->LargeImage->URL;
-            break;
-          case "Large":
-            $attributes["image_width"] = round(($attributes["image_height"] / $item->LargeImage->Height) * $item->LargeImage->Width);
-            $attributes["image_url"] = $item->LargeImage->URL;
-            break;
-        }
-        
         // Same as item width and image width.
         $attributes["item_width"] = $attributes["image_width"];
-        
-        if (empty($attributes["image_url"])){
-          if (get_site_option('wp_raira_skip_no_image_item')) {
-            $attributes["image_url"] = NULL;
-          } else {
-            $attributes["image_url"] = AMAZON_NO_IMAGE;
-          }
-        }
         
         return $attributes;
         
