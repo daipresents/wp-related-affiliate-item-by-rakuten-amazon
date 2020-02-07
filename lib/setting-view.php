@@ -66,13 +66,13 @@ $wp_raira_display_services = array("Amazon", "Rakuten",);
 
 // Image Size
 $wp_raira_image_sizes = array(
-  "Small"  => "Small",
+  //"Small"  => "Small",
   "Medium" => "Medium",
-  "Large"  => "Large",
+  //"Large"  => "Large",
 );
   
-$wp_raira_max_item_number_pc = 10;
-$wp_raira_max_item_number_mobile = 10;
+$wp_raira_max_item_number_pc = 15;
+$wp_raira_max_item_number_mobile = 15;
 
 ?>
 <style>
