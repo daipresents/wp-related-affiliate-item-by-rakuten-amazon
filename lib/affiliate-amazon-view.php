@@ -102,14 +102,14 @@ $items = json_decode($response, true)["SearchResult"]["Items"];
 
 <article class="wp-raira" style="width:<?php echo $item["Images"]["Primary"]["Medium"]["Width"] ?>px; height:<?php echo $item["Images"]["Primary"]["Medium"]["Height"] ?>px">
   <div class="wp-raira-thumbnail">
-    <a href="<?php echo $items["DetailPageURL"] ?>" title="<?php echo $items["ItemInfo"]["Title"]["DisplayValue"] ?>" target="_blank">
+    <a href="<?php echo $item["DetailPageURL"] ?>" title="<?php echo $item["ItemInfo"]["Title"]["DisplayValue"] ?>" target="_blank">
       <img src="<?php echo $item["Images"]["Primary"]["Medium"]["URL"] ?>" alt="<?php echo $items["ItemInfo"]["Title"]["DisplayValue"] ?>" title="<?php echo $attributes["item_name"] ?>" style="height:<?php echo $attributes["image_height"] ?>px; width:<?php echo $attributes["image_width"] ?>px" />
     </a>
   </div><!-- .wp-raira-thumb -->
   <?php if (get_site_option('wp_raira_is_display_item_name')){ ?>
   <div class="wp-raira-content">
-    <a href="<?php echo $$items["DetailPageURL"] ?>" title="<?php echo $items["ItemInfo"]["Title"]["DisplayValue"] ?>" target="_blank">
-      <?php echo $items["ItemInfo"]["Title"]["DisplayValue"] ?>
+    <a href="<?php echo $items["DetailPageURL"] ?>" title="<?php echo $item["ItemInfo"]["Title"]["DisplayValue"] ?>" target="_blank">
+      <?php echo $item["ItemInfo"]["Title"]["DisplayValue"] ?>
     </a>
   </div><!-- .wp-raira-content -->
   <?php } ?>
