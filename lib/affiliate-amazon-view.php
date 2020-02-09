@@ -11,30 +11,32 @@ $secretKey=get_site_option('wp_raira_amazon_secret_access_key');
 $searchIndex=get_site_option('wp_raira_amazon_search_index');
 $accociateTag=get_site_option('wp_raira_amazon_associate_tag');
 $imageSize=get_site_option('wp_raira_image_size');
-$keywords = "";
+$keywords = "アジャイル";
 switch (get_site_option('wp_raira_search_by')){
   case "Category Name":
     $categories = get_the_category();
     foreach($categories as $category) {
       $keywords = $category->cat_name;
+      break;
     }
   case "Category Description":
     $categories = get_the_category();
     foreach($categories as $category) {
       $keywords = $category->category_description;
+      break;
     }
   case "Tag Name":
     $tags = get_the_tags();
     foreach($tags as $tag) {
       $keywords = $tag->name;
+      break;
     }
   case "Tag Description":
     $tags = get_the_tags();
     foreach($tags as $tag) {
       $keywords = $tag->description;
+      break;
     }
-  default:
-    $keywords = "Agile";
 }
 
 if (empty($keywords) || !get_site_option('wp_raira_is_display')) {
