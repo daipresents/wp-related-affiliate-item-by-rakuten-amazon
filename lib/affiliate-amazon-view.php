@@ -90,7 +90,13 @@ if ($response === false) {
     throw new Exception ( "Exception Occured" );
 }
 
-$items = json_decode($response, true)["SearchResult"]["Items"];
+$response_json = json_decode($response, true);
+if ($response_json['Errors']) {
+	# response error
+	return;
+}
+
+$items = $response_json["SearchResult"]["Items"];
 ?>
 
 <div id='wp-raira'>
